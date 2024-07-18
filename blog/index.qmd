@@ -1,0 +1,22 @@
+---
+title: "Blog"
+---
+
+Our Cycling Adventures
+
+::: {layout-ncol=2}
+
+![](fabi-on-tour.jpg)
+
+![](sophie-on-tour.jpg)
+
+
+
+:::
+
+
+```{=html}
+<div  style="margin: 30px; text-align: center;">
+<a class="btn btn-primary" href="https://github.com/SoFaCycling" role="button" target="_blank" style="padding: 15px 30px;">View Source on GitHub</a>
+</div>
+```

@@ -1,0 +1,9 @@
+---
+title: About
+---
+
+
+![](SoFa-on-tour.jpg)
+
+<a href="https://github.com/SoFaCycling" target="_blank">GitHub</a> | <a href="https://www.quaeldich.de/" target="_blank">Quäldich</a><br>
+

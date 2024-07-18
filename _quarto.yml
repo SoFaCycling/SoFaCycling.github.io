@@ -1,0 +1,67 @@
+# website settings
+website:
+  title: "SoFaCycling"
+  description: "Our cycling adventures"
+  image: img/SoFaCycling.jpg
+  
+  favicon: img/bicycle.svg
+  
+  # navigation bar at the top of the website
+  navbar:
+    pinned: true
+    logo: /img/bicycle.svg
+    
+    # sub-pages
+    left:
+      - text: "About"
+        href: about/index.qmd
+      - text: "Blog"
+        href: blog/index.qmd
+    
+    # social media handles
+    right:
+      - icon: folder-symlink
+        href: https://github.com/SoFaCycling
+      - icon: github
+        href: https://github.com/SoFaCycling
+      - icon: envelope
+        aria-label: email
+        href: "mailto:fabian.schwate@gmail.com"  
+  
+  
+
+# ------------
+  search: 
+    location: navbar
+    type: textbox
+  page-footer: 
+    left: |
+      <span class="faux-block">&#169; 2024 SoFaCycling CC BY-NC 4.0</span>
+    right: |
+      <span class="faux-block"><a href="https://github.com/SoFaCycling">View source on GitHub</a></span>
+
+project:
+  type: website
+  output-dir: docs
+
+  preview: 
+    port: 22222
+    browser: true
+    watch-inputs: true
+    navigate: true
+
+execute:
+  freeze: true
+
+format:
+  html:
+    fontsize: 1.1em
+    theme: 
+      - pulse
+      - html/styles.scss
+    toc: false
+    code-link: true
+    anchor-sections: true
+    fig-cap-location: margin
+    reference-location: margin
+    footnotes-hover: true

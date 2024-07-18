@@ -1,0 +1,21 @@
+---
+about:
+  template: jolla
+  id: about-block
+  image: "img/SoFaCycling.jpg"
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/SoFaCycling
+    - icon: envelope
+      text: Email
+      href: "mailto:fabian.schwate@gmail.com"  
+---
+
+::: {#about-block}
+:::
+
+# Welcome to SoFaCycling!
+
+
+
