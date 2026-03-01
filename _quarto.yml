@@ -9,14 +9,14 @@ website:
   # navigation bar at the top of the website
   navbar:
     pinned: true
-    logo: /img/bicycle.svg
+    logo: /img/SoFaCycling_logo.svg
     
     # sub-pages
     left:
-      - text: "About"
-        href: about/index.qmd
       - text: "Blog"
         href: blog/index.qmd
+      - text: "About"
+        href: about/index.qmd
     
     # social media handles
     right:

@@ -1,0 +1,15 @@
+---
+title: "Test"
+description: "Testing blog posts"
+author:
+  - name: Fabian
+    url: https://SoFaCycling.github.io/
+date: 03-01-2026
+categories: [Schweiz, Transfer]
+image: SoFa-on-tour.jpg
+lightbox: auto
+draft: false
+---
+
+Test
+

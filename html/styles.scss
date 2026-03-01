@@ -59,11 +59,13 @@ $toc-font-size: 1em;
 $btn-code-copy-color-active: $orange !default;
 
 
+
 /*-- scss:rules --*/
 
 
+
 .nav-footer {
-    align-items: flex-start;  // Align all flex items to the top
+    align-items: flex-start;  // align all flex items to the top
     flex-wrap: wrap;
     border: 0 !important;
     min-height: 3em;
@@ -78,9 +80,7 @@ $btn-code-copy-color-active: $orange !default;
         padding-bottom: 0.4em;
     }
 
-    // In the default Quarto template, .nav-footer-center has position: absolute 
-    // turned on, which makes the div not be a flex item
-    // This changes that so that it *is* a flex item
+    // .nav-footer position: flex
     .nav-footer-center {
         text-align: center;
         position: inherit;
@@ -92,8 +92,8 @@ $btn-code-copy-color-active: $orange !default;
         }
     }
 
-    // When the screen is medium or smaller, make each footer chunk be 100% width 
-    // and centered; otherwise make them be 33% width and left/right/centerd
+    // adjustement: screen <= medium, each footer chunk 100% width + centered 
+    // otherwise 33% width and left/right/centerd
     .nav-footer-left,
     .nav-footer-right,
     .nav-footer-center {
@@ -118,3 +118,4 @@ $btn-code-copy-color-active: $orange !default;
         }
     }
 }
+

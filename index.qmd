@@ -13,9 +13,12 @@ about:
 ---
 
 ::: {#about-block}
+
+
 :::
 
-# Welcome to SoFaCycling!
+# Willkommen zu SoFaCycling! 
+Hier sammeln wir unsere Reise-Abenteuer und Erfahrungen rund ums Rennradfahren---um sie für die Ewigkeit festzuhalten. Website und Blog in progress...
 
 
 

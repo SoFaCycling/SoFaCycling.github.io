@@ -1,9 +1,17 @@
 ---
-title: About
+format: html
 ---
 
+:::{.column-screen}
+![](20220807_170601.jpg)
+:::
 
-![](SoFa-on-tour.jpg)
 
-<a href="https://github.com/SoFaCycling" target="_blank">GitHub</a> | <a href="https://www.quaeldich.de/" target="_blank">Quäldich</a><br>
+
+
+Hi! Wir sind Fabi & Sophie, ein passioniertes Rennradler*innen-Pärchen aus Berlin. 
+
+Wir lieben es, die Welt---und insbesondere die "bergige Welt"---zu bereisen, um ausgiebige und anspruchsvolle Rennrad-Touren zu unternehmen. 
+
+Wir sind sehr selten "radlos" anzutreffen; aber wenn doch mal, dann zumindest in Lauf- oder Wanderoutfit.
 
