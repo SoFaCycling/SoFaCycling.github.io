@@ -2,16 +2,79 @@
 format: html
 ---
 
+&nbsp;
+
+### A Thousand Valleys and Peaks. Two Bikes. One Journey. {{< bi heart>}} {{< bi heart>}}  
+&nbsp;
+
+Wir sind Fabi & Sophie – ein Rennrad-Duo aus dem Berliner Flachland mit einer ausgeprägten Schwäche für ordentliche Steigungsprozente. Wir teilen nicht nur unseren Alltag, sondern insbesondere die Leidenschaft fürs Rennradfahren. Unsere Mission: Spektakuläre Bergwelten auf zwei Rädern erkunden und dabei so viele Pässe wie möglich jagen.
+
+Während andere am Strand die Seele baumeln lassen, beginnt für uns der Spaß erst dort, wo die Straße sich in engen Serpentinen den Berg hinaufwindet. Ob legendärer Alpen-Klassiker oder versteckter Geheimtipp – wir lieben die sportliche Herausforderung und das unvergleichliche Gefühl, nach tausenden Höhenmetern vom Gipfel tief hinunter ins Tal zu blicken.
+
+Und falls wir in unserer Freizeit doch mal nicht im Sattel sitzen? Dann sind wir meistens im Lauf- oder Wanderoutfit unterwegs, denn „Stillstehen“ gehört definitiv nicht zu unserem Vokabular.
+
+
+### Unsere "Hall of Fame"  
+
+::: {.hof-container}
+
+::: {.hof-card}
+[Höchste Pässe]{.hof-title}
+
+{{< bi image class="param-icon" >}} Col de l'Iseran (2.764 m)
+
+{{< bi image class="param-icon" >}} Passo di Stelvio (2.757 m)
+
+{{< bi image class="param-icon" >}} Col Agnel (2.744 m)
+
+{{< bi image class="param-icon" >}} Col du Galibier (2.642 m)
+
+{{< bi image class="param-icon" >}} Passo di Gavia (2.618 m)
+
+{{< bi image class="param-icon" >}} Colle del Nivolet (2.612 m)
+
+:::
+
+::: {.hof-card}
+[Längste Touren]{.hof-title}
+
+{{< bi signpost-split class="param-icon" >}} Berlin – Brocken – Berlin (507 km)
+
+{{< bi signpost-split class="param-icon" >}} Mecklenburger Seenrunde (310 km)
+
+{{< bi signpost-split class="param-icon" >}} Stoneman Miriquidi Road (296 km)
+
+{{< bi signpost-split class="param-icon" >}} Berlin – Usedom (257 km)
+
+{{< bi signpost-split class="param-icon" >}} Ötztaler Radmarathon (246 km)
+
+{{< bi signpost-split class="param-icon" >}} Spreewaldgurken kaufen (231 km)
+:::
+
+::: {.hof-card}
+[Lebensziele]{.hof-title}
+
+{{< bi trophy class="param-icon" >}} Marmotte Granfondo (5.585 Hm)
+
+{{< bi trophy class="param-icon" >}} Stoneman Miriquidi Road (5.454 Hm)
+
+{{< bi trophy class="param-icon" >}} Ötztaler Radmarathon (5.412 Hm)
+
+{{< bi trophy class="param-icon" >}} Maratona dles Dolomites (4.407 Hm)
+
+{{< bi trophy class="param-icon" >}} Cinglés du Mont Ventoux (4.379 Hm)
+
+{{< bi trophy class="param-icon" >}} Granfondo San Gottardo (3.192 Hm)
+:::
+
+:::
+
+
+&nbsp;
+
+
 :::{.column-screen}
 ![](20220807_170601.jpg)
 :::
 
-
-
-
-Hi! Wir sind Fabi & Sophie, ein passioniertes Rennradler*innen-Pärchen aus Berlin. 
-
-Wir lieben es, die Welt---und insbesondere die "bergige Welt"---zu bereisen, um ausgiebige und anspruchsvolle Rennrad-Touren zu unternehmen. 
-
-Wir sind sehr selten "radlos" anzutreffen; aber wenn doch mal, dann zumindest in Lauf- oder Wanderoutfit.
 
