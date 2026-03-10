@@ -1,78 +1,93 @@
 /*-- scss:defaults --*/
 
-/* From https://github.com/andrewheiss/ath-quarto/blob/main/html/ath.scss */
 
-$white:    #ffffff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #868e96 !default;
-$gray-700: #495057 !default;
-$gray-800: #373a3c !default;
-$gray-900: #212529 !default;
-$black:    #000000 !default;
+// -- Global --
 
-$blue:    #2780e3 !default;
-$indigo:  #6610f2 !default;
-$purple:  #170C3A !default;
-$pink:    #A52C60 !default;
-$red:     #CF4446 !default;
-$orange:  #EE6A24 !default;
-$light-orange:  #FB9E07 !default;
-$yellow:  #F6D645 !default;
-$green:   #118230 !default;
-$teal:    #068194 !default;
-$cyan:    #3093CF !default;
+// Colors
+$white: #ffffff !default;
+$gray1: #f8f9fa !default;
+$gray2: #e9ecef !default;
+$gray3: #dee2e6 !default;
+$gray4: #ced4da !default;
+$gray5: #adb5bd !default;
+$gray6: #868e96 !default;
+$gray7: #495057 !default;
+$gray8: #373a3c !default;
+$gray9: #212529 !default;
+$black: #000000 !default;
 
-$primary:   $teal!default;
-$secondary: $gray-700 !default;
-$success:   $green !default;
-$info:      $cyan !default;
-$warning:   $orange !default;
-$danger:    $red !default;
-$light:     $gray-400 !default;
-$dark:      $black !default;
+$logo1: #23C3B4 !default;
+$logo2: #1B96AF!default;
+$logo3: #0F6BC8!default;
+$logo4: #6E2E9E!default;
+$logo5: #9B317F!default;
+
+$primary:   $gray6 !default;
+$secondary: $logo2 !default;
+$light:     $gray1 !default;
+$dark:      $gray9 !default;
 
 
+// Grid
+$grid-sidebar-width: 250px !default;
+$grid-body-width: 900px !default;
+$grid-margin-width: 250px !default;
+$grid-column-gutter-width: 1.5em !default;
+
+// Nav Bar
+$navbar-bg: rgba(55, 58, 60, 0.25) !default;
+$navbar-fg: $white !default;
+$navbar-hl: $white; 
 
 // Links
-$link-color: $primary !default;
-$link-decoration: none !default;
-$link-hover-color: $red !default;
-$link-hover-decoration: underline !default;
+$link-decoration: none;
 
 // Footer
-$footer-bg: $gray-900 !default;
-$footer-fg: $gray-300 !default;
-
-// Inline code
-$code-bg: $gray-200 !default;
-$code-color: $gray-900 !default;
-
-// TOC
-$toc-color: $orange;
-$toc-font-size: 1em;
-
-// Code copy
-$btn-code-copy-color-active: $orange !default;
-
+$footer-bg: rgba(55, 58, 60, 0.25) !default;
+$footer-fg: $gray9 !default;
 
 
 /*-- scss:rules --*/
 
 
+// -- Configuration --
 
+// Logo Gradient
+:root {
+  --logo-gradient: linear-gradient(90deg, #23C3B4 0%, #1B96AF 25%, #0F6BC8 50%, #6E2E9E 75%, #9B317F 100%);
+}
+
+@mixin gradient-text {
+  background: var(--logo-gradient) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+
+// -- General Components --
+
+// Nav Bar
+.navbar {
+  border-bottom: 1px solid $white;
+  border-bottom-width: calc(1px + .05vw);
+
+  .navbar-brand:hover,
+  .nav-link:hover {
+    @include gradient-text;
+    color: transparent !important;
+  }
+}
+
+// Footer
 .nav-footer {
     align-items: flex-start;  // align all flex items to the top
     flex-wrap: wrap;
     border: 0 !important;
     min-height: 3em;
-    //font-family: $footer-font-family;
 
     a {
-        color: $primary;
+        color: $white;
     }
 
     .faux-block {
@@ -118,4 +133,327 @@ $btn-code-copy-color-active: $orange !default;
         }
     }
 }
+
+
+// Links
+a:not(.quarto-post a):not(.about-link):hover {
+      @include gradient-text;
+      color: transparent !important;
+}
+
+
+// Icons
+.param-icon {
+  @include gradient-text; // Applies the logo gradient to the icon
+  color: transparent !important;
+  padding-right: 6px;
+  display: inline-block;  // Ensures the gradient renders correctly on the icon shape
+}
+
+
+
+// -- Landing Page --
+.about-link {
+  transition: all 0.3s ease !important;
+}
+
+.about-link:hover {
+      @include gradient-text;
+}
+
+// Logo Banner
+.hero-banner {
+  display: block;
+  width: 90vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 45vw);
+  margin-right: calc(50% - 45vw);
+  margin-top: -1.5rem; 
+  margin-bottom: 2rem;
+  height: 320px;
+  object-fit: cover;
+}
+
+// Photo Carousel
+.carousel {
+    max-width: 900px;
+    margin: auto;
+
+    .carousel-inner {
+        height: 500px; 
+        background-color: #f8f9fa; // Optional: Fallback
+    }
+
+    .carousel-item {
+        height: 100%;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        object-position: center; 
+    }
+}
+
+
+// -- Blog Overview --
+
+
+// Blog Post Listing
+.quarto-post a:hover {
+  background: none !important;
+  -webkit-text-fill-color: currentColor !important;
+  color: $gray5 !important;
+  background-clip: border-box;
+}
+
+.quarto-post:hover .listing-description, 
+.quarto-post:hover .listing-title {
+  color: inherit !important;
+  -webkit-text-fill-color: initial !important;
+}
+
+
+// Blog Post Listing Containers
+.quarto-post {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 20px;
+
+    .metadata  { order: 1; flex: 0 0 100px !important; }
+    .body      { order: 2; flex: 1 1 auto !important; }
+    .thumbnail { 
+        order: 3; 
+        flex: 0 0 100px !important; 
+        margin-left: auto;
+        img { width: 100% !important; height: auto !important; object-fit: contain !important; }
+    }
+}
+
+@media (max-width: 600px) {
+  .quarto-post {
+    flex-direction: column !important;
+  }
+  
+  .quarto-post .metadata, 
+  .quarto-post .thumbnail {
+    flex: 0 0 auto !important;
+    order: 0 !important;
+  }
+}
+
+
+// -- Blog Posts --
+
+// Blog Post Banner
+.quarto-title-block.with-numbering .quarto-title-panel,
+.quarto-title-block .quarto-title-banner {
+  text-align: center !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header.quarto-title-block.banner {
+  text-align: center !important;
+}
+
+// Map
+#map {
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+canvas {
+  margin-top: 2rem;
+}
+
+
+// Tour Stats
+.stats-grid-container {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: $white;
+  border-radius: 14px;
+  
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  transition: all 0.15s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  }
+
+  .stats-grid {
+    display: grid !important;
+    // This forces exactly 3 equal columns, aligning everything perfectly
+    grid-template-columns: repeat(3, 1fr) !important; 
+    column-gap: 1rem;
+    row-gap: 1.2rem;
+  }
+
+  .grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 10%;
+  white-space: nowrap;
+  font-size: 1.05rem;
+  gap: 0.4rem;
+    
+  }
+  
+  .stats-value {
+  font-weight: 700;
+  }
+  
+  .stats-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $gray7;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-grid-container .stats-grid {
+    grid-template-columns: 1fr !important;
+    padding-left: 0;
+  }
+  .grid-item { padding-left: 0; justify-content: center; }
+}
+
+
+// Photo Gallery
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.gallery p {
+  margin: 0;
+}
+
+.gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  background: $white;
+  transition: opacity 0.2s ease;
+}
+
+.gallery img:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.gallery figcaption {
+  text-align: left;
+  font-size: 0.85rem;
+  color: $gray7;
+  margin-top: 0.25rem;
+}
+
+
+
+// Trip-Collection Dashboard
+
+.trip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .trip-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .trip-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trip-card {
+  margin: 1rem 0;
+  background: $white;
+  border-radius: 14px;
+  padding: 1.4rem;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  transition: all 0.15s ease;
+}
+
+.trip-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.trip-value {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.trip-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $gray7;
+}
+
+
+
+// -- About Us Page --
+
+// Hall of Fame
+
+.hof-container {
+  display: grid;
+  align-items: strech;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0 4rem 0;
+
+  .hof-card {
+    padding: 2rem 1rem 1rem 1rem;
+    border: 1px solid $gray4 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background-color: $white;
+    height: 100%;
+    font-size: 0.75em;
+
+    .hof-title {
+      @include gradient-text;
+      color: transparent !important;
+      display: inline-block;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.25rem;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .hof-container { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 576px) {
+  .hof-container { grid-template-columns: 1fr; }
+}
+
+
+
+
+
 

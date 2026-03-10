@@ -1,4 +1,4 @@
 # options for all posts in this folder
 
-freeze: false
-title-block-banner: true
+freeze: auto
+title-block-banner: banner.png

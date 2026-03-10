@@ -8,8 +8,7 @@ website:
   
   # navigation bar at the top of the website
   navbar:
-    pinned: true
-    logo: /img/SoFaCycling_logo.svg
+    pinned: false
     
     # sub-pages
     left:
@@ -20,13 +19,15 @@ website:
     
     # social media handles
     right:
-      - icon: folder-symlink
-        href: https://github.com/SoFaCycling
+      - icon: strava
+        href: https://www.strava.com/athletes/18210938
+      - icon: strava
+        href: https://www.strava.com/athletes/35725334
       - icon: github
         href: https://github.com/SoFaCycling
       - icon: envelope
         aria-label: email
-        href: "mailto:fabian.schwate@gmail.com"  
+        href: "mailto:sofacycling@gmail.com"  
   
   
 
@@ -38,7 +39,11 @@ website:
     left: |
       <span class="faux-block">&#169; 2024 SoFaCycling CC BY-NC 4.0</span>
     right: |
-      <span class="faux-block"><a href="https://github.com/SoFaCycling">View source on GitHub</a></span>
+      <div class="faux-block">
+        <span>Built with {{< bi heart>}}, <a href="https://quarto.org/"> Quarto<sup>&#174;</sup></a></span>
+        <span>, and <a href="https://getbootstrap.com/">{{< bi bootstrap>}}</a></span>
+        <span>|&nbsp; Source code on <a href="https://github.com/SoFaCycling">{{< bi github>}}</a></span>
+      </div>
 
 project:
   type: website
@@ -50,6 +55,12 @@ project:
     watch-inputs: true
     navigate: true
 
+resources:
+  - blog/posts/**/track.json
+
+exclude:
+  - scripts/
+
 execute:
   freeze: true
 
@@ -59,9 +70,9 @@ format:
     theme: 
       - pulse
       - html/styles.scss
+    
     toc: false
     code-link: true
     anchor-sections: true
-    fig-cap-location: margin
     reference-location: margin
     footnotes-hover: true
