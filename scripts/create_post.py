@@ -1,0 +1,552 @@
+import os
+import requests
+import json
+import re
+import math
+from datetime import datetime
+from staticmap import StaticMap, Line
+
+
+# ------------------------------
+# configuration
+# ------------------------------
+
+# Strava
+CLIENT_ID = os.getenv("STRAVA_CLIENT_ID")
+CLIENT_SECRET = os.getenv("STRAVA_CLIENT_SECRET")
+REFRESH_TOKEN = os.getenv("STRAVA_REFRESH_TOKEN")
+
+# Directories
+POST_DIR = "blog/posts"
+TEMPLATE_FILE = "scripts/post_template.qmd"
+
+# Working mode for activity pull
+MODE = "static_id"
+# options:
+# "offline_id"
+# "static_id"
+# "latest_ride"
+
+# Activity ID
+# for MODE = "offline_id" or MODE = "static_id"
+STATIC_ACTIVITY_ID = 9109112299
+#STATIC_ACTIVITY_ID = 11494532116
+#STATIC_ACTIVITY_ID = 14653819733
+
+# Trip group 
+TRIP_NAME = "Mecklenburger Seenrunde"
+# optional: 
+# TRIP_NAME = None
+# for activities outside a trip
+
+# Further categories
+CATEGORIES = ["Neubrandenburg", "Event"]
+# optional: 
+# CATEGORIES = None
+
+
+# ------------------------------
+# helper: safe folder name
+# ------------------------------
+def safe_slug(text):
+    text = re.sub(r'[\\/*?:"<>|]', "", text)
+    text = re.sub(r"\s+", "_", text)
+    return text
+
+
+# ------------------------------
+# helper: distance calculation
+# ------------------------------
+def haversine(p1, p2):
+    R = 6371000
+    lat1, lon1 = math.radians(p1[0]), math.radians(p1[1])
+    lat2, lon2 = math.radians(p2[0]), math.radians(p2[1])
+
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+
+    a = math.sin(dlat/2)**2 + math.cos(lat1)*math.cos(lat2)*math.sin(dlon/2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+
+    return R * c
+
+
+# ------------------------------
+# helper: blog thumbnail
+# ------------------------------
+def generate_thumbnail(latlng, post_path):
+    if not latlng:
+        return
+
+    coords = [[lon, lat] for lat, lon in latlng]
+
+    width = 100
+    height = 100
+
+    m = StaticMap(width, height)
+
+    line = Line(coords, 'black', 1)
+    m.add_line(line)
+
+    thumb_path = os.path.join(post_path, "thumbnail.png")
+
+    image = m.render()
+    image.save(thumb_path)
+
+    print(f"🖼 Map thumbnail created (Size: {width}x{height}px).")
+
+
+# ------------------------------
+# helper: read existing trip stats
+# ------------------------------
+
+def get_trip_totals(trip_name, current_date, current_strava_id):
+
+    total_km = 0
+    total_elev = 0
+    total_time = 0
+
+    seen_ids = set()
+
+    if not os.path.exists(POST_DIR):
+        return total_km, total_elev, total_time
+
+    for folder in os.listdir(POST_DIR):
+
+        qmd = os.path.join(POST_DIR, folder, "index.qmd")
+
+        if not os.path.exists(qmd):
+            continue
+
+        with open(qmd, "r", encoding="utf-8") as f:
+            text = f.read()
+
+        if f"trip: {trip_name}" not in text:
+            continue
+
+        # Datum lesen
+        date_match = re.search(r'date:\s*"?([0-9\-]+)', text)
+        if not date_match:
+            continue
+
+        post_date = date_match.group(1)
+
+        if post_date > current_date:
+            continue
+
+        # Strava ID lesen
+        id_match = re.search(r"strava_id:\s*([0-9]+)", text)
+        if not id_match:
+            continue
+
+        strava_id = id_match.group(1)
+
+        # aktuelle Tour ignorieren
+        if strava_id == str(current_strava_id):
+            continue
+
+        # doppelte verhindern
+        if strava_id in seen_ids:
+            continue
+
+        seen_ids.add(strava_id)
+
+        km = re.search(r"distance_km:\s*([0-9.]+)", text)
+        hm = re.search(r"elevation_m:\s*([0-9.]+)", text)
+        tm = re.search(r"moving_time_min:\s*([0-9.]+)", text)
+
+        if km:
+            total_km += float(km.group(1))
+
+        if hm:
+            total_elev += float(hm.group(1))
+
+        if tm:
+            total_time += float(tm.group(1))
+
+    return total_km, total_elev, total_time
+
+
+# ------------------------------
+# helper: format time
+# ------------------------------
+def format_minutes(minutes):
+  
+    minutes = int(round(minutes))
+
+    hours = minutes // 60
+    mins = minutes % 60
+
+    if hours == 0:
+        return f"{mins}min"
+
+    return f"{hours}h {mins}min"
+
+
+# ------------------------------
+# get Strava token if needed
+# ------------------------------
+access_token = None
+headers = None
+
+def get_token():
+    token_url = "https://www.strava.com/oauth/token"
+
+    payload = {
+        "client_id": CLIENT_ID,
+        "client_secret": CLIENT_SECRET,
+        "grant_type": "refresh_token",
+        "refresh_token": REFRESH_TOKEN
+    }
+
+    r = requests.post(token_url, data=payload)
+    r.raise_for_status()
+
+    return r.json()["access_token"]
+
+
+# ------------------------------
+# load activity
+# ------------------------------
+
+activity = None
+streams = None
+
+if MODE == "offline_id":
+
+    activity_file = "activity_snapshot.json"
+    streams_file = "streams_snapshot.json"
+
+    if os.path.exists(activity_file) and os.path.exists(streams_file):
+
+        print("📦 Using local activity snapshot")
+
+        with open(activity_file, "r", encoding="utf-8") as f:
+            activity = json.load(f)
+
+        with open(streams_file, "r", encoding="utf-8") as f:
+            streams = json.load(f)
+
+    else:
+
+        print("⬇️ No snapshot found → downloading activity")
+
+        access_token = get_token()
+        headers = {"Authorization": f"Bearer {access_token}"}
+
+        activity_url = f"https://www.strava.com/api/v3/activities/{STATIC_ACTIVITY_ID}"
+
+        r = requests.get(activity_url, headers=headers)
+        r.raise_for_status()
+
+        activity = r.json()
+
+        with open(activity_file, "w", encoding="utf-8") as f:
+            json.dump(activity, f)
+
+        streams_url = f"https://www.strava.com/api/v3/activities/{STATIC_ACTIVITY_ID}/streams"
+
+        params = {"keys": "latlng,altitude", "key_by_type": "true"}
+
+        r = requests.get(streams_url, headers=headers, params=params)
+        streams = r.json()
+
+        with open(streams_file, "w", encoding="utf-8") as f:
+            json.dump(streams, f)
+
+        print("💾 Snapshot saved for offline mode")
+
+
+elif MODE == "static_id":
+
+    access_token = get_token()
+    headers = {"Authorization": f"Bearer {access_token}"}
+
+    activity_url = f"https://www.strava.com/api/v3/activities/{STATIC_ACTIVITY_ID}"
+
+    r = requests.get(activity_url, headers=headers)
+    r.raise_for_status()
+
+    activity = r.json()
+
+
+elif MODE == "latest_ride":
+
+    access_token = get_token()
+    headers = {"Authorization": f"Bearer {access_token}"}
+
+    r = requests.get(
+        "https://www.strava.com/api/v3/athlete/activities",
+        headers=headers,
+        params={"per_page": 5}
+    )
+
+    r.raise_for_status()
+
+    activities = r.json()
+
+    for a in activities:
+
+        if a["type"] == "Ride" and not a.get("trainer", False):
+            activity = a
+            break
+
+    if activity is None:
+        raise Exception("No outdoor ride found among last 5 activities")
+
+
+# ------------------------------
+# extract activity data
+# ------------------------------
+
+name = activity["name"]
+start_date = activity["start_date_local"]
+
+distance_km = round(activity["distance"] / 1000, 1)
+moving_time_min = round(activity["moving_time"] / 60)
+elevation_m = round(activity["total_elevation_gain"])
+
+type_sport = activity["type"]
+
+avg_speed = round(activity.get("average_speed", 0) * 3.6, 1)
+max_speed = round(activity.get("max_speed", 0) * 3.6, 1)
+
+avg_watts = activity.get("average_watts")
+max_watts = activity.get("max_watts")
+
+avg_hr = activity.get("average_heartrate")
+max_hr = activity.get("max_heartrate")
+
+calories = activity.get("calories")
+
+achievement_count = activity.get("achievement_count")
+
+date_str = datetime.strptime(start_date[:10], "%Y-%m-%d").strftime("%Y-%m-%d")
+
+post_slug = f"{date_str}_{safe_slug(name)}"
+post_path = os.path.join(POST_DIR, post_slug)
+
+
+
+# ------------------------------
+# build dashboard
+# ------------------------------
+
+dashboard_html = ""
+
+if TRIP_NAME:
+
+    trip_km, trip_elev, trip_time = get_trip_totals(
+        TRIP_NAME,
+        date_str,
+        activity["id"]
+    )
+
+    trip_km += distance_km
+    trip_elev += elevation_m
+    trip_time += moving_time_min
+
+    dashboard_html = f"""
+::: {{.trip-dashboard}}
+
+### {TRIP_NAME.capitalize()}: Unser aktueller Fortschritt
+
+<div class="trip-grid">
+
+<div class="trip-card">
+<div class="trip-value">{trip_km:.1f}</div>
+<div class="trip-label">Kilometer</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">{trip_elev:.0f}</div>
+<div class="trip-label">Höhenmeter</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">{format_minutes(trip_time)}</div>
+<div class="trip-label">Fahrzeit</div>
+</div>
+
+</div>
+
+:::
+"""
+
+
+# ------------------------------
+# create post folder structure
+# ------------------------------
+
+os.makedirs(post_path, exist_ok=True)
+
+images_dir = os.path.join(post_path, "img")
+os.makedirs(images_dir, exist_ok=True)
+
+story_file = os.path.join(post_path, "story.md")
+
+if not os.path.exists(story_file):
+    with open(story_file, "w", encoding="utf-8") as f:
+        f.write("")
+
+img_text_file = os.path.join(post_path, "img_text.md")
+
+if not os.path.exists(img_text_file):
+    with open(img_text_file, "w", encoding="utf-8") as f:
+        f.write("")
+
+
+# ------------------------------
+# get streams if needed
+# ------------------------------
+
+if streams is None:
+
+    activity_id = activity["id"]
+
+    streams_url = f"https://www.strava.com/api/v3/activities/{activity_id}/streams"
+
+    params = {"keys": "latlng,altitude", "key_by_type": "true"}
+
+    r = requests.get(streams_url, headers=headers, params=params)
+
+    streams = r.json() if r.status_code == 200 else {}
+
+latlng = streams.get("latlng", {}).get("data", [])
+altitude = streams.get("altitude", {}).get("data", [])
+
+
+# ------------------------------
+# build track.json
+# ------------------------------
+
+if latlng and altitude:
+
+    distance = [0]
+
+    for i in range(1, len(latlng)):
+        d = haversine(latlng[i-1], latlng[i])
+        distance.append(distance[-1] + d)
+
+    distance = [round(d/1000, 3) for d in distance]
+
+    data_file_post = os.path.join(post_path, "track.json")
+
+    with open(data_file_post, "w", encoding="utf-8") as f:
+        json.dump({
+            "latlng": latlng,
+            "altitude": altitude,
+            "distance": distance
+        }, f)
+
+    print("🗺 Track saved.")
+    
+    generate_thumbnail(latlng, post_path)
+
+
+# ------------------------------
+# generate index.qmd
+# ------------------------------
+
+with open(TEMPLATE_FILE, "r", encoding="utf-8") as f:
+    template = f.read()
+
+
+# Tour meta data
+trip_meta = f"""strava_id: {activity["id"]}
+distance_km: {distance_km}
+elevation_m: {elevation_m}
+moving_time_min: {moving_time_min}"""
+
+if TRIP_NAME:
+  
+  cats = TRIP_NAME
+  
+  if CATEGORIES: 
+    cats = ", ".join([TRIP_NAME] + CATEGORIES)
+  
+  trip_meta = f"""trip: {TRIP_NAME}
+categories: [{cats}]
+{trip_meta}"""
+
+
+
+
+# Photo block
+photo_block = ""
+
+image_files = [
+    f for f in os.listdir(images_dir)
+    if f.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))
+]
+
+image_files.sort()
+
+captions = []
+
+if os.path.exists(img_text_file):
+
+    with open(img_text_file, "r", encoding="utf-8") as f:
+
+        for line in f:
+
+            line = line.strip()
+
+            if line and not line.startswith("#"):
+                captions.append(line)
+
+
+if image_files:
+
+    photo_block += "::: {.gallery}\n"
+
+    for i, f in enumerate(image_files):
+
+        caption = captions[i] if i < len(captions) else ""
+
+        if caption:
+            photo_block += f"![{caption}](img/{f}){{group=\"tour\"}}\n\n"
+        else:
+            photo_block += f"![](img/{f}){{group=\"tour\"}}\n\n"
+
+    photo_block += ":::\n"
+
+
+with open(story_file, "r", encoding="utf-8") as f:
+    text_block = f.read()
+
+
+content = template.replace("{{NAME}}", name)\
+.replace("{{DATE}}", date_str)\
+.replace("{{TYPE}}", type_sport)\
+.replace("{{DISTANCE}}", str(distance_km))\
+.replace("{{TIME}}", format_minutes(moving_time_min))\
+.replace("{{ELEVATION}}", str(elevation_m))\
+.replace("{{AVG_SPEED}}", str(avg_speed))\
+.replace("{{MAX_SPEED}}", str(max_speed))\
+.replace("{{AVG_WATTS}}", str(avg_watts))\
+.replace("{{MAX_WATTS}}", str(max_watts))\
+.replace("{{AVG_HR}}", str(avg_hr))\
+.replace("{{MAX_HR}}", str(max_hr))\
+.replace("{{CALORIES}}", str(calories))\
+.replace("{{ACHIEVEMENTS}}", str(achievement_count))\
+.replace("{{PHOTO_BLOCK}}", photo_block)\
+.replace("{{TEXT_BLOCK}}", text_block)\
+.replace("{{DASHBOARD_TRIP_COUNT}}", dashboard_html)
+
+
+content = content.replace(
+    "draft: false",
+    f"draft: false\n{trip_meta}"
+)
+
+description = f"{distance_km} km mit {elevation_m} Hm"
+content = content.replace("{{DESCRIPTION}}", description)
+
+
+qmd_file = os.path.join(post_path, "index.qmd")
+
+with open(qmd_file, "w", encoding="utf-8") as f:
+    f.write(content)
+
+print(f"✅ New post created: {qmd_file}")
