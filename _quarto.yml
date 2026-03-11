@@ -62,7 +62,7 @@ exclude:
   - scripts/
 
 execute:
-  freeze: true
+  freeze: false
 
 format:
   html:
