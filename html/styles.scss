@@ -29,9 +29,9 @@ $dark:      $gray9 !default;
 
 
 // Grid
-$grid-sidebar-width: 250px !default;
+$grid-sidebar-width: 300px !default;
 $grid-body-width: 900px !default;
-$grid-margin-width: 250px !default;
+$grid-margin-width: 300px !default;
 $grid-column-gutter-width: 1.5em !default;
 
 // Nav Bar
@@ -355,10 +355,7 @@ canvas {
 }
 
 .gallery figcaption {
-  text-align: left;
-  font-size: 0.85rem;
-  color: $gray7;
-  margin-top: 0.25rem;
+  display: none;
 }
 
 
