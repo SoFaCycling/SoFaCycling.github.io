@@ -349,7 +349,7 @@ if TRIP_NAME:
     dashboard_html = f"""
 ::: {{.trip-dashboard}}
 
-### {TRIP_NAME.capitalize()}: Unser aktueller Fortschritt
+### {TRIP_NAME}: Unser aktueller Fortschritt
 
 <div class="trip-grid">
 
