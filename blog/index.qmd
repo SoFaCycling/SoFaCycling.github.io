@@ -1,4 +1,7 @@
 ---
+title: "Kurbel-Chroniken"
+subtitle: Von Gipfeln, Gräben und Glücksmomenten jenseits der 90er Trittfrequenz.
+title-block-banner: posts/banner.png
 listing: 
   contents: posts/**/*.qmd
   type: default
