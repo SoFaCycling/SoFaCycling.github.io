@@ -1,0 +1,27 @@
+::: {.gallery}
+
+![Vorabend: Startunterlagen einsammeln.](img/20250622_203845.webp){group="tour"}
+
+![Voller Vorfreude auf dem Sattelfest.](img/20250622_203853.webp){group="tour"}
+
+![Brezel gut, alles gut!](img/20250622_203856.webp){group="tour"}
+
+![Event-Tag: Es geht los! Vor lauter Anspannung vergaßen wir, den Startschuss zu dokumentieren. Wir haben schon gut 40km hinter uns und sind am ersten Depot gelandet: Feldberg.](img/20250622_204034.webp){group="tour"}
+
+![Auf der Strecke tummeln sich auch solch coole Socken... {{< bi hand-thumbs-up>}}](img/20250622_203916.webp){group="tour"}
+
+![Depot Neustrelitz auf dem Schulgelände. Hier filmt der NDR das Spektakel.](img/20250622_203919.webp){group="tour"}
+
+![Boxenstop am Depot Schwarz, direkt am See und inklusive Lagerfeuer.](img/20250622_204026.webp){group="tour"}
+
+![Und nun lässt sich auch die Sonne blicken. {{< bi cloud-sun>}}](img/20250622_203942.webp){group="tour"}
+
+![..da haben wir doch wirklich keine Sorgen mehr! Beziehungsweise: Beim Radeln verfliegen diese ohnehin erfahrungsgemäß von selbst.](img/20250622_203952.webp){group="tour"}
+
+![De- oder Motivation? Ansichtssache! {{< bi emoji-smile-upside-down-fill>}}](img/20250622_204016.webp){group="tour"}
+
+![Unsere allererste Mecklenburger Seenrunde: Done {{< bi check>}}](img/20250622_203909.webp){group="tour"}
+
+![Stolze "Sieger"](img/20250622_203907.webp){group="tour"}
+
+:::

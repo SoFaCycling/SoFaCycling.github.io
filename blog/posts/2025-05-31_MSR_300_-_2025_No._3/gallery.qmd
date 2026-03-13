@@ -1,0 +1,39 @@
+::: {.gallery}
+
+![Ankommen in Neubrandenburg: Erstmal die Entchen besuchen.](img/20250531_211353.webp){group="tour"}
+
+![Und dann einradeln.](img/20250529_124106.webp){group="tour"}
+
+![Sooo knuffig {{< bi heart>}}](img/20250529_115954.webp){group="tour"}
+
+![Auf einer kleinen morgendlichen Laufrunde checken wir schon mal das Festgelände mit Start/Ziel aus.](img/20250530_084039.webp){group="tour"}
+
+![So interpretieren wir Carboloading: Pistazienpüree, Fisch und Gemüse.](img/20250529_193509.webp){group="tour"}
+
+![Ein letzter Funktionscheck vor dem heißersehnten Start.](img/20250531_181622.webp){group="tour"}
+
+![Gleich wird's ernst. Trotz der frühen Stunde sind wir hellwach, hochmotiviert und bei bester Laune.](img/20250531_042806.webp){group="tour"}
+
+![Wir kommen — wie schon so oft — zum Schluss: Frühes Aufstehen zahlt sich aus. Welch wunderschöne Stimmung!](img/20250531_045609.webp){group="tour"}
+
+![Man sollte definitiv öfter in den Sonnenaufgang hineinradeln. Wir arbeiten noch daran... {{< bi emoji-smile-upside-down-fill>}}](img/20250531_045448.webp){group="tour"}
+
+![Eine Strecke zum Verlieben, bei herrlichem Sonnenschein.](img/20250531_092844.webp){group="tour"}
+
+![Depot in Neustrelitz. Hier ist einiges los; man hat Mühe, noch einen Platz fürs Radl zu ergattern.](img/20250531_124830.webp){group="tour"}
+
+![Die Luft bei Fabi ist raus - Schlauch rein.](img/20250531_124823.webp){group="tour"}
+
+![So langsam wird es zäh.](img/20250531_141215.webp){group="tour"}
+
+![Das kommt uns doch direkt gelegen!](img/20250531_142533.webp){group="tour"}
+
+![Das Depot auf dem Hof Maiweg in Alt Schönau hält so ziemlich alles parat, was das Radlerherz begehrt.](img/20250531_143857.webp){group="tour"}
+
+![Und dann stehen die 304km plötzlich auf dem Tacho - wieder geschafft!](img/20250531_181349.webp){group="tour"}
+
+![Wir können wieder Medaillen und Urkunden mit nach Hause nehmen. Wir sind überglücklich.](img/20260313_214902.webp){group="tour"}
+
+![Das Belohnungseis darf nicht fehlen, während die später Eintrudelnden genauso bejubelt werden wie die Ersten - so ist es Tradition auf der MSR.](img/20250531_203531.webp){group="tour"}
+
+:::

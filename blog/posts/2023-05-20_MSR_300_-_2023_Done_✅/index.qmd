@@ -1,0 +1,289 @@
+---
+title: "MSR 300 - 2023: Done ✅"
+date: "2023-05-20"
+description: "311 km mit 1713 Hm"
+image: thumbnail.png
+
+draft: false
+trip: Mecklenburger Seenrunde
+categories: [Mecklenburger Seenrunde, Neubrandenburg, Event]
+strava_id: 9109112299
+distance_km: 311.0
+elevation_m: 1713
+moving_time_min: 728
+
+format: 
+  html:
+    toc: false
+
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+lightbox:
+  match: auto
+---
+
+
+::: {.stats-grid-container}
+::: {.stats-grid}
+
+::: {.grid-item}
+{{< bi arrow-right-circle class="param-icon">}}
+<span class="stats-value">311.0</span>
+<span class="stats-label">Kilometer</span>
+:::
+
+::: {.grid-item}
+{{< bi arrow-up-right-circle class="param-icon">}}
+<span class="stats-value">1713</span>
+<span class="stats-label">Höhenmeter</span>
+:::
+
+::: {.grid-item}
+{{< bi clock-history class="param-icon">}}
+<span class="stats-value">12h 8min</span>
+<span class="stats-label">Fahrzeit</span>
+:::
+
+::: {.grid-item}
+{{< bi speedometer class="param-icon">}}
+<span class="stats-value">25.6</span>
+<span class="stats-label">km/h (55.2 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi lightning class="param-icon">}}
+<span class="stats-value">96.6</span>
+<span class="stats-label">Watt (365 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi heart-pulse class="param-icon">}}
+<span class="stats-value">123.8</span>
+<span class="stats-label">bpm (174.0 max.)</span>
+:::
+
+:::
+:::
+
+
+&nbsp;
+
+### Die "beste Tour unseres Lebens": 300-Kilometer-Premiere
+
+
+Unsere allererste Mecklenburger Seenrunde – und gleichzeitig unsere allerersten 300 Kilometer im Sattel überhaupt. 
+In einem Wechselbad aus großer Ehrfurcht und prickelnder Vorfreude nagten die Fragen: Schaffen wir das? Halten wir durch? 
+Die Antwort lautet: Jawohl! Und es war ein riesiger Spaß.
+
+Nach einer sehr kurzen, aber stilechten Nacht im Wohnwagen-Exil fiel kurz vor sechs Uhr morgens in Neubrandenburg 
+endlich der Startschuss zur "besten Tour unseres Lebens", wie man in MSR-Kreisen zu sagen pflegt.
+Uns erwartete ein perfekt durchorganisiertes Event, echte Gänsehaut-Stimmung auf und neben der Strecke sowie 
+ein Buffet-Marathon an den Versorgungsstationen, der nur noch von der Herzlichkeit der vielen fleißigen 
+Helfer:innen übertroffen wurde. 
+
+Zugegeben: Ja, es war fordernd. Ja, es gab Momente kurz vor der Verzweiflung, in denen der Tritt schwer wurde, 
+die Muskeln brannten und die mentale Stärke leicht zu bröckeln begann. 
+Aber wir sind über uns hinausgewachsen, haben die Zähne zusammengebissen und uns gegenseitig gezogen. 
+Nach über 300 Kilometern sind wir Hand in Hand ins Ziel gerollt. Eine unvergessliche Erfahrung, die für immer bleibt. 
+Und eines ist sicher: 2024 stehen wir wieder am Start!
+
+&nbsp;
+
+
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+
+
+
+
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+  <canvas id="elevationChart"></canvas>
+</div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+
+::: {.gallery}
+
+![Vorabend: Startunterlagen einsammeln.](img/20250622_203845.webp){group="tour"}
+
+![Voller Vorfreude auf dem Sattelfest.](img/20250622_203853.webp){group="tour"}
+
+![Brezel gut, alles gut!](img/20250622_203856.webp){group="tour"}
+
+![Event-Tag: Es geht los! Vor lauter Anspannung vergaßen wir, den Startschuss zu dokumentieren. Wir haben schon gut 40km hinter uns und sind am ersten Depot gelandet: Feldberg.](img/20250622_204034.webp){group="tour"}
+
+![Auf der Strecke tummeln sich auch solch coole Socken... {{< bi hand-thumbs-up>}}](img/20250622_203916.webp){group="tour"}
+
+![Depot Neustrelitz auf dem Schulgelände. Hier filmt der NDR das Spektakel.](img/20250622_203919.webp){group="tour"}
+
+![Boxenstop am Depot Schwarz, direkt am See und inklusive Lagerfeuer.](img/20250622_204026.webp){group="tour"}
+
+![Und nun lässt sich auch die Sonne blicken. {{< bi cloud-sun>}}](img/20250622_203942.webp){group="tour"}
+
+![..da haben wir doch wirklich keine Sorgen mehr! Beziehungsweise: Beim Radeln verfliegen diese ohnehin erfahrungsgemäß von selbst.](img/20250622_203952.webp){group="tour"}
+
+![De- oder Motivation? Ansichtssache! {{< bi emoji-smile-upside-down-fill>}}](img/20250622_204016.webp){group="tour"}
+
+![Unsere allererste Mecklenburger Seenrunde: Done {{< bi check>}}](img/20250622_203909.webp){group="tour"}
+
+![Stolze "Sieger"](img/20250622_203907.webp){group="tour"}
+
+:::
+
+
+&nbsp;
+
+
+::: {.trip-dashboard}
+
+### Mecklenburger Seenrunde: Stand aktuell
+
+<div class="trip-grid">
+
+<div class="trip-card">
+<div class="trip-value">311</div>
+<div class="trip-label">Kilometer</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">1713</div>
+<div class="trip-label">Höhenmeter</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">12h 8min</div>
+<div class="trip-label">Fahrzeit</div>
+</div>
+
+</div>
+
+:::
+
+
+

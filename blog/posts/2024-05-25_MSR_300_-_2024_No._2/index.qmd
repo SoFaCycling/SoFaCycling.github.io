@@ -1,0 +1,312 @@
+---
+title: "MSR 300 - 2024: No. 2"
+date: "2024-05-25"
+description: "307 km mit 1723 Hm"
+image: thumbnail.png
+
+draft: false
+trip: Mecklenburger Seenrunde
+categories: [Mecklenburger Seenrunde, Neubrandenburg, Event]
+strava_id: 11494532116
+distance_km: 306.6
+elevation_m: 1723
+moving_time_min: 597
+
+format: 
+  html:
+    toc: false
+
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+lightbox:
+  match: auto
+---
+
+
+::: {.stats-grid-container}
+::: {.stats-grid}
+
+::: {.grid-item}
+{{< bi arrow-right-circle class="param-icon">}}
+<span class="stats-value">306.6</span>
+<span class="stats-label">Kilometer</span>
+:::
+
+::: {.grid-item}
+{{< bi arrow-up-right-circle class="param-icon">}}
+<span class="stats-value">1723</span>
+<span class="stats-label">Höhenmeter</span>
+:::
+
+::: {.grid-item}
+{{< bi clock-history class="param-icon">}}
+<span class="stats-value">9h 57min</span>
+<span class="stats-label">Fahrzeit</span>
+:::
+
+::: {.grid-item}
+{{< bi speedometer class="param-icon">}}
+<span class="stats-value">30.8</span>
+<span class="stats-label">km/h (61.0 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi lightning class="param-icon">}}
+<span class="stats-value">113.2</span>
+<span class="stats-label">Watt (447 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi heart-pulse class="param-icon">}}
+<span class="stats-value">124.3</span>
+<span class="stats-label">bpm (164.0 max.)</span>
+:::
+
+:::
+:::
+
+
+&nbsp;
+
+### MSR-Double in Perfektion
+
+Wir haben es angedroht, wir haben es durchgezogen: 
+Auch 2024 standen wir pünktlich zum Startschuss der Mecklenburger Seenrunde in Neubrandenburg. 
+Nach dem emotionalen Debüt im Vorjahr war die Mission diesmal klar: Weniger Ehrfurcht, mehr Pace – 
+und auf 300 Kilometern mit der Erfahrung aus dem Vorjahr eine bessere Zeit einzufahren.
+
+Während uns 2023 noch Kälte und Regen die Zähne ziehen wollten, 
+empfing uns dieses Jahr fast durchgängig blauer Himmel mit angenehmen Temperaturen. 
+Auch logistisch gab es ein Upgrade: Statt Wohnwagen gab es diesmal ein komfortables Quartier bei Andreas, 
+der unser Vorhaben mit einer Mischung aus Bewunderung und leichtem Unglauben quittierte.
+
+Auf der Strecke hieß es dann: Kette rechts! Wir haben die Depots strategisch gewählt und 
+nicht mehr an jeder Station gestoppt – immerhin kämpften wir gegen die Uhr. 
+Auch wenn die Organisation wieder keinerlei Wünsche offen ließ und die Helfer:innen alles gegeben haben, 
+verpflegten wir uns öfter direkt auf dem Rad. 
+Das Ergebnis? Ein Quantensprung! Wir haben unsere Zeit vom Vorjahr um über zwei Stunden unterboten.
+Zwar gab es auch diesmal die erwartbaren Durchhänger, aber insgesamt fühlte es sich „leichter“ an – 
+sofern man bei 300 Kilometern überhaupt von leicht sprechen kann.
+
+Fazit: Bestzeit geknackt, Akkus leer, Glücksbarometer auf Anschlag. 2025? Ist bereits beblockt!
+
+&nbsp;
+
+
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+
+
+
+
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+  <canvas id="elevationChart"></canvas>
+</div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+
+::: {.gallery}
+
+![Vorabend: Die Startunterlagen sind abgeholt und wir genießen die letzten Sonnenstrahlen auf dem legendären Sattelfest.](img/20240524_181833.webp){group="tour"}
+
+![Carboloading deluxe!](img/20240524_181347.webp){group="tour"}
+
+![04:30 Uhr. Unser Startblock steht. Alle sind gespannt und voller Vorfreude auf eine sicher unvergessliche Tour. Fabi lädt noch schnell die Route auf den Wahoo.](img/20240525_042823.webp){group="tour"}
+
+![Der erste Anstieg erwartet uns bereits am Ortsausgang in Neubrandenburg. Wir wollen heute mit einer schnellen Gruppe mitschwimmen. Aber Obacht, hier sollte man nicht direkt alle Körner liegen lassen. Es folgen immerhin weitere 299km.](img/20240525_043944.webp){group="tour"}
+
+![Wir haben eine flotte Gruppe erwischt. Perfekter Start.](img/20240525_045538.webp){group="tour"}
+
+![Eine Startnummer in Gold vor Sophie. Daran arbeiten wir noch... Diese Auszeichnung signalisiert die 10-jährige Teilnahme.](img/20240525_132034.webp){group="tour"}
+
+![2. Boxenstop am Depot in Röbel auf dem Friesensportplatz.](img/20240525_104429.webp){group="tour"}
+
+![In Röbel werden traditionell Nudeln und Blaubeersuppe serviert.](img/20240525_101851.webp){group="tour"}
+
+![Es ist ein logistisches Meisterwerk, so viele hungrige Teilnehmer:innen zu verköstigen. Danke an die vielen engagierten — übrigens ehrenamtlichen —  Mitarbeiter:innen.](img/20240525_103116.webp){group="tour"}
+
+![Weiter geht es. Es liegt noch fast die Hälfte der Strecke vor uns.](img/20240525_064311.webp){group="tour"}
+
+![Depot Nossentiner Hütte. Eigentlich hätten wir diese Station skippen können. Aber da es hier Fabis geliebte (und unheimlich teure) Xenofit-Riegel kostenlos gibt, machen wir kurz Halt.](img/20240525_121935.webp){group="tour"}
+
+![Auch nach fast 200km läuft es noch rund. Es fetzt einfach!](img/20240525_134636.webp){group="tour"}
+
+![Bald ist es geschafft. Wir liegen gut in der Zeit — sogar sehr gut!](img/20240525_144019.webp){group="tour"}
+
+![Huiii... Aeroposition einnehmen, Lächeln aufsetzen und gen Ziel strampeln.](img/20240525_153849.webp){group="tour"}
+
+![Die Zeit verging dann wie im Fluge und schon stehen wir im Ziel. MSR 2024 erfolgreich gemeistert. Und: > 2h schneller als 2023!](img/20240525_164025.webp){group="tour"}
+
+![Wir sind happy und stolz auf uns!](img/20240525_180628.webp){group="tour"}
+
+![Verdiente "Sieger"-Brezel.](img/20240525_174752.webp){group="tour"}
+
+![Verdientes "Sieger"-Eis.](img/20240525_181850.webp){group="tour"}
+
+![Nach der Dusche gehen wir noch einmal entlang des Sees zurück zum Festgelände. Denn es werden alle, bis hin zum allerletzten Finisher, gebührend gefeiert — die benötigte Zeit ist auf der MSR prinzipiell irrelevant; auf eine Wertung wird gänzlich verzichtet und das ist auch genau richtig so.](img/20240525_214030.webp){group="tour"}
+
+![Wir bekommen nicht genug... Am nächsten Morgen machen wir uns nach dem Check-out noch auf eine kleine Tour, um das sonnige Wochenende in der Seenplatte voll auszukosten.](img/20240526_142753.webp){group="tour"}
+
+![Die Region bietet nämlich viele weitere Möglichkeiten für herrliche Touren. Hier kommen Radler:innen voll und ganz auf ihre Kosten.](img/20240526_144138.webp){group="tour"}
+
+![Das war sie, unsere MSR 2024. Ein unvergessliches Erlebnis!](img/20240525_180608.webp){group="tour"}
+
+:::
+
+
+&nbsp;
+
+
+::: {.trip-dashboard}
+
+### Mecklenburger Seenrunde: Stand aktuell
+
+<div class="trip-grid">
+
+<div class="trip-card">
+<div class="trip-value">618</div>
+<div class="trip-label">Kilometer</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">3436</div>
+<div class="trip-label">Höhenmeter</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">22h 5min</div>
+<div class="trip-label">Fahrzeit</div>
+</div>
+
+</div>
+
+:::
+
+
+
