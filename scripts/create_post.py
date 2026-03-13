@@ -5,6 +5,9 @@ import re
 import math
 from datetime import datetime
 from staticmap import StaticMap, Line
+from PIL import Image
+from PIL.ExifTags import TAGS
+from PIL import ImageOps
 
 
 # ------------------------------
@@ -58,6 +61,7 @@ def safe_slug(text):
 # helper: distance calculation
 # ------------------------------
 def haversine(p1, p2):
+  
     R = 6371000
     lat1, lon1 = math.radians(p1[0]), math.radians(p1[1])
     lat2, lon2 = math.radians(p2[0]), math.radians(p2[1])
@@ -93,7 +97,7 @@ def generate_thumbnail(latlng, post_path):
     image = m.render()
     image.save(thumb_path)
 
-    print(f"🖼 Map thumbnail created (Size: {width}x{height}px).")
+    print(f"🖼  Map thumbnail created (Size: {width}x{height}px).")
 
 
 # ------------------------------
@@ -181,6 +185,230 @@ def format_minutes(minutes):
         return f"{mins}min"
 
     return f"{hours}h {mins}min"
+
+
+# ------------------------------
+# helper: extract exif date and caption
+# ------------------------------
+def get_exif_date(filepath):
+
+    try:
+        img = Image.open(filepath)
+        exif_data = img._getexif()
+
+        if exif_data:
+            for tag, value in exif_data.items():
+                tag_name = TAGS.get(tag, tag)
+
+                if tag_name == "DateTimeOriginal":
+                    return datetime.strptime(value, "%Y:%m:%d %H:%M:%S")
+    except:
+        pass
+
+    timestamp = os.path.getmtime(filepath)
+    return datetime.fromtimestamp(timestamp)
+
+
+
+def get_exif_caption(filepath):
+
+    try:
+        img = Image.open(filepath)
+        exif_data = img._getexif()
+
+        if exif_data:
+            for tag, value in exif_data.items():
+                tag_name = TAGS.get(tag, tag)
+
+                if tag_name in ["ImageDescription", "UserComment", "XPComment", "XPTitle"]:
+                    if isinstance(value, bytes):
+                        return value.decode("utf-8", errors="ignore").strip()
+                    return str(value).strip()
+    except:
+        pass
+    return ""
+
+
+# ------------------------------
+# helper: rename images by time
+# ------------------------------
+
+def rename_images_by_date(images_dir):
+
+    extensions = (".jpg", ".jpeg", ".png", ".heic")
+
+    for file in os.listdir(images_dir):
+
+        if not file.lower().endswith(extensions):
+            continue
+
+        old_path = os.path.join(images_dir, file)
+        date_obj = get_exif_date(old_path)
+        new_name = date_obj.strftime("%Y%m%d_%H%M%S")
+        ext = os.path.splitext(file)[1].lower()
+        new_file = f"{new_name}{ext}"
+        new_path = os.path.join(images_dir, new_file)
+
+        if old_path == new_path:
+            continue
+        counter = 1
+
+        while os.path.exists(new_path):
+            new_file = f"{new_name}_{counter:02d}{ext}"
+            new_path = os.path.join(images_dir, new_file)
+            counter += 1
+
+        os.rename(old_path, new_path)
+        print(f"📷 Renamed {file} → {new_file}")
+
+
+# ------------------------------
+# helper: convert images to webp
+# ------------------------------
+
+def convert_images_to_webp(images_dir):
+
+    MAX_WIDTH = 1800
+    QUALITY = 80
+
+    caption_cache = {}
+
+    for file in os.listdir(images_dir):
+
+        if not file.lower().endswith((".jpg", ".jpeg", ".png", ".heic")):
+            continue
+
+        path = os.path.join(images_dir, file)
+
+        # EXIF Caption VOR der Konvertierung holen
+        caption_cache[file] = get_exif_caption(path)
+
+        img = Image.open(path)
+        img = ImageOps.exif_transpose(img)
+
+        width, height = img.size
+        if width > MAX_WIDTH:
+            ratio = MAX_WIDTH / width
+            new_size = (MAX_WIDTH, int(height * ratio))
+            img = img.resize(new_size, Image.LANCZOS)
+
+        name = os.path.splitext(file)[0]
+        new_path = os.path.join(images_dir, f"{name}.webp")
+
+        img.save(new_path, "WEBP", quality=QUALITY, method=6)
+        img.close()
+
+        os.remove(path)
+
+        print(f"🖼  Converted {file} → {name}.webp")
+
+    return caption_cache
+
+
+# ------------------------------
+# helper: create gallery if images exist
+# ------------------------------
+
+def create_gallery(images_dir, gallery_file):
+
+    image_files = [
+        f for f in os.listdir(images_dir)
+        if f.lower().endswith(".webp")
+    ]
+    image_files.sort()
+
+    if not image_files:
+        return
+
+    if os.path.exists(gallery_file):
+        return
+
+    with open(gallery_file, "w", encoding="utf-8") as f:
+        f.write("::: {.gallery}\n\n")
+        for img in image_files:
+            f.write(f"![](img/{img}){{group=\"tour\"}}\n\n")
+        f.write(":::\n")
+
+    print("📷 gallery.qmd created")
+
+
+# ------------------------------
+# helper: synchronize gallery
+# ------------------------------
+
+def sync_gallery(images_dir, gallery_file):
+
+    # aktuelle Bilder im Ordner
+    current_images = {
+        f for f in os.listdir(images_dir)
+        if f.lower().endswith(".webp")
+    }
+
+    ordered_images = []
+    captions = {}
+
+    # bestehende gallery einlesen
+    if os.path.exists(gallery_file):
+
+        with open(gallery_file, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+
+        for line in lines:
+
+            match = re.search(r'!\[(.*?)\]\(img\/([^\)]+)\)', line)
+
+            if match:
+
+                caption = match.group(1)
+                img = match.group(2)
+
+                if img in current_images:
+                    ordered_images.append(img)
+                    captions[img] = caption
+
+    # neue Bilder erkennen
+    new_images = sorted(current_images - set(ordered_images))
+
+    # neue Bilder chronologisch einsortieren
+    for new_img in new_images:
+
+        inserted = False
+
+        for i, existing in enumerate(ordered_images):
+
+            if new_img < existing:
+                ordered_images.insert(i, new_img)
+                inserted = True
+                break
+
+        if not inserted:
+            ordered_images.append(new_img)
+
+    # neue gallery schreiben
+    lines = ["::: {.gallery}\n\n"]
+
+    for img in ordered_images:
+
+        caption = captions.get(img, "")
+
+        # EXIF nur wenn noch keine Caption existiert
+        if caption == "":
+        
+            original_name = img.replace(".webp", ".jpg")
+        
+            if original_name in caption_cache:
+                caption = caption_cache[original_name]
+
+        lines.append(
+            f"![{caption}](img/{img}){{group=\"tour\"}}\n\n"
+        )
+
+    lines.append(":::\n")
+
+    with open(gallery_file, "w", encoding="utf-8") as f:
+        f.writelines(lines)
+
+    print("📷 gallery.qmd synced with img folder.")
 
 
 # ------------------------------
@@ -349,12 +577,12 @@ if TRIP_NAME:
     dashboard_html = f"""
 ::: {{.trip-dashboard}}
 
-### {TRIP_NAME}: Unser aktueller Fortschritt
+### {TRIP_NAME}: Stand aktuell
 
 <div class="trip-grid">
 
 <div class="trip-card">
-<div class="trip-value">{trip_km:.1f}</div>
+<div class="trip-value">{trip_km:.0f}</div>
 <div class="trip-label">Kilometer</div>
 </div>
 
@@ -380,20 +608,30 @@ if TRIP_NAME:
 
 os.makedirs(post_path, exist_ok=True)
 
+# --- img folder
 images_dir = os.path.join(post_path, "img")
 os.makedirs(images_dir, exist_ok=True)
 
+# photo preprocessing pipeline
+rename_images_by_date(images_dir)
+caption_cache = convert_images_to_webp(images_dir)
+
+
+# -- gallery
+gallery_file = os.path.join(post_path, "gallery.qmd")
+create_gallery(images_dir, gallery_file)
+
+# synchronize gallery if necessary
+sync_gallery(images_dir, gallery_file)
+
+
+# -- story file
 story_file = os.path.join(post_path, "story.md")
 
 if not os.path.exists(story_file):
     with open(story_file, "w", encoding="utf-8") as f:
         f.write("")
 
-img_text_file = os.path.join(post_path, "img_text.md")
-
-if not os.path.exists(img_text_file):
-    with open(img_text_file, "w", encoding="utf-8") as f:
-        f.write("")
 
 
 # ------------------------------
@@ -439,7 +677,7 @@ if latlng and altitude:
             "distance": distance
         }, f)
 
-    print("🗺 Track saved.")
+    print("🗺  Track saved.")
     
     generate_thumbnail(latlng, post_path)
 
@@ -472,46 +710,18 @@ categories: [{cats}]
 
 
 
-# Photo block
+# -- Photo block
 photo_block = ""
 
-image_files = [
-    f for f in os.listdir(images_dir)
-    if f.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))
-]
+if os.path.exists(gallery_file):
 
-image_files.sort()
-
-captions = []
-
-if os.path.exists(img_text_file):
-
-    with open(img_text_file, "r", encoding="utf-8") as f:
-
-        for line in f:
-
-            line = line.strip()
-
-            if line and not line.startswith("#"):
-                captions.append(line)
+    with open(gallery_file, "r", encoding="utf-8") as f:
+        photo_block = f.read()
+    
 
 
-if image_files:
-
-    photo_block += "::: {.gallery}\n"
-
-    for i, f in enumerate(image_files):
-
-        caption = captions[i] if i < len(captions) else ""
-
-        if caption:
-            photo_block += f"![{caption}](img/{f}){{group=\"tour\"}}\n\n"
-        else:
-            photo_block += f"![](img/{f}){{group=\"tour\"}}\n\n"
-
-    photo_block += ":::\n"
-
-
+    
+# -- story block
 with open(story_file, "r", encoding="utf-8") as f:
     text_block = f.read()
 
@@ -540,7 +750,7 @@ content = content.replace(
     f"draft: false\n{trip_meta}"
 )
 
-description = f"{distance_km} km mit {elevation_m} Hm"
+description = f"{distance_km:.0f} km mit {elevation_m} Hm"
 content = content.replace("{{DESCRIPTION}}", description)
 
 
