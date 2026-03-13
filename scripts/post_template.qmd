@@ -64,8 +64,11 @@ lightbox:
 :::
 
 
+&nbsp;
 
 {{TEXT_BLOCK}}
+
+&nbsp;
 
 
 
@@ -204,6 +207,7 @@ fetch("track.json")
 
 {{PHOTO_BLOCK}}
 
+&nbsp;
 
 {{DASHBOARD_TRIP_COUNT}}
 
