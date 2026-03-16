@@ -170,9 +170,18 @@ a:not(.quarto-post a):not(.about-link):hover {
   margin-right: calc(50% - 45vw);
   margin-top: -1.5rem; 
   margin-bottom: 2rem;
-  height: 320px;
+
+  height: 320px; 
+  @media (max-width: 768px) {
+    height: 200px;
+  }
+  @media (max-width: 500px) {
+    height: 150px;
+  }
+  
   object-fit: cover;
 }
+
 
 // Photo Carousel
 .carousel {
@@ -181,7 +190,14 @@ a:not(.quarto-post a):not(.about-link):hover {
 
     .carousel-inner {
         height: 500px; 
-        background-color: #f8f9fa; // Optional: Fallback
+        background-color: #f8f9fa; 
+        
+        @media (max-width: 768px) {
+            height: 350px;
+        }
+        @media (max-width: 500px) {
+            height: 250px;
+        }
     }
 
     .carousel-item {
@@ -233,13 +249,25 @@ a:not(.quarto-post a):not(.about-link):hover {
 
 @media (max-width: 600px) {
   .quarto-post {
-    flex-direction: column !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
   }
   
-  .quarto-post .metadata, 
+  .quarto-post .metadata {
+    flex: 0 0 100% !important;
+    order: 1 !important;
+    margin-bottom: 8px; 
+  }
+
+  .quarto-post .body {
+    flex: 1 1 calc(100% - 120px) !important;
+    order: 2 !important;
+  }
+
   .quarto-post .thumbnail {
-    flex: 0 0 auto !important;
-    order: 0 !important;
+    flex: 0 0 100px !important;
+    order: 3 !important;
+    margin-left: auto !important;
   }
 }
 
@@ -276,7 +304,8 @@ canvas {
   margin: 1.5rem 0;
   padding: 1.5rem;
   background: $white;
-  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 12px;
   
   box-shadow: 0 4px 10px rgba(0,0,0,0.04);
   transition: all 0.15s ease;
@@ -383,7 +412,7 @@ canvas {
 .trip-card {
   margin: 1rem 0;
   background: $white;
-  border-radius: 14px;
+  border-radius: 12px;
   padding: 1.4rem;
   text-align: center;
   border: 1px solid rgba(0,0,0,0.06);
@@ -413,22 +442,22 @@ canvas {
 // -- About Us Page --
 
 // Hall of Fame
-
 .hof-container {
   display: grid;
-  align-items: strech;
+  align-items: stretch;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin: 2rem 0 4rem 0;
 
   .hof-card {
     padding: 2rem 1rem 1rem 1rem;
-    border: 1px solid $gray4 !important;
+    border: 1px solid rgba(0,0,0,0.06);
     border-radius: 12px !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     background-color: $white;
     height: 100%;
     font-size: 0.75em;
+    transition: all 0.15s ease;
 
     .hof-title {
       @include gradient-text;
@@ -438,6 +467,11 @@ canvas {
       margin-bottom: 0.5rem;
       padding-bottom: 0.25rem;
     }
+  }
+  
+  .hof-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   }
 }
 
