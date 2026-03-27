@@ -32,19 +32,19 @@ MODE = "static_id"
 
 # Activity ID
 # for MODE = "offline_id" or MODE = "static_id"
-STATIC_ACTIVITY_ID = 9109112299
-#STATIC_ACTIVITY_ID = 11494532116
-#STATIC_ACTIVITY_ID = 14653819733
+STATIC_ACTIVITY_ID = 15470501328
 
 # Trip group 
-TRIP_NAME = "Mecklenburger Seenrunde"
-# optional: 
+TRIP_NAME = None
+# options: 
+# TRIP_NAME = "trip name"
 # TRIP_NAME = None
 # for activities outside a trip
 
 # Further categories
-CATEGORIES = ["Neubrandenburg", "Event"]
-# optional: 
+CATEGORIES = ["Frankreich", "Granfondo"]
+# options:
+# CATEGORIES = ["category 1", "category 2"]
 # CATEGORIES = None
 
 
@@ -52,9 +52,22 @@ CATEGORIES = ["Neubrandenburg", "Event"]
 # helper: safe folder name
 # ------------------------------
 def safe_slug(text):
-    text = re.sub(r'[\\/*?:"<>|]', "", text)
+    text = text.lower()
+
+    replacements = {
+        "ä": "ae",
+        "ö": "oe",
+        "ü": "ue",
+        "ß": "ss"
+    }
+    for k, v in replacements.items():
+        text = text.replace(k, v)
+
+    text = re.sub(r'[^a-z0-9\s_-]', "", text)
     text = re.sub(r"\s+", "_", text)
-    return text
+    text = re.sub(r"_+", "_", text)
+
+    return text.strip("_")
 
 
 # ------------------------------
@@ -209,6 +222,11 @@ def get_exif_date(filepath):
     return datetime.fromtimestamp(timestamp)
 
 
+def clean_caption(text):
+    text = text.replace("\x00", "")
+    text = text.strip()
+    return text
+
 
 def get_exif_caption(filepath):
 
@@ -221,9 +239,15 @@ def get_exif_caption(filepath):
                 tag_name = TAGS.get(tag, tag)
 
                 if tag_name in ["ImageDescription", "UserComment", "XPComment", "XPTitle"]:
+
                     if isinstance(value, bytes):
-                        return value.decode("utf-8", errors="ignore").strip()
-                    return str(value).strip()
+                        try:
+                            text = value.decode("utf-16").strip("\x00").strip()
+                        except:
+                            text = value.decode("utf-8", errors="ignore").strip()
+                        return clean_caption(text)
+
+                    return clean_caption(str(value))
     except:
         pass
     return ""
@@ -696,17 +720,28 @@ distance_km: {distance_km}
 elevation_m: {elevation_m}
 moving_time_min: {moving_time_min}"""
 
-if TRIP_NAME:
-  
-  cats = TRIP_NAME
-  
-  if CATEGORIES: 
-    cats = ", ".join([TRIP_NAME] + CATEGORIES)
-  
-  trip_meta = f"""trip: {TRIP_NAME}
-categories: [{cats}]
-{trip_meta}"""
+meta_lines = []
 
+if TRIP_NAME:
+    meta_lines.append(f"trip: {TRIP_NAME}")
+
+
+if TRIP_NAME and CATEGORIES:
+    cats = [TRIP_NAME] + CATEGORIES
+elif TRIP_NAME:
+    cats = [TRIP_NAME]
+elif CATEGORIES:
+    cats = CATEGORIES
+else:
+    cats = None
+
+if cats:
+    cats_str = ", ".join(cats)
+    meta_lines.append(f"categories: [{cats_str}]")
+
+meta_lines.append(trip_meta)
+
+trip_meta = "\n".join(meta_lines)
 
 
 
