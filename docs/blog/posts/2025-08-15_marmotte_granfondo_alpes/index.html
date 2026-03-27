@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2025-08-15">
+<meta name="description" content="192 km mit 5585 Hm">
+
+<title>Marmotte Granfondo Alpes+ – SoFaCycling</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../img/bicycle.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-81ad76cb90f1e2061562c5e3a069f5ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/bootstrap-icons-1.13.1/bootstrap-icons.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background-image: url(../banner.png);
+background-size: cover;
+      }
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">SoFaCycling</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.strava.com/athletes/18210938"> <i class="bi bi-strava" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.strava.com/athletes/35725334"> <i class="bi bi-strava" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/SoFaCycling"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:sofacycling@gmail.com"> <i class="bi bi-envelope" role="img" aria-label="email">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Marmotte Granfondo Alpes+</h1>
+                  <div>
+        <div class="description">
+          192 km mit 5585 Hm
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Frankreich</div>
+                <div class="quarto-category">Granfondo</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 15, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<div class="stats-grid-container">
+<div class="stats-grid">
+<div class="grid-item">
+<p><i class="bi-arrow-right-circle param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">192.0</span> <span class="stats-label">Kilometer</span></p>
+</div>
+<div class="grid-item">
+<p><i class="bi-arrow-up-right-circle param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">5585</span> <span class="stats-label">Höhenmeter</span></p>
+</div>
+<div class="grid-item">
+<p><i class="bi-clock-history param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">11h 58min</span> <span class="stats-label">Fahrzeit</span></p>
+</div>
+<div class="grid-item">
+<p><i class="bi-speedometer param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">16.0</span> <span class="stats-label">km/h (62.4 max.)</span></p>
+</div>
+<div class="grid-item">
+<p><i class="bi-lightning param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">98.5</span> <span class="stats-label">Watt (248 max.)</span></p>
+</div>
+<div class="grid-item">
+<p><i class="bi-heart-pulse param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">129.9</span> <span class="stats-label">bpm (174.0 max.)</span></p>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<section id="täglich-grüßt-das-murmeltier" class="level3">
+<h3 class="anchored" data-anchor-id="täglich-grüßt-das-murmeltier">Täglich grüßt das Murmeltier…</h3>
+<p>Es gibt Tage, die verändern den Blick auf das, was körperlich möglich ist. Einen solchen Tag erlebten wir in den Alpen auf unserer Marmotte in der Extended-SoFaCycling-Edition – ein Ritt zwischen totaler Erschöpfung und absolutem Hochgefühl. Wir haben uns der legendären Strecke des <a href="https://marmottegranfondoalpes.com/en/">Marmotte Granfondo Alpes</a> gestellt. Aber weil uns das Original offenbar noch nicht fordernd genug erschien, gab es die „SoFa-Spezialmischung“: Start und Ziel in Saint-Jean-de-Maurienne über die vier großen Pässe der Standardrunde, garniert mit einer Extraportion Höhenmeter über den Col de la Croix de Fer und den Col du Mollard zum Abschluss. Das Ergebnis? Unsere bislang höhenmeterreichste Runde. Ganz im Einklang mit unseren süßen Begleitern, den „Murmlerichen“.</p>
+<p>Aber von vorn: Los ging es, als die Boulangerie nebenan gerade erst den Ofen für die tagesfrischen Baguettes anfeuerte. Das Surren der Ketten in der morgendlichen Dunkelheit auf der ungemütlichen Verbindungsstraße entlang der Autobahn, das erste Glimmen am Horizont beim Aufstieg zum Col du Télégraphe und schließlich der majestätische Galibier auf über 2600 m ü. NN. Einige dieser Riesen kannten wir schon von vergangenen Reisen, aber sie fühlen sich jedes Mal anders an – diesmal wie alte Bekannte, die uns herausfordern wollten. Über den Col du Lautaret ging es geschwind bergab Richtung Bourg-d’Oisans (im Übrigen eines unserer absoluten Highlight-Ziele; hier durften wir im Sommer 2023 bereits rauf und runter radeln).</p>
+<p>Im Abschnitt zwischen Freney-d’Oisans und Bourg-d’Oisans verläuft die Originalroute des Marmotte durchs Tal, auf und neben einer großen Hauptstraße. Wir blieben uns treu und entschieden uns für den weniger flachen, dafür allerdings deutlich verkehrsärmeren sowie landschaftlich sehr viel eindrucksvolleren Weg über den malerischen Balcon d’Auris. Von hier arbeiteten wir uns vor zu einer der wohl prominentesten Legenden unter uns Radsportler:innen: die 21 Kehren der Alpe d’Huez. Hier hat sich seit 2023 nichts geändert – es war heiß, steil und vor allem stinkig. Tonnenweise LKW, gepaart mit aufgeblasenen Sportwagen-Idiot:innen und größenwahnsinnigen Motorradfahrer:innen, messen sich hier gern. Oben angekommen fühlten <em>wir</em> uns dann aber unbesiegbar.</p>
+<p>Wer dachte, das Gros sei geschafft, wurde am Glandon und Croix de Fer eines Besseren belehrt. Landschaftlich bombastisch, fahrerisch eine echte Charakterprüfung (insbesondere mit bereits fast 4000 Höhenmetern in den Beinchen). Auch diese haben wir jedoch mit Bravour bestanden und konnten den herrlichen Ausblick auf die umliegenden Gipfel genießen. Hier fiel die Entscheidung, ein letztes Abenteuer für diesen Tag zu wagen: Wir wählten den längeren Aufstieg über den Col du Mollard – anstelle des kürzeren Abstiegs (um nicht zu sagen: der direkten Zieleinfahrt). Ein letztes Aufbäumen im goldenen Licht des Sonnenuntergangs, bevor wir in die Abfahrt zurück nach Saint-Jean-de-Maurienne eintauchten.</p>
+<p>Die Bilanz des Wahnsinns: Es war emotional. Es war schwer. Es war unheimlich spaßig. Wir haben nicht nur Pässe gesammelt, sondern Erinnerungen, die wohl so schnell nicht verblassen werden. Am Ende gab es satte +14 auf das Murmlerich-Konto, +6 für das quäldich-Passjagd-Konto und zwei breite Grinsen im Gesicht. Letztere werden wahrscheinlich noch Tage anhalten.</p>
+<p>Die Etappen einer unvergesslichen Tour:</p>
+<p><i class="bi-hand-thumbs-up param-icon" style="" role="img" aria-hidden="true"></i> Col du Télégraphe (1566 m)</p>
+<p><i class="bi-hand-thumbs-up param-icon" style="" role="img" aria-hidden="true"></i> Col du Galibier (2645 m)</p>
+<p><i class="bi-hand-thumbs-up param-icon" style="" role="img" aria-hidden="true"></i> Balcon d’Auris (1291 m)</p>
+<p><i class="bi-hand-thumbs-up param-icon" style="" role="img" aria-hidden="true"></i> Alpe d’Huez (1860 m)</p>
+<p><i class="bi-hand-thumbs-up param-icon" style="" role="img" aria-hidden="true"></i> Col du Glandon (1924 m)</p>
+<p><i class="bi-hand-thumbs-up param-icon" style="" role="img" aria-hidden="true"></i> Col de la Croix de Fer (2067 m)</p>
+<p><i class="bi-hand-thumbs-up param-icon" style="" role="img" aria-hidden="true"></i> Col du Mollard (1638 m)</p>
+<p>Ein Tag, der uns geprägt hat. Grandios, herrlich, unvergesslich. Genau das ist es, warum wir Rennrad fahren.</p>
+<p>&nbsp;</p>
+<div id="map" style="height: 400px;">
+
+</div>
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+<canvas id="elevationChart">
+</canvas>
+</div>
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+<div class="gallery">
+<p><a href="img/20250815_051254.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_051254.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_060038.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_060038.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_060046.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_060046.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_070613.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_070613.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_073416.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_073416.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_073459.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_073459.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_073826.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_073826.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_084812.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_084812.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_085639.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_085639.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_085737.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_085737.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_090621.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_090621.webp" class="img-fluid"></a></p>
+<p><a href="img/20260327_105121.webp" class="lightbox" data-gallery="tour"><img src="img/20260327_105121.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_094636.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_094636.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_094702.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_094702.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_094924.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_094924.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_095020.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_095020.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_100851.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_100851.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_100932.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_100932.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_100955.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_100955.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_122451.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_122451.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_122524.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_122524.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_122749.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_122749.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_125946.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_125946.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_133200.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_133200.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_135918.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_135918.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_143419.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_143419.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_145435.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_145435.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_145453.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_145453.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_145508.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_145508.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_145617.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_145617.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_151536.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_151536.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_152849.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_152849.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_162834.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_162834.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_164246.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_164246.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_165648.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_165648.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_171732.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_171732.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_171747.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_171747.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_175342.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_175342.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_181519.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_181519.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_182022.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_182022.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_193100.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_193100.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_193905.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_193905.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_194204.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_194204.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_200635.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_200635.webp" class="img-fluid"></a></p>
+<p><a href="img/20250815_201818.webp" class="lightbox" data-gallery="tour"><img src="img/20250815_201818.webp" class="img-fluid"></a></p>
+</div>
+<p>&nbsp;</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="faux-block">© 2024 SoFaCycling CC BY-NC 4.0</span></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<div class="faux-block">
+<p><span>Built with <i class="bi-heart " style="" role="img" aria-hidden="true"></i>, <a href="https://quarto.org/"> Quarto<sup>®</sup></a></span> <span>, and <a href="https://getbootstrap.com/"><i class="bi-bootstrap " style="" role="img" aria-hidden="true"></i></a></span> <span>|&nbsp; Source code on <a href="https://github.com/SoFaCycling"><i class="bi-github " style="" role="img" aria-hidden="true"></i></a></span></p>
+</div>
+</div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

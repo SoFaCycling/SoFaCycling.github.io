@@ -1,0 +1,370 @@
+---
+title: "Marmotte Granfondo Alpes+"
+date: "2025-08-15"
+description: "192 km mit 5585 Hm"
+image: thumbnail.png
+
+draft: false
+categories: [Frankreich, Granfondo]
+strava_id: 15470501328
+distance_km: 192.0
+elevation_m: 5585
+moving_time_min: 718
+
+format: 
+  html:
+    toc: false
+
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+lightbox:
+  match: auto
+---
+
+
+::: {.stats-grid-container}
+::: {.stats-grid}
+
+::: {.grid-item}
+{{< bi arrow-right-circle class="param-icon">}}
+<span class="stats-value">192.0</span>
+<span class="stats-label">Kilometer</span>
+:::
+
+::: {.grid-item}
+{{< bi arrow-up-right-circle class="param-icon">}}
+<span class="stats-value">5585</span>
+<span class="stats-label">Höhenmeter</span>
+:::
+
+::: {.grid-item}
+{{< bi clock-history class="param-icon">}}
+<span class="stats-value">11h 58min</span>
+<span class="stats-label">Fahrzeit</span>
+:::
+
+::: {.grid-item}
+{{< bi speedometer class="param-icon">}}
+<span class="stats-value">16.0</span>
+<span class="stats-label">km/h (62.4 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi lightning class="param-icon">}}
+<span class="stats-value">98.5</span>
+<span class="stats-label">Watt (248 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi heart-pulse class="param-icon">}}
+<span class="stats-value">129.9</span>
+<span class="stats-label">bpm (174.0 max.)</span>
+:::
+
+:::
+:::
+
+
+&nbsp;
+
+### Täglich grüßt das Murmeltier…
+
+Es gibt Tage, die verändern den Blick auf das, was körperlich möglich ist. 
+Einen solchen Tag erlebten wir in den Alpen auf unserer Marmotte in der 
+Extended-SoFaCycling-Edition – ein Ritt zwischen totaler Erschöpfung und absolutem Hochgefühl.
+Wir haben uns der legendären Strecke des [Marmotte Granfondo Alpes](https://marmottegranfondoalpes.com/en/) gestellt. 
+Aber weil uns das Original offenbar noch nicht fordernd genug erschien, gab es die „SoFa-Spezialmischung“: 
+Start und Ziel in Saint-Jean-de-Maurienne über die vier großen Pässe der Standardrunde, garniert mit einer Extraportion 
+Höhenmeter über den Col de la Croix de Fer und den Col du Mollard zum Abschluss. Das Ergebnis? 
+Unsere bislang höhenmeterreichste Runde. Ganz im Einklang mit unseren süßen Begleitern, den „Murmlerichen“. 
+
+Aber von vorn: Los ging es, als die Boulangerie nebenan gerade erst den Ofen für die tagesfrischen Baguettes anfeuerte. 
+Das Surren der Ketten in der morgendlichen Dunkelheit auf der ungemütlichen Verbindungsstraße entlang der Autobahn, 
+das erste Glimmen am Horizont beim Aufstieg zum Col du Télégraphe und schließlich der majestätische Galibier auf 
+über 2600 m ü. NN. Einige dieser Riesen kannten wir schon von vergangenen Reisen, aber sie fühlen sich jedes Mal 
+anders an – diesmal wie alte Bekannte, die uns herausfordern wollten. Über den Col du Lautaret ging es geschwind 
+bergab Richtung Bourg-d’Oisans (im Übrigen eines unserer absoluten Highlight-Ziele; hier durften wir im Sommer 2023 
+bereits rauf und runter radeln). 
+
+Im Abschnitt zwischen Freney-d’Oisans und Bourg-d’Oisans verläuft die Originalroute des Marmotte durchs Tal, 
+auf und neben einer großen Hauptstraße. Wir blieben uns treu und entschieden uns für den weniger flachen, 
+dafür allerdings deutlich verkehrsärmeren sowie landschaftlich sehr viel eindrucksvolleren Weg über den 
+malerischen Balcon d’Auris. Von hier arbeiteten wir uns vor zu einer der wohl prominentesten Legenden unter uns 
+Radsportler:innen: die 21 Kehren der Alpe d’Huez. Hier hat sich seit 2023 nichts geändert – es war heiß, 
+steil und vor allem stinkig. Tonnenweise LKW, gepaart mit aufgeblasenen Sportwagen-Idiot:innen und größenwahnsinnigen
+Motorradfahrer:innen, messen sich hier gern. Oben angekommen fühlten *wir* uns dann aber unbesiegbar. 
+
+Wer dachte, das Gros sei geschafft, wurde am Glandon und Croix de Fer eines Besseren belehrt. 
+Landschaftlich bombastisch, fahrerisch eine echte Charakterprüfung (insbesondere mit bereits fast 4000 
+Höhenmetern in den Beinchen). Auch diese haben wir jedoch mit Bravour bestanden und konnten den herrlichen 
+Ausblick auf die umliegenden Gipfel genießen.
+Hier fiel die Entscheidung, ein letztes Abenteuer für diesen Tag zu wagen: Wir wählten den längeren Aufstieg 
+über den Col du Mollard – anstelle des kürzeren Abstiegs (um nicht zu sagen: der direkten Zieleinfahrt). 
+Ein letztes Aufbäumen im goldenen Licht des Sonnenuntergangs, bevor wir in die Abfahrt zurück nach 
+Saint-Jean-de-Maurienne eintauchten. 
+
+Die Bilanz des Wahnsinns: Es war emotional. Es war schwer. Es war unheimlich spaßig. Wir haben nicht nur Pässe gesammelt, 
+sondern Erinnerungen, die wohl so schnell nicht verblassen werden. Am Ende gab es satte +14 auf das Murmlerich-Konto, 
++6 für das quäldich-Passjagd-Konto und zwei breite Grinsen im Gesicht. Letztere werden wahrscheinlich noch Tage anhalten.
+
+Die Etappen einer unvergesslichen Tour:
+
+{{< bi hand-thumbs-up class="param-icon" >}} Col du Télégraphe (1566 m)
+
+{{< bi hand-thumbs-up class="param-icon" >}} Col du Galibier (2645 m)
+
+{{< bi hand-thumbs-up class="param-icon" >}} Balcon d'Auris (1291 m)
+
+{{< bi hand-thumbs-up class="param-icon" >}} Alpe d'Huez (1860 m)
+
+{{< bi hand-thumbs-up class="param-icon" >}} Col du Glandon (1924 m)
+
+{{< bi hand-thumbs-up class="param-icon" >}} Col de la Croix de Fer (2067 m)
+
+{{< bi hand-thumbs-up class="param-icon" >}} Col du Mollard (1638 m)
+
+Ein Tag, der uns geprägt hat. Grandios, herrlich, unvergesslich. Genau das ist es, warum wir Rennrad fahren.
+
+
+
+&nbsp;
+
+
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+
+
+
+
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+  <canvas id="elevationChart"></canvas>
+</div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+
+::: {.gallery}
+
+![](img/20250815_051254.webp){group="tour"}
+
+![](img/20250815_060038.webp){group="tour"}
+
+![](img/20250815_060046.webp){group="tour"}
+
+![](img/20250815_070613.webp){group="tour"}
+
+![](img/20250815_073416.webp){group="tour"}
+
+![](img/20250815_073459.webp){group="tour"}
+
+![](img/20250815_073826.webp){group="tour"}
+
+![](img/20250815_084812.webp){group="tour"}
+
+![](img/20250815_085639.webp){group="tour"}
+
+![](img/20250815_085737.webp){group="tour"}
+
+![](img/20250815_090621.webp){group="tour"}
+
+![](img/20260327_105121.webp){group="tour"}
+
+![](img/20250815_094636.webp){group="tour"}
+
+![](img/20250815_094702.webp){group="tour"}
+
+![](img/20250815_094924.webp){group="tour"}
+
+![](img/20250815_095020.webp){group="tour"}
+
+![](img/20250815_100851.webp){group="tour"}
+
+![](img/20250815_100932.webp){group="tour"}
+
+![](img/20250815_100955.webp){group="tour"}
+
+![](img/20250815_122451.webp){group="tour"}
+
+![](img/20250815_122524.webp){group="tour"}
+
+![](img/20250815_122749.webp){group="tour"}
+
+![](img/20250815_125946.webp){group="tour"}
+
+![](img/20250815_133200.webp){group="tour"}
+
+![](img/20250815_135918.webp){group="tour"}
+
+![](img/20250815_143419.webp){group="tour"}
+
+![](img/20250815_145435.webp){group="tour"}
+
+![](img/20250815_145453.webp){group="tour"}
+
+![](img/20250815_145508.webp){group="tour"}
+
+![](img/20250815_145617.webp){group="tour"}
+
+![](img/20250815_151536.webp){group="tour"}
+
+![](img/20250815_152849.webp){group="tour"}
+
+![](img/20250815_162834.webp){group="tour"}
+
+![](img/20250815_164246.webp){group="tour"}
+
+![](img/20250815_165648.webp){group="tour"}
+
+![](img/20250815_171732.webp){group="tour"}
+
+![](img/20250815_171747.webp){group="tour"}
+
+![](img/20250815_175342.webp){group="tour"}
+
+![](img/20250815_181519.webp){group="tour"}
+
+![](img/20250815_182022.webp){group="tour"}
+
+![](img/20250815_193100.webp){group="tour"}
+
+![](img/20250815_193905.webp){group="tour"}
+
+![](img/20250815_194204.webp){group="tour"}
+
+![](img/20250815_200635.webp){group="tour"}
+
+![](img/20250815_201818.webp){group="tour"}
+
+:::
+
+
+&nbsp;
+
+
+
+

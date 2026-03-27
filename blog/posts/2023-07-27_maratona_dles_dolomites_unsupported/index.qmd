@@ -1,0 +1,378 @@
+---
+title: "Maratona dles Dolomites+ (unsupported)"
+date: "2023-07-27"
+description: "145 km mit 4407 Hm"
+image: thumbnail.png
+
+draft: false
+categories: [Italien, Granfondo]
+strava_id: 9533263085
+distance_km: 145.1
+elevation_m: 4407
+moving_time_min: 524
+
+format: 
+  html:
+    toc: false
+
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+lightbox:
+  match: auto
+---
+
+
+::: {.stats-grid-container}
+::: {.stats-grid}
+
+::: {.grid-item}
+{{< bi arrow-right-circle class="param-icon">}}
+<span class="stats-value">145.1</span>
+<span class="stats-label">Kilometer</span>
+:::
+
+::: {.grid-item}
+{{< bi arrow-up-right-circle class="param-icon">}}
+<span class="stats-value">4407</span>
+<span class="stats-label">Höhenmeter</span>
+:::
+
+::: {.grid-item}
+{{< bi clock-history class="param-icon">}}
+<span class="stats-value">8h 44min</span>
+<span class="stats-label">Fahrzeit</span>
+:::
+
+::: {.grid-item}
+{{< bi speedometer class="param-icon">}}
+<span class="stats-value">16.6</span>
+<span class="stats-label">km/h (56.9 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi lightning class="param-icon">}}
+<span class="stats-value">96.6</span>
+<span class="stats-label">Watt (270 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi heart-pulse class="param-icon">}}
+<span class="stats-value">133.6</span>
+<span class="stats-label">bpm (174.0 max.)</span>
+:::
+
+:::
+:::
+
+
+&nbsp;
+
+### Dolomiten-Drama & Gipfel-Glück: Unsere Maratona-Interpretation
+
+Es gibt Landschaften, die lassen einen vergessen, dass die Lunge brennt und die Beine nach Gnade flehen. 
+Die Dolomiten sind genau so ein Ort. Für unsere ganz eigene Interpretation des [Maratona dles Dolomiti](https://www.maratona.it/de/) 
+haben wir Cortina d'Ampezzo als Basecamp gewählt – und was folgte, war ein Ritt durch dieses atemberaubende UNESCO-Welterbe, 
+der uns alles abverlangt hat.
+
+Vom Start weg ging es ans Eingemachte. Es galt die "glorreichen Sieben" zu überwinden: Über den Falzarego und Valparola arbeiteten wir uns hinein in das Herz der bleichen, schroffen Felswände. 
+Die klassische Sella-Runde mit Grödnerjoch, Sellajoch, Pordoi und dem doppelt servierten Campolongo (man gönnt sich ja sonst nichts!) 
+war Fahrspaß pur – Kurvenrausch vor einer Kulisse, die fast schon surreal schön wirkt.
+
+Das dicke Ende: Nach dem Colle Santa Lucia wartete er dann: der Passo di Giau. Er ist der unangefochtene Scharfrichter der Region. 
+Steil, unerbittlich, aber oben angekommen entschädigt das 360-Grad-Panorama für jede vergossene Schweißperle.
+
+
+Es war eine Passjagd, die ihresgleichen sucht. Eine stolze +8 für unser quäldich-Passjagd-Konto:
+
+{{< bi hand-thumbs-up class="param-icon" >}} Passo di Falzarego (2105 m)
+
+{{< bi hand-thumbs-up class="param-icon" >}} Passo di Valparola (2192 m)
+
+{{< bi hand-thumbs-up class="param-icon" >}} Grödnerjoch (2121 m)
+
+{{< bi hand-thumbs-up class="param-icon" >}} Sellajoch (2240 m)
+
+{{< bi hand-thumbs-up class="param-icon" >}} Passo Pordoi (2239 m)
+
+{{< bi hand-thumbs-up class="param-icon" >}} Passo Campolongo (1875 m)
+
+{{< bi hand-thumbs-up class="param-icon" >}} Passo Campolongo (1875 m)
+
+{{< bi hand-thumbs-up class="param-icon" >}} Colle Santa Lucia (1480 m)
+
+{{< bi hand-thumbs-up class="param-icon" >}} Passo di Giau (2233 m)
+
+
+Es war herrlich, unvergleichlich, einfach Dolomiten-Liebe pur!
+
+&nbsp;
+
+
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+
+
+
+
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+  <canvas id="elevationChart"></canvas>
+</div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+
+::: {.gallery}
+
+![](img/20230727_082542.webp){group="tour"}
+
+![](img/20230727_082616.webp){group="tour"}
+
+![](img/20230727_094402.webp){group="tour"}
+
+![](img/20230727_100648.webp){group="tour"}
+
+![](img/20230727_101812.webp){group="tour"}
+
+![](img/20230727_102311.webp){group="tour"}
+
+![](img/20230727_102322.webp){group="tour"}
+
+![](img/20230727_104614.webp){group="tour"}
+
+![](img/20230727_104706.webp){group="tour"}
+
+![](img/20230727_105315.webp){group="tour"}
+
+![](img/20230727_105452.webp){group="tour"}
+
+![](img/20230727_105714.webp){group="tour"}
+
+![](img/20230727_110028.webp){group="tour"}
+
+![](img/20230727_110319.webp){group="tour"}
+
+![](img/20230727_110323.webp){group="tour"}
+
+![](img/20230727_110809.webp){group="tour"}
+
+![](img/20230727_122456.webp){group="tour"}
+
+![](img/20230727_123003.webp){group="tour"}
+
+![](img/20230727_123137.webp){group="tour"}
+
+![](img/20230727_124051.webp){group="tour"}
+
+![](img/20230727_124057.webp){group="tour"}
+
+![](img/20230727_124107.webp){group="tour"}
+
+![](img/20230727_124830.webp){group="tour"}
+
+![](img/20230727_125346.webp){group="tour"}
+
+![](img/20230727_125600.webp){group="tour"}
+
+![](img/20230727_125750.webp){group="tour"}
+
+![](img/20230727_131013.webp){group="tour"}
+
+![](img/20230727_133744.webp){group="tour"}
+
+![](img/20230727_134154.webp){group="tour"}
+
+![](img/20230727_140832.webp){group="tour"}
+
+![](img/20230727_141422.webp){group="tour"}
+
+![](img/20230727_141541.webp){group="tour"}
+
+![](img/20230727_150140.webp){group="tour"}
+
+![](img/20230727_150628.webp){group="tour"}
+
+![](img/20230727_150927.webp){group="tour"}
+
+![](img/20230727_151133.webp){group="tour"}
+
+![](img/20230727_154020.webp){group="tour"}
+
+![](img/20230727_154023.webp){group="tour"}
+
+![](img/20230727_155611.webp){group="tour"}
+
+![](img/20230727_155634.webp){group="tour"}
+
+![](img/20230727_160226.webp){group="tour"}
+
+![](img/20230727_160759.webp){group="tour"}
+
+![](img/20230727_162456.webp){group="tour"}
+
+![](img/20230727_163114.webp){group="tour"}
+
+![](img/20230727_165607.webp){group="tour"}
+
+![](img/20230727_175706.webp){group="tour"}
+
+![](img/20230727_183155.webp){group="tour"}
+
+![](img/20230727_185307.webp){group="tour"}
+
+![](img/20230727_193608.webp){group="tour"}
+
+![](img/20230727_194203.webp){group="tour"}
+
+![](img/20230727_195309.webp){group="tour"}
+
+![](img/20230727_200238.webp){group="tour"}
+
+![](img/20230727_200547.webp){group="tour"}
+
+![](img/20230727_200635.webp){group="tour"}
+
+![](img/20230727_200809.webp){group="tour"}
+
+![](img/20230727_200816.webp){group="tour"}
+
+![](img/20230727_200919.webp){group="tour"}
+
+![](img/20230727_200921.webp){group="tour"}
+
+![](img/20230727_202500.webp){group="tour"}
+
+![](img/20230727_202504.webp){group="tour"}
+
+:::
+
+
+&nbsp;
+
+
+
+

@@ -1,0 +1,318 @@
+---
+title: "Ötztaler Radmarathon (unsupported)"
+date: "2023-08-02"
+description: "246 km mit 5412 Hm"
+image: thumbnail.png
+
+draft: false
+categories: [Österreich, Granfondo]
+strava_id: 9571491250
+distance_km: 246.5
+elevation_m: 5412
+moving_time_min: 804
+
+format: 
+  html:
+    toc: false
+
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+lightbox:
+  match: auto
+---
+
+
+::: {.stats-grid-container}
+::: {.stats-grid}
+
+::: {.grid-item}
+{{< bi arrow-right-circle class="param-icon">}}
+<span class="stats-value">246.5</span>
+<span class="stats-label">Kilometer</span>
+:::
+
+::: {.grid-item}
+{{< bi arrow-up-right-circle class="param-icon">}}
+<span class="stats-value">5412</span>
+<span class="stats-label">Höhenmeter</span>
+:::
+
+::: {.grid-item}
+{{< bi clock-history class="param-icon">}}
+<span class="stats-value">13h 24min</span>
+<span class="stats-label">Fahrzeit</span>
+:::
+
+::: {.grid-item}
+{{< bi speedometer class="param-icon">}}
+<span class="stats-value">18.4</span>
+<span class="stats-label">km/h (74.5 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi lightning class="param-icon">}}
+<span class="stats-value">94.0</span>
+<span class="stats-label">Watt (240 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi heart-pulse class="param-icon">}}
+<span class="stats-value">130.3</span>
+<span class="stats-label">bpm (174.0 max.)</span>
+:::
+
+:::
+:::
+
+
+&nbsp;
+
+
+
+&nbsp;
+
+
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+
+
+
+
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+  <canvas id="elevationChart"></canvas>
+</div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+
+::: {.gallery}
+
+![](img/20230802_052036.webp){group="tour"}
+
+![](img/20230802_061841.webp){group="tour"}
+
+![](img/20230802_080748.webp){group="tour"}
+
+![](img/20230802_093928.webp){group="tour"}
+
+![](img/20230802_095723.webp){group="tour"}
+
+![](img/20230802_101246.webp){group="tour"}
+
+![](img/20230802_102009.webp){group="tour"}
+
+![](img/20230802_103018.webp){group="tour"}
+
+![](img/20230802_111449.webp){group="tour"}
+
+![](img/20230802_111514.webp){group="tour"}
+
+![](img/20230802_112458.webp){group="tour"}
+
+![](img/20230802_112614.webp){group="tour"}
+
+![](img/20230802_113056.webp){group="tour"}
+
+![](img/20230802_113157.webp){group="tour"}
+
+![](img/20230802_114039.webp){group="tour"}
+
+![](img/20230802_121741.webp){group="tour"}
+
+![](img/20230802_125906.webp){group="tour"}
+
+![](img/20230802_132842.webp){group="tour"}
+
+![](img/20230802_133718.webp){group="tour"}
+
+![](img/20230802_134013.webp){group="tour"}
+
+![](img/20230802_135358.webp){group="tour"}
+
+![](img/20230802_142048.webp){group="tour"}
+
+![](img/20230802_142112.webp){group="tour"}
+
+![](img/20230802_142124.webp){group="tour"}
+
+![](img/20230802_144507.webp){group="tour"}
+
+![](img/20230802_150550.webp){group="tour"}
+
+![](img/20230802_151558.webp){group="tour"}
+
+![](img/20230802_151854.webp){group="tour"}
+
+![](img/20230802_152121.webp){group="tour"}
+
+![](img/20230802_152529.webp){group="tour"}
+
+![](img/20230802_154416.webp){group="tour"}
+
+![](img/20230802_155753.webp){group="tour"}
+
+![](img/20230802_155757.webp){group="tour"}
+
+![](img/20230802_155801.webp){group="tour"}
+
+![](img/20230802_160759.webp){group="tour"}
+
+![](img/20230802_161646.webp){group="tour"}
+
+![](img/20230802_162500.webp){group="tour"}
+
+![](img/20230802_170012.webp){group="tour"}
+
+![](img/20230802_180712.webp){group="tour"}
+
+![](img/20230802_183804.webp){group="tour"}
+
+![](img/20230802_193629.webp){group="tour"}
+
+![](img/20230802_194928.webp){group="tour"}
+
+![](img/20230802_202413.webp){group="tour"}
+
+![](img/20230802_202435.webp){group="tour"}
+
+![](img/20230802_202812.webp){group="tour"}
+
+![](img/20230802_203539.webp){group="tour"}
+
+![](img/20230802_205232.webp){group="tour"}
+
+![](img/20230802_205249.webp){group="tour"}
+
+:::
+
+
+&nbsp;
+
+
+
+

@@ -1,0 +1,317 @@
+---
+title: "Berlin - Brocken - Berlin"
+date: "2023-08-19"
+description: "507 km mit 2307 Hm"
+image: thumbnail.png
+
+draft: false
+categories: [Harz, Berlin, Granfondo]
+strava_id: 9684197945
+distance_km: 507.3
+elevation_m: 2307
+moving_time_min: 1279
+
+format: 
+  html:
+    toc: false
+
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+lightbox:
+  match: auto
+---
+
+
+::: {.stats-grid-container}
+::: {.stats-grid}
+
+::: {.grid-item}
+{{< bi arrow-right-circle class="param-icon">}}
+<span class="stats-value">507.3</span>
+<span class="stats-label">Kilometer</span>
+:::
+
+::: {.grid-item}
+{{< bi arrow-up-right-circle class="param-icon">}}
+<span class="stats-value">2307</span>
+<span class="stats-label">Höhenmeter</span>
+:::
+
+::: {.grid-item}
+{{< bi clock-history class="param-icon">}}
+<span class="stats-value">21h 19min</span>
+<span class="stats-label">Fahrzeit</span>
+:::
+
+::: {.grid-item}
+{{< bi speedometer class="param-icon">}}
+<span class="stats-value">23.8</span>
+<span class="stats-label">km/h (62.0 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi lightning class="param-icon">}}
+<span class="stats-value">79.7</span>
+<span class="stats-label">Watt (253 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi heart-pulse class="param-icon">}}
+<span class="stats-value">114.7</span>
+<span class="stats-label">bpm (160.0 max.)</span>
+:::
+
+:::
+:::
+
+
+&nbsp;
+
+### 500 km zwischen Gut und Böse: Der ultimative After-Holiday-Fitness-Check
+
+Eigentlich würde hier ein einziger Satz genügen: *Bitte nicht nachmachen.* Punkt.
+
+Rückblick: Am Tag nach dem erfolgreich gemeisterten Ötzti schwebten wir noch auf Radler-Wolke 7. 
+Adrenalin ist eine tückische Droge, denn sie macht übermütig. In einer Mischung aus Euphorie und 
+wohl totalem Realitätsverlust entstand die fixe Idee: „Hey, lass uns doch mal testen, 
+ob 500 km in unter 24 Stunden machbar sind.“
+
+Gesagt, geplant – und (leider? zum Glück?) auch getan. Da wir Höhenmeter grundsätzlich über 
+flaches Dahinrollen priorisieren, war das Ziel schnell klar: Wenn schon, dann mit Gipfelsieg. 
+Der Brocken sollte es sein. Eine Premiere für uns und unsere Rennräder, also die perfekte Karotte vor der Nase.
+
+##### Die Euphorie des Morgengrauens
+Kurz vor 6:00 Uhr, im ersten fahlen Licht des Tages, klickten die Schuhe in die Pedale. 
+Der Weg über Bad Belzig und Zerbst/Anhalt fühlte sich noch leicht an. 
+Die Beine drehten, der Kopf war voll Vorfreude. Erst als der Abend dämmerte, rollten wir 
+über den Gipfel des Brockens. Ein triumphaler Moment? Kurzzeitig ja. 
+Aber dann schlug die Mathematik erbarmungslos zu...
+
+##### Das motivationale Niemandsland
+Auf dem Gipfel wurde uns nämlich klar: Wir müssen die gesamte bisher zurückgelegte Strecke 
+noch einmal fahren. Zurück. Alles. Nach einem kompletten Tag im Sattel ist das kein „Rückweg“ mehr – 
+nein, das ist ein mentaler Kampf gegen sich selbst.
+
+Wir versuchten, uns mit Abwechslung auszutricksen: Über Halberstadt und Magdeburg steuerten wir 
+Richtung Heimat. Den landschaftlichen Joker hoben wir uns für das Finale auf: 
+Den Havelradweg von Brandenburg über Werder nach Potsdam. Doch die Idylle hatte einen harten Gegner: Schlafmangel.
+
+##### Zwischen Delirium und Ziellinie
+Wenn wir ehrlich sind: Es war eine Tour für Wahnsinnige. Absolut grenzwertig. 
+Wir haben eine neue Ebene der Erschöpfung kennengelernt – jene Phase, in der man fast im Sattel einschläft 
+und das Radfahren nur noch eine mechanische Funktion des Körpers ist, während der Geist schon längst im Standby-Modus schwebt. 
+Wir haben unsere körperlichen Grenzen nicht nur gespürt, wir sind mit dem Kopf dagegen gedonnert.
+
+
+##### Die Bilanz
+War es sinnvoll? Sicher nicht. War es clever? Definitiv nein. Aber sind wir um eine Erfahrung reicher? Oh ja. 
+Wir wissen jetzt, wie sich 500 Kilometer am Stück im Sattel anfühlen. Und wir wissen: 
+Der Brocken ist von Berlin aus verdammt weit weg – besonders auf dem Rückweg.
+
+&nbsp;
+
+
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+
+
+
+
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+  <canvas id="elevationChart"></canvas>
+</div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+
+::: {.gallery}
+
+![](img/20230819_064140.webp){group="tour"}
+
+![](img/20230819_064207.webp){group="tour"}
+
+![](img/20230819_064644.webp){group="tour"}
+
+![](img/20230819_075212.webp){group="tour"}
+
+![](img/20230819_081812.webp){group="tour"}
+
+![](img/20230819_113702.webp){group="tour"}
+
+![](img/20230819_152049.webp){group="tour"}
+
+![](img/20230819_163656.webp){group="tour"}
+
+![](img/20230819_181734.webp){group="tour"}
+
+![](img/20230819_182227.webp){group="tour"}
+
+![](img/20230819_190003.webp){group="tour"}
+
+![](img/20230819_190025.webp){group="tour"}
+
+![](img/20230819_191535.webp){group="tour"}
+
+![](img/20230819_192236.webp){group="tour"}
+
+![](img/20230819_194206.webp){group="tour"}
+
+![](img/20230819_202016.webp){group="tour"}
+
+![](img/20230819_203411.webp){group="tour"}
+
+![](img/20230819_203839.webp){group="tour"}
+
+![](img/20230820_004259.webp){group="tour"}
+
+![](img/20230820_015137.webp){group="tour"}
+
+![](img/20230820_030616.webp){group="tour"}
+
+![](img/20230820_060812.webp){group="tour"}
+
+![](img/20230820_065950.webp){group="tour"}
+
+![](img/20230820_072324.webp){group="tour"}
+
+![](img/20230820_073411.webp){group="tour"}
+
+![](img/20230820_084553.webp){group="tour"}
+
+![](img/20230820_102408.webp){group="tour"}
+
+![](img/20230820_111153.webp){group="tour"}
+
+:::
+
+
+&nbsp;
+
+
+
+
