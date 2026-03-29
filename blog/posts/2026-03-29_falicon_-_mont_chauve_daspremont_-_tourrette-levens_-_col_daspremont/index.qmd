@@ -1,0 +1,336 @@
+---
+title: "Falicon - Mont Chauve d'Aspremont - Tourrette-Levens - Col d'Aspremont"
+date: "2026-03-29"
+description: "37 km mit 1029 Hm"
+image: thumbnail.png
+
+draft: false
+trip: Osterurlaub 2026
+categories: [Osterurlaub 2026, Nizza]
+strava_id: 17902598754
+distance_km: 37.4
+elevation_m: 1029
+moving_time_min: 118
+
+format: 
+  html:
+    toc: false
+
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+lightbox:
+  match: auto
+---
+
+
+::: {.stats-grid-container}
+::: {.stats-grid}
+
+::: {.grid-item}
+{{< bi arrow-right-circle class="param-icon">}}
+<span class="stats-value">37.4</span>
+<span class="stats-label">Kilometer</span>
+:::
+
+::: {.grid-item}
+{{< bi arrow-up-right-circle class="param-icon">}}
+<span class="stats-value">1029</span>
+<span class="stats-label">Höhenmeter</span>
+:::
+
+::: {.grid-item}
+{{< bi clock-history class="param-icon">}}
+<span class="stats-value">1h 58min</span>
+<span class="stats-label">Fahrzeit</span>
+:::
+
+::: {.grid-item}
+{{< bi speedometer class="param-icon">}}
+<span class="stats-value">19.0</span>
+<span class="stats-label">km/h (44.5 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi lightning class="param-icon">}}
+<span class="stats-value">115.1</span>
+<span class="stats-label">Watt (258 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi heart-pulse class="param-icon">}}
+<span class="stats-value">144.3</span>
+<span class="stats-label">bpm (181.0 max.)</span>
+:::
+
+:::
+:::
+
+
+&nbsp;
+
+### Bonjour à nouveau, Nice!
+
+Endlich ist es so weit, der heiß ersehnte Osterurlaub in Nizza ist angebrochen! 
+Vollbeladen mit all unseren Radlutensilien und einer ordentlichen Portion Vorfreude 
+rollten wir gestern gegen 18:00 Uhr los Richtung Mittelmeer. Vor uns lag 
+eine stramme 15-stündige Autofahrt, die uns – wie jedes Mal – durchaus 
+ein klein wenig Respekt einflößte. Allerdings verlief tatsächlich alles wie am 
+Schnürchen und es gab keine besonderen Vorkommnisse… okay, der kleine 
+Schneesturm während der nächtlichen Brennerüberquerung sollte wohl 
+nicht ganz unerwähnt bleiben. Dennoch: Innsbruck und Bozen bei Nacht sind
+gigantisch und Erinnerungen an vergangene Reisen wurden (und hielten uns) wach.  
+
+Als wir am Vormittag endlich das Glitzern des Meeres sahen, war klar: Jetzt geht 
+es richtig los! Nach dem „Fremdradeln“ zu Ostern im letzten Jahr im spanischen 
+Málaga sind wir endlich wieder hier gelandet, an unserer geliebten Côte d‘Azur!
+
+Und dabei passierte es wieder. Etwas, das früher niemals denkbar gewesen wäre: 
+Wir waren viel zu früh! Das Check-in war erst ab 16:00 Uhr angesetzt und die Unterkunft
+war natürlich noch nicht bezugsfertig. Wir standen also vor der Qual der Wahl:
+Was machen wir nur mit der dazugewonnenen Zeit? In der Stadt bummeln? 
+Im Park die Beine hochlegen? An den Strand gehen? Nein, nein, alles nicht mit uns! 
+Wir sind schließlich SoFaCycler. Anstatt uns vom langen Transfer auszuruhen, 
+wurde kurzerhand die (ohnehin geplante) Eröffnungsrunde verlängert. Der Anblick der 
+Seealpen war einfach zu verlockend, um untätig herumzusitzen.
+
+Unser Ziel für heute war ein Nizzaischer Sehnsuchtsort: der Mont Chauve d’Aspremont. 
+Von dort oben hat man diesen unvergleichlichen Blick über ganz Nizza und die 
+Umgebung – einfach herrlich. Das letzte Stückchen mussten wir uns den – zwar gut bekannten, 
+aber nach wie vor fürchterlich desolaten – schotterähnlichen Untergrund hochkämpfen, 
+aber das Panorama entschädigt für jede Anstrengung. 
+Nachdem wir die Aussicht ausgiebig genossen hatten, ging es 
+retour nach Falicon. Da uns der kleine Ausflug aber immer noch nicht ganz reichte, 
+hängten wir noch den Anstieg nach Tourrette-Levens dran, gefolgt von einer wunderbaren Abfahrt 
+nach Aspremont und wieder zurück nach Falicon.
+
+Jetzt hocken wir endlich in unserer Unterkunft. Nun auch wie gewohnt mit gehöriger Verspätung;
+sehr, sehr beruhigend: Es ist doch alles beim Alten! 
+Nizza begrüßte uns heute mit strahlendem Sonnenschein und wohligen Temperaturen. 
+Während wir schließlich auf der tollen Terrasse den Meerblick bei einer Tasse Grüntee genießen, 
+steigt die Vorfreude auf alles, was in den nächsten Tagen kommt. Wir haben hier noch einiges vor!
+
+
+&nbsp;
+
+
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+
+
+
+
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+  <canvas id="elevationChart"></canvas>
+</div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+
+::: {.gallery}
+
+![Nach ca. 14 Stunden anstrengender Autofahrt: Endlich, da ist es – das Mittelmeer!](img/20260329_121539.webp){group="tour"}
+
+![Auf der Küstenstraße steigt die Vorfreude. Bald sind wir da.](img/20260329_121813.webp){group="tour"}
+
+![](img/20260329_122027.webp){group="tour"}
+
+![Bonjour à nouveau!](img/20260329_124549.webp){group="tour"}
+
+![Auf geht's hoch nach Falicon, durch den (von uns so getauften) "Märchenwald".](img/20260329_132426.webp){group="tour"}
+
+![Aufgesattelt, ab geht's! Im Hintergrund thront schon unser heutiges Ziel.](img/20260329_142750.webp){group="tour"}
+
+![Schlafmangel? Von wegen! Jedesmal (und in jedem Zustand) ist es ein Genuss.](img/20260329_145056.webp){group="tour"}
+
+![Kehre für Kehre kurbeln wir uns dem alten Fort entgegen.](img/20260329_145425.webp){group="tour"}
+
+![](img/20260329_145443.webp){group="tour"}
+
+![Und umso höher wir aufsteigen, desto spektakulärer präsentiert sich die Aussicht.](img/20260329_145706.webp){group="tour"}
+
+![Bestes Wetter, beste Laune!](img/20260329_145708.webp){group="tour"}
+
+![Nur noch wenige Meter auf dem rauen Untergrund, der durch den vielen losen Splitt bei gehörigen Steigungsprozenten (bis zu 12%) nicht ganz einfach zu fahren ist...](img/20260329_151057.webp){group="tour"}
+
+![Geschafft!](img/20260329_151302.webp){group="tour"}
+
+![Und genau hiefür lohnt sich dieser Anstieg: der Rundumblick auf weite Teile der Côte d'Azur und Teile der Seealpen.](img/20260329_152011.webp){group="tour"}
+
+![](img/20260329_152030.webp){group="tour"}
+
+![Fabis Belohnung: Hoppi Karotti... und nun aber: hoppi Galoppi Abstieg!](img/20260329_152253.webp){group="tour"}
+
+![Blick auf Falicon.](img/20260329_155234.webp){group="tour"}
+
+![Eine kleine Zugabe folgt: Wir radeln nochmal nach Tourrette-Levens hinauf.](img/20260329_161133.webp){group="tour"}
+
+![](img/20260329_162514.webp){group="tour"}
+
+![Retour über Aspremont. Die höchsten Gipfel der Umgebung haben noch ihre Schneemützchen auf.](img/20260329_163409.webp){group="tour"}
+
+![](img/20260329_163640.webp){group="tour"}
+
+![Der wunderschöne Ausblick von der Terrasse unserer Unterkunft.](img/20260329_200027.webp){group="tour"}
+
+![Inklusive Meerblick.](img/20260329_200031.webp){group="tour"}
+
+![Nach einer langen Nacht und einem langen Tag, aber mit ungebrochender Vorfreude auf die anstehenden Touren: Hier wird es uns definitiv gut gehen!](img/20260329_200109.webp){group="tour"}
+
+:::
+
+
+&nbsp;
+
+
+::: {.trip-dashboard}
+
+### Osterurlaub 2026: Stand aktuell
+
+<div class="trip-grid">
+
+<div class="trip-card">
+<div class="trip-value">37</div>
+<div class="trip-label">Kilometer</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">1029</div>
+<div class="trip-label">Höhenmeter</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">1h 58min</div>
+<div class="trip-label">Fahrzeit</div>
+</div>
+
+</div>
+
+:::
+
+
+
