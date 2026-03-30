@@ -1,0 +1,381 @@
+---
+title: "Bouyon - Toudon - Mont Vial"
+date: "2026-03-30"
+description: "91 km mit 1918 Hm"
+image: thumbnail.png
+
+draft: false
+trip: Osterurlaub 2026
+categories: [Osterurlaub 2026, Nizza]
+strava_id: 17915016576
+distance_km: 91.0
+elevation_m: 1918
+moving_time_min: 291
+
+format: 
+  html:
+    toc: false
+
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+lightbox:
+  match: auto
+---
+
+
+::: {.stats-grid-container}
+::: {.stats-grid}
+
+::: {.grid-item}
+{{< bi arrow-right-circle class="param-icon">}}
+<span class="stats-value">91.0</span>
+<span class="stats-label">Kilometer</span>
+:::
+
+::: {.grid-item}
+{{< bi arrow-up-right-circle class="param-icon">}}
+<span class="stats-value">1918</span>
+<span class="stats-label">Höhenmeter</span>
+:::
+
+::: {.grid-item}
+{{< bi clock-history class="param-icon">}}
+<span class="stats-value">4h 51min</span>
+<span class="stats-label">Fahrzeit</span>
+:::
+
+::: {.grid-item}
+{{< bi speedometer class="param-icon">}}
+<span class="stats-value">18.8</span>
+<span class="stats-label">km/h (53.9 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi lightning class="param-icon">}}
+<span class="stats-value">100.7</span>
+<span class="stats-label">Watt (325 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi heart-pulse class="param-icon">}}
+<span class="stats-value">130.9</span>
+<span class="stats-label">bpm (169.0 max.)</span>
+:::
+
+:::
+:::
+
+
+&nbsp;
+
+### Hinterland-Runde mit Überraschungs-Finale
+
+Nach einem tiefenentspannten Start in den Tag mit Core-Training und Sonnengruß 
+auf der Terrasse sowie der obligatorischen Wanderung zur Boulangerie, 
+um unsere Baguette-Testreihe zu starten, dachten wir uns am heutigen ersten vollen 
+Tag unserer Nizza-Expedition: „Lass erstmal ganz gemütlich durch das Hinterland radeln.“ 
+Spoiler vorab: Es wurde legendär, verdammt steil und am Ende auch ein bisschen 
+frostig.  
+
+Auf den Start an der Pont Charles Albert folgte zunächst pures Postkarten-Idyll. 
+Über Le Broc, das wirklich ein absolutes Schmuckstück ist, kurbelten wir uns die 
+ersten 600 Höhenmeter hoch nach Bouyon warm. In La Roque-en-Provence wartete dann 
+die erste artistische Einlage: Es galt, eine etwas wackelige Hängebrücke zu überwinden. 
+Ganz nach dem Motto „Wer sein Rad liebt, der schiebt“ – oder trägt – bewältigten 
+wir die Passage inklusive der anschließenden Steintreppe zurück auf die Hauptstraße.
+Der malerische Anstieg nach Toudon versetzte uns dann streckentechnisch erneut in 
+Wallungen. Der aalglatte, nigelnagelneue Asphalt schlängelte sich am meist 
+bewaldeten Berghang in vielen Kehren entlang. Ruhe pur – kein einziges Auto 
+in Sicht und dazu eine unvergleichliche Aussicht. Zum Ende ging es noch mal 
+so richtig zur Sache: Der Bonus-Climb auf den Mont Vial wartete mit Steigungsprozenten 
+jenseits der 10 % auf. Während wir uns bei sommerlichen Temperaturen im Kurzarm-Trikot 
+die Rampe hochquälten, bestaunten wir die schottischen Hochlandrinder, die friedlich 
+am Wegesrand weideten. Rückblickend wurde uns schlagartig klar, weshalb die zotteligen 
+Co-Piloten so verwundert dreinblickten, als sie uns sahen. Sie müssen wohl gedacht 
+haben: „Seriously? In den kurzen Buchsen?“  
+
+Oben angekommen, hat es uns schlicht die Sprache verschlagen. Die 360-Grad-Rundumsicht 
+auf dem Bergrücken war so überwältigend, dass wir fast übersehen hätten, dass wir 
+plötzlich im Schnee standen (auf der meerabgewandten Seite hielt sich der Winter 
+nämlich noch hartnäckig). Auf der einen Seite das glitzernde Mittelmeer, auf der 
+anderen die unendliche Weite der schneebedeckten Seealpen – „grandios“ trifft es 
+nicht mal ansatzweise. So standen wir also auf dem Gipfel, der Inbegriff von 
+Coolness im wahrsten Sinne des Wortes.  
+
+Die Abfahrt wurde schließlich wieder einmal zum Charaktertest: Eisiger Wind 
+pfiff uns entgegen, die Zehen wurden blau und taub, und als Krönung gab es in 
+diesem Eiskanal auch noch gepflegten Ziegenverkehr, der selbstredend Vorrang hat. 
+Allzu lange dauerte der Stau glücklicherweise nicht an, und so standen wir kurze 
+Zeit später wieder an der Pont Charles Albert – mit klappernden Zähnen, aber einem 
+breiten Grinsen im Gesicht.
+
+
+
+&nbsp;
+
+
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+
+
+
+
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+  <canvas id="elevationChart"></canvas>
+</div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+
+::: {.gallery}
+
+![](img/20260330_092259.webp){group="tour"}
+
+![](img/20260330_100806.webp){group="tour"}
+
+![](img/20260330_131104.webp){group="tour"}
+
+![](img/20260330_134134.webp){group="tour"}
+
+![](img/20260330_134723.webp){group="tour"}
+
+![](img/20260330_135142.webp){group="tour"}
+
+![](img/20260330_135707.webp){group="tour"}
+
+![](img/20260330_140646.webp){group="tour"}
+
+![](img/20260330_140943.webp){group="tour"}
+
+![](img/20260330_142241.webp){group="tour"}
+
+![](img/20260330_143950.webp){group="tour"}
+
+![](img/20260330_143957.webp){group="tour"}
+
+![](img/20260330_144343.webp){group="tour"}
+
+![](img/20260330_144723.webp){group="tour"}
+
+![](img/20260330_144733.webp){group="tour"}
+
+![](img/20260330_150217.webp){group="tour"}
+
+![](img/20260330_150555.webp){group="tour"}
+
+![](img/20260330_155055.webp){group="tour"}
+
+![](img/20260330_155113.webp){group="tour"}
+
+![](img/20260330_164436.webp){group="tour"}
+
+![](img/20260330_165921.webp){group="tour"}
+
+![](img/20260330_165928.webp){group="tour"}
+
+![](img/20260330_170211.webp){group="tour"}
+
+![](img/20260330_170907.webp){group="tour"}
+
+![](img/20260330_171000.webp){group="tour"}
+
+![](img/20260330_171003.webp){group="tour"}
+
+![](img/20260330_171454.webp){group="tour"}
+
+![](img/20260330_171457.webp){group="tour"}
+
+![](img/20260330_171957.webp){group="tour"}
+
+![](img/20260330_172147.webp){group="tour"}
+
+![](img/20260330_173923.webp){group="tour"}
+
+![](img/20260330_174749.webp){group="tour"}
+
+![](img/20260330_180106.webp){group="tour"}
+
+![](img/20260330_180136.webp){group="tour"}
+
+![](img/20260330_180728.webp){group="tour"}
+
+![](img/20260330_181704.webp){group="tour"}
+
+![](img/20260330_181720.webp){group="tour"}
+
+![](img/20260330_181734.webp){group="tour"}
+
+![](img/20260330_181803.webp){group="tour"}
+
+![](img/20260330_181903.webp){group="tour"}
+
+![](img/20260330_182259.webp){group="tour"}
+
+![](img/20260330_182348.webp){group="tour"}
+
+![](img/20260330_182357.webp){group="tour"}
+
+![](img/20260330_182751.webp){group="tour"}
+
+![](img/20260330_182841.webp){group="tour"}
+
+![](img/20260330_182854.webp){group="tour"}
+
+:::
+
+
+&nbsp;
+
+
+::: {.trip-dashboard}
+
+### Osterurlaub 2026: Stand aktuell
+
+<div class="trip-grid">
+
+<div class="trip-card">
+<div class="trip-value">128</div>
+<div class="trip-label">Kilometer</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">2947</div>
+<div class="trip-label">Höhenmeter</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">6h 49min</div>
+<div class="trip-label">Fahrzeit</div>
+</div>
+
+</div>
+
+:::
+
+
+

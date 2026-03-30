@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-03-30">
+<meta name="description" content="91 km mit 1918 Hm">
 
-<title>Kurbel-Chroniken – SoFaCycling</title>
+<title>Bouyon - Toudon - Mont Vial – SoFaCycling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,27 +25,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../img/bicycle.svg" rel="icon" type="image/svg+xml">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-81ad76cb90f1e2061562c5e3a069f5ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/bootstrap-icons-1.13.1/bootstrap-icons.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../img/bicycle.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-81ad76cb90f1e2061562c5e3a069f5ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/bootstrap-icons-1.13.1/bootstrap-icons.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,83 +73,28 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>
 
       .quarto-title-block .quarto-title-banner {
-        background-image: url(posts/banner.png);
+        background-image: url(../banner.png);
 background-size: cover;
       }
 </style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">SoFaCycling</span>
     </a>
   </div>
@@ -157,11 +105,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../blog/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about/index.html"> 
+    <a class="nav-link" href="../../../about/index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -197,15 +145,29 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Kurbel-Chroniken</h1>
-            <p class="subtitle lead">Von Gipfeln, Gräben und Glücksmomenten jenseits der 90er Trittfrequenz.</p>
-                      </div>
+      <h1 class="title">Bouyon - Toudon - Mont Vial</h1>
+                  <div>
+        <div class="description">
+          91 km mit 1918 Hm
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Osterurlaub 2026</div>
+                <div class="quarto-category">Nizza</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 30, 2026</p>
+      </div>
+    </div>
     
       
     </div>
@@ -214,8 +176,7 @@ window.Quarto = {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div><div class="category" data-category="QmVybGlu">Berlin <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RXZlbnQ=">Event <span class="quarto-category-count">(3)</span></div><div class="category" data-category="RnJhbmtyZWljaA==">Frankreich <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R3JhbmZvbmRv">Granfondo <span class="quarto-category-count">(4)</span></div><div class="category" data-category="SGFyeg==">Harz <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SXRhbGllbg==">Italien <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TWVja2xlbmJ1cmdlciUyMFNlZW5ydW5kZQ==">Mecklenburger Seenrunde <span class="quarto-category-count">(3)</span></div><div class="category" data-category="TmV1YnJhbmRlbmJ1cmc=">Neubrandenburg <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Tml6emE=">Nizza <span class="quarto-category-count">(2)</span></div><div class="category" data-category="JUMzJTk2c3RlcnJlaWNo">Österreich <span class="quarto-category-count">(1)</span></div><div class="category" data-category="T3N0ZXJ1cmxhdWIlMjAyMDI2">Osterurlaub 2026 <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -223,284 +184,246 @@ window.Quarto = {
 
 
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="T3N0ZXJ1cmxhdWIlMjAyMDI2JTJDTml6emE=" data-listing-date-sort="1774821600000" data-listing-file-modified-sort="1774907269421" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1717">
-<div class="thumbnail"><a href="../blog/posts/2026-03-30_bouyon_-_toudon_-_mont_vial/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/posts/2026-03-30_bouyon_-_toudon_-_mont_vial/thumbnail.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/2026-03-30_bouyon_-_toudon_-_mont_vial/index.html" class="no-external">Bouyon - Toudon - Mont Vial</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('T3N0ZXJ1cmxhdWIlMjAyMDI2'); return false;">Osterurlaub 2026</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Tml6emE='); return false;">Nizza</div>
-
+<div class="stats-grid-container">
+<div class="stats-grid">
+<div class="grid-item">
+<p><i class="bi-arrow-right-circle param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">91.0</span> <span class="stats-label">Kilometer</span></p>
 </div>
-<div class="delink listing-description"><a href="../blog/posts/2026-03-30_bouyon_-_toudon_-_mont_vial/index.html" class="no-external">
-<p>91 km mit 1918 Hm</p>
-</a></div>
+<div class="grid-item">
+<p><i class="bi-arrow-up-right-circle param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">1918</span> <span class="stats-label">Höhenmeter</span></p>
 </div>
-<div class="metadata">
-<a href="../blog/posts/2026-03-30_bouyon_-_toudon_-_mont_vial/index.html" class="no-external">
-<div class="listing-date">
-Mar 30, 2026
+<div class="grid-item">
+<p><i class="bi-clock-history param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">4h 51min</span> <span class="stats-label">Fahrzeit</span></p>
 </div>
-</a>
+<div class="grid-item">
+<p><i class="bi-speedometer param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">18.8</span> <span class="stats-label">km/h (53.9 max.)</span></p>
 </div>
+<div class="grid-item">
+<p><i class="bi-lightning param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">100.7</span> <span class="stats-label">Watt (325 max.)</span></p>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="T3N0ZXJ1cmxhdWIlMjAyMDI2JTJDTml6emE=" data-listing-date-sort="1774738800000" data-listing-file-modified-sort="1774821178322" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1900">
-<div class="thumbnail"><a href="../blog/posts/2026-03-29_falicon_-_mont_chauve_daspremont_-_tourrette-levens_-_col_daspremont/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/posts/2026-03-29_falicon_-_mont_chauve_daspremont_-_tourrette-levens_-_col_daspremont/thumbnail.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/2026-03-29_falicon_-_mont_chauve_daspremont_-_tourrette-levens_-_col_daspremont/index.html" class="no-external">Falicon - Mont Chauve d’Aspremont - Tourrette-Levens - Col d’Aspremont</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('T3N0ZXJ1cmxhdWIlMjAyMDI2'); return false;">Osterurlaub 2026</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Tml6emE='); return false;">Nizza</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/posts/2026-03-29_falicon_-_mont_chauve_daspremont_-_tourrette-levens_-_col_daspremont/index.html" class="no-external">
-<p>37 km mit 1029 Hm</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/2026-03-29_falicon_-_mont_chauve_daspremont_-_tourrette-levens_-_col_daspremont/index.html" class="no-external">
-<div class="listing-date">
-Mar 29, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="RnJhbmtyZWljaCUyQ0dyYW5mb25kbw==" data-listing-date-sort="1755208800000" data-listing-file-modified-sort="1774639853697" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1870">
-<div class="thumbnail"><a href="../blog/posts/2025-08-15_marmotte_granfondo_alpes/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/posts/2025-08-15_marmotte_granfondo_alpes/thumbnail.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/2025-08-15_marmotte_granfondo_alpes/index.html" class="no-external">Marmotte Granfondo Alpes+</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RnJhbmtyZWljaA=='); return false;">Frankreich</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R3JhbmZvbmRv'); return false;">Granfondo</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/posts/2025-08-15_marmotte_granfondo_alpes/index.html" class="no-external">
-<p>192 km mit 5585 Hm</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/2025-08-15_marmotte_granfondo_alpes/index.html" class="no-external">
-<div class="listing-date">
-Aug 15, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="TWVja2xlbmJ1cmdlciUyMFNlZW5ydW5kZSUyQ05ldWJyYW5kZW5idXJnJTJDRXZlbnQ=" data-listing-date-sort="1748642400000" data-listing-file-modified-sort="1773437674808" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1871">
-<div class="thumbnail"><a href="../blog/posts/2025-05-31_MSR_300_-_2025_No._3/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/posts/2025-05-31_MSR_300_-_2025_No._3/thumbnail.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/2025-05-31_MSR_300_-_2025_No._3/index.html" class="no-external">MSR 300 - 2025: No.&nbsp;3</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWVja2xlbmJ1cmdlciUyMFNlZW5ydW5kZQ=='); return false;">Mecklenburger Seenrunde</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TmV1YnJhbmRlbmJ1cmc='); return false;">Neubrandenburg</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RXZlbnQ='); return false;">Event</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/posts/2025-05-31_MSR_300_-_2025_No._3/index.html" class="no-external">
-<p>304 km mit 1564 Hm</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/2025-05-31_MSR_300_-_2025_No._3/index.html" class="no-external">
-<div class="listing-date">
-May 31, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="TWVja2xlbmJ1cmdlciUyMFNlZW5ydW5kZSUyQ05ldWJyYW5kZW5idXJnJTJDRXZlbnQ=" data-listing-date-sort="1716588000000" data-listing-file-modified-sort="1773433864814" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1855">
-<div class="thumbnail"><a href="../blog/posts/2024-05-25_MSR_300_-_2024_No._2/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/posts/2024-05-25_MSR_300_-_2024_No._2/thumbnail.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/2024-05-25_MSR_300_-_2024_No._2/index.html" class="no-external">MSR 300 - 2024: No.&nbsp;2</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWVja2xlbmJ1cmdlciUyMFNlZW5ydW5kZQ=='); return false;">Mecklenburger Seenrunde</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TmV1YnJhbmRlbmJ1cmc='); return false;">Neubrandenburg</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RXZlbnQ='); return false;">Event</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/posts/2024-05-25_MSR_300_-_2024_No._2/index.html" class="no-external">
-<p>307 km mit 1723 Hm</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/2024-05-25_MSR_300_-_2024_No._2/index.html" class="no-external">
-<div class="listing-date">
-May 25, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="SGFyeiUyQ0JlcmxpbiUyQ0dyYW5mb25kbw==" data-listing-date-sort="1692396000000" data-listing-file-modified-sort="1774640455221" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1679">
-<div class="thumbnail"><a href="../blog/posts/2023-08-19_berlin_-_brocken_-_berlin/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/posts/2023-08-19_berlin_-_brocken_-_berlin/thumbnail.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/2023-08-19_berlin_-_brocken_-_berlin/index.html" class="no-external">Berlin - Brocken - Berlin</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SGFyeg=='); return false;">Harz</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QmVybGlu'); return false;">Berlin</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R3JhbmZvbmRv'); return false;">Granfondo</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/posts/2023-08-19_berlin_-_brocken_-_berlin/index.html" class="no-external">
-<p>507 km mit 2307 Hm</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/2023-08-19_berlin_-_brocken_-_berlin/index.html" class="no-external">
-<div class="listing-date">
-Aug 19, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="JUMzJTk2c3RlcnJlaWNoJTJDR3JhbmZvbmRv" data-listing-date-sort="1690927200000" data-listing-file-modified-sort="1774639092275" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1314">
-<div class="thumbnail"><a href="../blog/posts/2023-08-02_oetztaler_radmarathon_unsupported/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/posts/2023-08-02_oetztaler_radmarathon_unsupported/thumbnail.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/2023-08-02_oetztaler_radmarathon_unsupported/index.html" class="no-external">Ötztaler Radmarathon (unsupported)</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('JUMzJTk2c3RlcnJlaWNo'); return false;">Österreich</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R3JhbmZvbmRv'); return false;">Granfondo</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/posts/2023-08-02_oetztaler_radmarathon_unsupported/index.html" class="no-external">
-<p>246 km mit 5412 Hm</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/2023-08-02_oetztaler_radmarathon_unsupported/index.html" class="no-external">
-<div class="listing-date">
-Aug 2, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="SXRhbGllbiUyQ0dyYW5mb25kbw==" data-listing-date-sort="1690408800000" data-listing-file-modified-sort="1774639254516" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1555">
-<div class="thumbnail"><a href="../blog/posts/2023-07-27_maratona_dles_dolomites_unsupported/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/posts/2023-07-27_maratona_dles_dolomites_unsupported/thumbnail.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/2023-07-27_maratona_dles_dolomites_unsupported/index.html" class="no-external">Maratona dles Dolomites+ (unsupported)</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SXRhbGllbg=='); return false;">Italien</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R3JhbmZvbmRv'); return false;">Granfondo</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/posts/2023-07-27_maratona_dles_dolomites_unsupported/index.html" class="no-external">
-<p>145 km mit 4407 Hm</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/2023-07-27_maratona_dles_dolomites_unsupported/index.html" class="no-external">
-<div class="listing-date">
-Jul 27, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-categories="TWVja2xlbmJ1cmdlciUyMFNlZW5ydW5kZSUyQ05ldWJyYW5kZW5idXJnJTJDRXZlbnQ=" data-listing-date-sort="1684533600000" data-listing-file-modified-sort="1773436382086" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1610">
-<div class="thumbnail"><a href="../blog/posts/2023-05-20_MSR_300_-_2023_Done_✅/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/posts/2023-05-20_MSR_300_-_2023_Done_✅/thumbnail.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/2023-05-20_MSR_300_-_2023_Done_✅/index.html" class="no-external">MSR 300 - 2023: Done ✅</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWVja2xlbmJ1cmdlciUyMFNlZW5ydW5kZQ=='); return false;">Mecklenburger Seenrunde</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TmV1YnJhbmRlbmJ1cmc='); return false;">Neubrandenburg</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RXZlbnQ='); return false;">Event</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/posts/2023-05-20_MSR_300_-_2023_Done_✅/index.html" class="no-external">
-<p>311 km mit 1713 Hm</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/2023-05-20_MSR_300_-_2023_Done_✅/index.html" class="no-external">
-<div class="listing-date">
-May 20, 2023
-</div>
-</a>
+<div class="grid-item">
+<p><i class="bi-heart-pulse param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">130.9</span> <span class="stats-label">bpm (169.0 max.)</span></p>
 </div>
 </div>
 </div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+<p>&nbsp;</p>
+<section id="hinterland-runde-mit-überraschungs-finale" class="level3">
+<h3 class="anchored" data-anchor-id="hinterland-runde-mit-überraschungs-finale">Hinterland-Runde mit Überraschungs-Finale</h3>
+<p>Nach einem tiefenentspannten Start in den Tag mit Core-Training und Sonnengruß auf der Terrasse sowie der obligatorischen Wanderung zur Boulangerie, um unsere Baguette-Testreihe zu starten, dachten wir uns am heutigen ersten vollen Tag unserer Nizza-Expedition: „Lass erstmal ganz gemütlich durch das Hinterland radeln.“ Spoiler vorab: Es wurde legendär, verdammt steil und am Ende auch ein bisschen frostig.</p>
+<p>Auf den Start an der Pont Charles Albert folgte zunächst pures Postkarten-Idyll. Über Le Broc, das wirklich ein absolutes Schmuckstück ist, kurbelten wir uns die ersten 600 Höhenmeter hoch nach Bouyon warm. In La Roque-en-Provence wartete dann die erste artistische Einlage: Es galt, eine etwas wackelige Hängebrücke zu überwinden. Ganz nach dem Motto „Wer sein Rad liebt, der schiebt“ – oder trägt – bewältigten wir die Passage inklusive der anschließenden Steintreppe zurück auf die Hauptstraße. Der malerische Anstieg nach Toudon versetzte uns dann streckentechnisch erneut in Wallungen. Der aalglatte, nigelnagelneue Asphalt schlängelte sich am meist bewaldeten Berghang in vielen Kehren entlang. Ruhe pur – kein einziges Auto in Sicht und dazu eine unvergleichliche Aussicht. Zum Ende ging es noch mal so richtig zur Sache: Der Bonus-Climb auf den Mont Vial wartete mit Steigungsprozenten jenseits der 10 % auf. Während wir uns bei sommerlichen Temperaturen im Kurzarm-Trikot die Rampe hochquälten, bestaunten wir die schottischen Hochlandrinder, die friedlich am Wegesrand weideten. Rückblickend wurde uns schlagartig klar, weshalb die zotteligen Co-Piloten so verwundert dreinblickten, als sie uns sahen. Sie müssen wohl gedacht haben: „Seriously? In den kurzen Buchsen?“</p>
+<p>Oben angekommen, hat es uns schlicht die Sprache verschlagen. Die 360-Grad-Rundumsicht auf dem Bergrücken war so überwältigend, dass wir fast übersehen hätten, dass wir plötzlich im Schnee standen (auf der meerabgewandten Seite hielt sich der Winter nämlich noch hartnäckig). Auf der einen Seite das glitzernde Mittelmeer, auf der anderen die unendliche Weite der schneebedeckten Seealpen – „grandios“ trifft es nicht mal ansatzweise. So standen wir also auf dem Gipfel, der Inbegriff von Coolness im wahrsten Sinne des Wortes.</p>
+<p>Die Abfahrt wurde schließlich wieder einmal zum Charaktertest: Eisiger Wind pfiff uns entgegen, die Zehen wurden blau und taub, und als Krönung gab es in diesem Eiskanal auch noch gepflegten Ziegenverkehr, der selbstredend Vorrang hat. Allzu lange dauerte der Stau glücklicherweise nicht an, und so standen wir kurze Zeit später wieder an der Pont Charles Albert – mit klappernden Zähnen, aber einem breiten Grinsen im Gesicht.</p>
+<p>&nbsp;</p>
+<div id="map" style="height: 400px;">
+
+</div>
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+<canvas id="elevationChart">
+</canvas>
+</div>
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+<div class="gallery">
+<p><a href="img/20260330_092259.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_092259.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_100806.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_100806.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_131104.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_131104.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_134134.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_134134.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_134723.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_134723.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_135142.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_135142.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_135707.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_135707.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_140646.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_140646.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_140943.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_140943.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_142241.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_142241.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_143950.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_143950.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_143957.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_143957.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_144343.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_144343.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_144723.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_144723.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_144733.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_144733.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_150217.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_150217.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_150555.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_150555.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_155055.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_155055.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_155113.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_155113.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_164436.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_164436.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_165921.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_165921.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_165928.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_165928.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_170211.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_170211.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_170907.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_170907.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_171000.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_171000.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_171003.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_171003.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_171454.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_171454.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_171457.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_171457.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_171957.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_171957.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_172147.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_172147.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_173923.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_173923.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_174749.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_174749.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_180106.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_180106.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_180136.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_180136.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_180728.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_180728.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_181704.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_181704.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_181720.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_181720.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_181734.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_181734.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_181803.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_181803.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_181903.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_181903.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_182259.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_182259.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_182348.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_182348.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_182357.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_182357.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_182751.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_182751.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_182841.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_182841.webp" class="img-fluid"></a></p>
+<p><a href="img/20260330_182854.webp" class="lightbox" data-gallery="tour"><img src="img/20260330_182854.webp" class="img-fluid"></a></p>
+</div>
+<p>&nbsp;</p>
+</section>
+<section id="osterurlaub-2026-stand-aktuell" class="level3 trip-dashboard">
+<h3 class="anchored" data-anchor-id="osterurlaub-2026-stand-aktuell">Osterurlaub 2026: Stand aktuell</h3>
+<div class="trip-grid">
+<div class="trip-card">
+<div class="trip-value">
+128
+</div>
+<div class="trip-label">
+Kilometer
+</div>
+</div>
+<div class="trip-card">
+<div class="trip-value">
+2947
+</div>
+<div class="trip-label">
+Höhenmeter
+</div>
+</div>
+<div class="trip-card">
+<div class="trip-value">
+6h 49min
+</div>
+<div class="trip-label">
+Fahrzeit
+</div>
+</div>
+</div>
+</section>
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -916,6 +839,38 @@ May 20, 2023
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
