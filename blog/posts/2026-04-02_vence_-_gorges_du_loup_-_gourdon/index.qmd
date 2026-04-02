@@ -1,0 +1,337 @@
+---
+title: "Vence - Gorges du Loup - Gourdon"
+date: "2026-04-02"
+description: "122 km mit 2320 Hm"
+image: thumbnail.png
+
+draft: false
+trip: Osterurlaub 2026
+categories: [Osterurlaub 2026, Nizza]
+strava_id: 17952796830
+distance_km: 121.6
+elevation_m: 2320
+moving_time_min: 393
+
+format: 
+  html:
+    toc: false
+
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+lightbox:
+  match: auto
+---
+
+
+::: {.stats-grid-container}
+::: {.stats-grid}
+
+::: {.grid-item}
+{{< bi arrow-right-circle class="param-icon">}}
+<span class="stats-value">121.6</span>
+<span class="stats-label">Kilometer</span>
+:::
+
+::: {.grid-item}
+{{< bi arrow-up-right-circle class="param-icon">}}
+<span class="stats-value">2320</span>
+<span class="stats-label">Höhenmeter</span>
+:::
+
+::: {.grid-item}
+{{< bi clock-history class="param-icon">}}
+<span class="stats-value">6h 33min</span>
+<span class="stats-label">Fahrzeit</span>
+:::
+
+::: {.grid-item}
+{{< bi speedometer class="param-icon">}}
+<span class="stats-value">18.6</span>
+<span class="stats-label">km/h (51.6 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi lightning class="param-icon">}}
+<span class="stats-value">93.7</span>
+<span class="stats-label">Watt (279 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi heart-pulse class="param-icon">}}
+<span class="stats-value">126.7</span>
+<span class="stats-label">bpm (174.0 max.)</span>
+:::
+
+:::
+:::
+
+
+&nbsp;
+
+### Die "Vence-Pretzel"
+
+Tag 4 an der Côte d’Azur und wir haben heute die „Vence-Pretzel“ gebacken! 
+Der Start in Nizza war eher Slalom als Cruisen: Der Küstenradweg ist zwar gut 
+gemeint, gleicht aber eher einem bewegten Hindernisparcours. Zwischen Rollkoffern, 
+Promenaden-Flanierern und unvorhersehbaren Haken mussten wir höllisch aufpassen, 
+niemanden vom Asphalt zu fegen.  
+
+Richtig spannend wurde es bei der Jagd nach der V65, der Var-Küstenradroute. 
+Die Idee einer stillgelegten Bahntrasse klingt nach purer Idylle, entpuppte 
+sich aber als bockiges Labyrinth. Wir sind mit so viel Karacho an den 
+versteckten Abzweigungen vorbeigeprescht, dass wir uns im Fünf-Minuten-Takt 
+fluchend auf der Hauptstraße wiederfanden. Nach dem dritten unfreiwilligen 
+Loop haben wir das Projekt V65 vertagt und stattdessen die Gorges du Loup ins 
+Visier genommen. Eine bombastische Kulisse aus zerklüfteten Felsen und tiefen 
+Schluchten! Das Etappenziel Gourdon ist zwar bildhübsch, aber so dermaßen auf 
+Touristen getrimmt, dass man sich fast wie Requisiten im Freilichtmuseum vorkommt. 
+So haben wir uns heute den Trubel des Stadtkerns geschenkt und sind lieber direkt 
+unterhalb vorbeigedonnert.  
+
+Der Rückweg über die Nordwestauffahrt zum Col de Vence bot eine geniale neue 
+Perspektive zu den Vorjahren. Aber weil wir den Hals nicht voll bekamen, 
+mussten nach Vence noch zwei, drei „Hügelchen“ dran glauben. Ein letzter 
+Versuch auf der V65 Richtung Nordost klappte dann sogar reibungslos – bis zum 
+großen Komoot-Finale: Kurz vor Gattières schickte uns die App zielsicher auf 
+eine Waldtreppe. So what – das Rad zu tragen statt zu fahren sind wir ja gewohnt. 
+Das Tour-Ergebnis? Ein perfektes GPX-Kunstwerk und ein Tag voller Wahnsinns-Eindrücke!
+
+
+&nbsp;
+
+
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+
+
+
+
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+  <canvas id="elevationChart"></canvas>
+</div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+
+::: {.gallery}
+
+![Heutige Ausbeute nach dem Besuch bei Fabis Lieblings-Boulangerie. Aufgrund von Entscheidungsschwierigkeiten gab's zur Feier des Tages sogar 2 Teilchen... Na, dann steht dem gestärkten Start in den neuen Radl-Tag ja nichts mehr entgegen.](img/20260402_082224.webp){group="tour"}
+
+![Radweg entlang der Promenade des Anglais - stop and go mit vielen Ausweichmanövern.](img/20260402_103321.webp){group="tour"}
+
+![Vence: Innenstadt-Trubel](img/20260402_115459.webp){group="tour"}
+
+![](img/20260402_122022.webp){group="tour"}
+
+![](img/20260402_122825.webp){group="tour"}
+
+![V65, der Var-Küstenradweg, entlang einer stillgelegten Bahntrasse.](img/20260402_123456.webp){group="tour"}
+
+![Ein bisschen Schotter war auch dabei, allerdings relativ gut fahrbar.](img/20260402_124143.webp){group="tour"}
+
+![](img/20260402_124408.webp){group="tour"}
+
+![Blick auf den Col de Vence](img/20260402_125017.webp){group="tour"}
+
+![](img/20260402_130318.webp){group="tour"}
+
+![Zufahrt zu den Gorges du Loup](img/20260402_130324.webp){group="tour"}
+
+![](img/20260402_130720.webp){group="tour"}
+
+![](img/20260402_134305.webp){group="tour"}
+
+![](img/20260402_134334.webp){group="tour"}
+
+![Anstieg nach Gourdon](img/20260402_135907.webp){group="tour"}
+
+![](img/20260402_140449.webp){group="tour"}
+
+![](img/20260402_150234.webp){group="tour"}
+
+![Aufstieg zum Col de Vence](img/20260402_150250.webp){group="tour"}
+
+![](img/20260402_151236.webp){group="tour"}
+
+![](img/20260402_151259.webp){group="tour"}
+
+![](img/20260402_151305.webp){group="tour"}
+
+![](img/20260402_153645.webp){group="tour"}
+
+![Blick vom Col de Vence auf die Côte d'Azur...](img/20260402_161728.webp){group="tour"}
+
+![... und ins Hinterland](img/20260402_161733.webp){group="tour"}
+
+![](img/20260402_161744.webp){group="tour"}
+
+![Vorletzter Kraftakt des Tages: Anstieg nach Colomars](img/20260402_181438.webp){group="tour"}
+
+![](img/20260402_181439.webp){group="tour"}
+
+![](img/20260402_181918.webp){group="tour"}
+
+![](img/20260402_184532.webp){group="tour"}
+
+![Wir lassen die Tour auf einem herrlichen Schleichweg zurück nach Nizza ausklingen. Eine echte Herausforderung so kurz vorm Finale; hier waren einige (unerwartet steile) Rampen dabei.](img/20260402_185842.webp){group="tour"}
+
+![Und Tschüss; das war's für heute.](img/20260402_185006.webp){group="tour"}
+
+:::
+
+
+&nbsp;
+
+
+::: {.trip-dashboard}
+
+### Osterurlaub 2026: Stand aktuell
+
+<div class="trip-grid">
+
+<div class="trip-card">
+<div class="trip-value">440</div>
+<div class="trip-label">Kilometer</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">9144</div>
+<div class="trip-label">Höhenmeter</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">23h 24min</div>
+<div class="trip-label">Fahrzeit</div>
+</div>
+
+</div>
+
+:::
+
+
+
