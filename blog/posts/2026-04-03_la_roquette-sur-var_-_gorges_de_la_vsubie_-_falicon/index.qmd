@@ -1,0 +1,370 @@
+---
+title: "La Roquette-sur-Var - Gorges de la Vésubie - Falicon"
+date: "2026-04-03"
+description: "84 km mit 1727 Hm"
+image: thumbnail.png
+
+draft: false
+trip: Osterurlaub 2026
+categories: [Osterurlaub 2026, Nizza]
+strava_id: 17963480455
+distance_km: 83.5
+elevation_m: 1727
+moving_time_min: 270
+
+format: 
+  html:
+    toc: false
+
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+lightbox:
+  match: auto
+---
+
+
+::: {.stats-grid-container}
+::: {.stats-grid}
+
+::: {.grid-item}
+{{< bi arrow-right-circle class="param-icon">}}
+<span class="stats-value">83.5</span>
+<span class="stats-label">Kilometer</span>
+:::
+
+::: {.grid-item}
+{{< bi arrow-up-right-circle class="param-icon">}}
+<span class="stats-value">1727</span>
+<span class="stats-label">Höhenmeter</span>
+:::
+
+::: {.grid-item}
+{{< bi clock-history class="param-icon">}}
+<span class="stats-value">4h 30min</span>
+<span class="stats-label">Fahrzeit</span>
+:::
+
+::: {.grid-item}
+{{< bi speedometer class="param-icon">}}
+<span class="stats-value">18.5</span>
+<span class="stats-label">km/h (49.1 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi lightning class="param-icon">}}
+<span class="stats-value">92.7</span>
+<span class="stats-label">Watt (234 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi heart-pulse class="param-icon">}}
+<span class="stats-value">122.5</span>
+<span class="stats-label">bpm (169.0 max.)</span>
+:::
+
+:::
+:::
+
+
+&nbsp;
+
+### Felswände, Schluchten & Märchenwälder: Genussradeln in den Gorges de la Vésubie
+
+Was für ein herrlicher Tag, an dem einfach alles stimmte: 19°C, 
+Sonne satt und eine Route, die das Radlerherz von der ersten Minute an 
+höherschlagen ließ.  
+
+Schon der Auftakt über Castagniers und den Col de La Roquette-sur-Var 
+in Richtung Levens war schlichtweg bombastisch. 
+Während wir uns die engen Kehren hinaufschlängelten, boten sich uns 
+immer wieder grandiose Ausblicke über das weite Var-Tal. 
+Wir wunderten uns: Warum ist dieser schöne Col eigentlich nicht im 
+Katalog der quäldich-Passjagd verzeichnet? Wir waren kurz davor, 
+ihn für die Radsport-Community offiziell „nachzumelden“, 
+doch eine kurze Recherche durch die SoFaCycling-Detektei 
+brachte die Gewissheit: Der Col de La Roquette-sur-Var ist bereits Teil 
+des Anstiegs nach Levens. Ein Blick in unsere eigene Historie verriet 
+uns dann zudem, dass wir ihn in den letzten Jahren sogar schon 
+erfolgreich „gejagt“ hatten. Offenbar hatte er sich damals nicht so 
+tief eingeprägt wie heute, wo wir jeden Meter dieser Strecke in vollen 
+Zügen genossen haben.  
+
+Von Levens aus ging es weiter Richtung Duranus in 
+die beeindruckenden Gorges de la Vésubie. Die Straße ist hier förmlich 
+in die steilen Felswände gehauen, und der Blick in die tiefen 
+Schluchten ist so spektakulär, dass man sich kaum daran sattsehen kann. 
+Jede Kurve eröffnete eine neue, wilde Perspektive auf die gewaltigen 
+Felsformationen.  
+
+Als wäre das noch nicht genug, gönnten wir uns auf 
+dem Rückweg noch einen kleinen, aber feinen Bonusclimb, der uns 
+besonders am Herzen liegt. Von Tourrette-Levens führt der Weg 
+hoch nach Falicon durch eine Art verwunschenen Märchenwald, in dem 
+sich die Serpentinen sanft zwischen den Bäumen hindurchwinden.  
+
+Heute war kein Tag der Rekorde oder der endlosen Höhenmeter, sondern 
+ein echter Ruhetag voller Genuss und schöner Momente. Jetzt lassen wir 
+diesen perfekten Tag in unserem Lieblingsrestaurant in Nizza ausklingen und 
+schwelgen noch ein wenig in den Bildern dieser prächtigen Landschaft.  
+
+Hattet ihr auch schon mal das Gefühl, einen Pass komplett neu zu entdecken, 
+obwohl ihr ihn laut Statistik schon längst beradelt habt?
+
+&nbsp;
+
+
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+
+
+
+
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+  <canvas id="elevationChart"></canvas>
+</div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+
+::: {.gallery}
+
+![](img/20260403_112209.webp){group="tour"}
+
+![](img/20260403_112754.webp){group="tour"}
+
+![](img/20260403_113136.webp){group="tour"}
+
+![](img/20260403_114948.webp){group="tour"}
+
+![](img/20260403_114950.webp){group="tour"}
+
+![](img/20260403_114953.webp){group="tour"}
+
+![](img/20260403_115640.webp){group="tour"}
+
+![](img/20260403_120521.webp){group="tour"}
+
+![](img/20260403_121205.webp){group="tour"}
+
+![](img/20260403_124823.webp){group="tour"}
+
+![](img/20260403_125417.webp){group="tour"}
+
+![](img/20260403_125421.webp){group="tour"}
+
+![](img/20260403_130510.webp){group="tour"}
+
+![](img/20260403_130622.webp){group="tour"}
+
+![](img/20260403_131237.webp){group="tour"}
+
+![](img/20260403_132427.webp){group="tour"}
+
+![](img/20260403_132459.webp){group="tour"}
+
+![](img/20260403_132506.webp){group="tour"}
+
+![](img/20260403_133017.webp){group="tour"}
+
+![](img/20260403_133924.webp){group="tour"}
+
+![](img/20260403_134436.webp){group="tour"}
+
+![](img/20260403_141826.webp){group="tour"}
+
+![](img/20260403_142106.webp){group="tour"}
+
+![](img/20260403_142113.webp){group="tour"}
+
+![](img/20260403_142132.webp){group="tour"}
+
+![](img/20260403_142249.webp){group="tour"}
+
+![](img/20260403_144407.webp){group="tour"}
+
+![](img/20260403_144555.webp){group="tour"}
+
+![](img/20260403_145233.webp){group="tour"}
+
+![](img/20260403_145259.webp){group="tour"}
+
+![](img/20260403_145426.webp){group="tour"}
+
+![](img/20260403_150134.webp){group="tour"}
+
+![](img/20260403_150204.webp){group="tour"}
+
+![](img/20260403_151239.webp){group="tour"}
+
+![](img/20260403_151529.webp){group="tour"}
+
+![](img/20260403_151534.webp){group="tour"}
+
+![](img/20260403_151541.webp){group="tour"}
+
+![](img/20260403_162600.webp){group="tour"}
+
+![](img/20260403_162938.webp){group="tour"}
+
+![](img/20260403_191105.webp){group="tour"}
+
+![](img/20260403_192021.webp){group="tour"}
+
+:::
+
+
+&nbsp;
+
+
+::: {.trip-dashboard}
+
+### Osterurlaub 2026: Stand aktuell
+
+<div class="trip-grid">
+
+<div class="trip-card">
+<div class="trip-value">524</div>
+<div class="trip-label">Kilometer</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">10871</div>
+<div class="trip-label">Höhenmeter</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">27h 54min</div>
+<div class="trip-label">Fahrzeit</div>
+</div>
+
+</div>
+
+:::
+
+
+
