@@ -1,0 +1,378 @@
+---
+title: "La Tour - Madone d'Utelle - Gorges de la Vésubie"
+date: "2026-04-06"
+description: "87 km mit 2005 Hm"
+image: thumbnail.png
+
+draft: false
+trip: Osterurlaub 2026
+categories: [Osterurlaub 2026, Nizza]
+strava_id: 18002922335
+distance_km: 86.6
+elevation_m: 2005
+moving_time_min: 287
+
+format: 
+  html:
+    toc: false
+
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+lightbox:
+  match: auto
+---
+
+
+::: {.stats-grid-container}
+::: {.stats-grid}
+
+::: {.grid-item}
+{{< bi arrow-right-circle class="param-icon">}}
+<span class="stats-value">86.6</span>
+<span class="stats-label">Kilometer</span>
+:::
+
+::: {.grid-item}
+{{< bi arrow-up-right-circle class="param-icon">}}
+<span class="stats-value">2005</span>
+<span class="stats-label">Höhenmeter</span>
+:::
+
+::: {.grid-item}
+{{< bi clock-history class="param-icon">}}
+<span class="stats-value">4h 47min</span>
+<span class="stats-label">Fahrzeit</span>
+:::
+
+::: {.grid-item}
+{{< bi speedometer class="param-icon">}}
+<span class="stats-value">18.1</span>
+<span class="stats-label">km/h (76.7 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi lightning class="param-icon">}}
+<span class="stats-value">95.2</span>
+<span class="stats-label">Watt (243 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi heart-pulse class="param-icon">}}
+<span class="stats-value">123.9</span>
+<span class="stats-label">bpm (186.0 max.)</span>
+:::
+
+:::
+:::
+
+
+&nbsp;
+
+### Revanche am Madone d’Utelle
+
+Was für ein Hickhack heute Morgen! Erst haben wir die ursprüngliche
+Tourplanung wegen kollektiven Verschlafens über den Haufen geworfen, nur um
+wenig später vor lauter Tatendrang prompt doch genau diese Richtung
+einzuschlagen… das Navi wusste nämlich noch nichts von der Planänderung.
+Doch unser neues Ziel stand längst fest, denn wir hatten mit dem Madone
+d’Utelle noch eine Rechnung offen. Als wir uns 2023 das erste Mal hier
+hochkämpften, waren wir völlig durchgefroren. Aufgrund des allseits
+hochgelobten Ausblicks bissen wir uns jedoch bis zum Passschild durch.
+Und? (a) Wir sahen… rein gar nichts! Die Wolken waren so dicht, dass wir
+keine drei Meter weit blicken konnten. (b) Für die Eintragung der
+erfolgreichen Befahrung in unserem Palmarès der quäldich-Passjagd hätte man
+auf dem Berggrat ein paar hundert Meter weiter am Kloster entlang zu einem
+Aussichtspunkt und zu einer Antennenanlage fahren müssen. Doppel-Fail!
+Heute folgte die süße Revanche: Bei strahlendem Sonnenschein knackten wir
+nicht nur den Berg, sondern stellten auch direkt eine neue persönliche
+Bestzeit auf! Selbstverständlich fuhren wir diesmal bis zum allerletzten
+Ende des asphaltierten Parts.  
+
+Die Auffahrt aus dem Tinée-Tal über La Tour entpuppte sich als wahres
+Serpentinen-Paradies, das allerdings nach dem Dorf seinen Charakter änderte:
+Auf rauem Asphalt und mit giftigen Steigungen ging es bis zum Abzweig der
+Stichstraße. Das Beste: Über 20 km lang begegneten wir keinem einzigen Auto
+– Radsport-Einsamkeit pur!  
+
+Oben angekommen auf 1.174 m ü. NN bot sich ein Panorama, das sprachlos
+macht. Wir freuten uns über den erneuten Blick auf den tollen Mont Vial,
+den wir vor ein paar Tagen erklommen hatten. Fabi war sich zudem sicher,
+in der Ferne sogar den Cime de la Bonette glitzern zu sehen, noch tief in
+Schnee gehüllt. Eine kurze Recherche gab ihm recht.
+Nice to know: Wer zur Madone d‘Utelle hochkurbelt, tritt in prominente
+Pedale: Erst 2024 war sie erneut Ziel einer Bergankunft bei Paris–Nizza,
+die der Profi Aleksandr Vlasov für sich entschied. Neben dem sportlichen
+Reiz ist der Gipfel mit seinem Sanctuaire ein geschichtsträchtiger Ort;
+die Wallfahrtskapelle geht laut Legende auf das Jahr 850 zurück. Sie wurde
+von Seeleuten gegründet, die nach einem Sturm heil die Küste erreichten
+und die Kapelle als Dank auf diesem weithin sichtbaren Punkt errichteten.
+Noch heute dient die Madone in der Schifffahrt als Orientierung.  
+
+Den krönenden Abschluss bildete der Rückweg durch die Gorges de la
+Vésubie. Das Lichtspiel am späten Nachmittag war dort vollkommen anders als
+am Vormittag und tauchte die zerklüfteten Felswände in ein spektakuläres
+Gold. Fazit: Ein chaotischer Morgen sagt rein gar nichts über den Verlauf des
+Tages aus!
+
+&nbsp;
+
+
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+
+
+
+
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+  <canvas id="elevationChart"></canvas>
+</div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+
+::: {.gallery}
+
+![](img/20260406_072301.webp){group="tour"}
+
+![](img/20260406_115331.webp){group="tour"}
+
+![](img/20260406_122042.webp){group="tour"}
+
+![](img/20260406_122908.webp){group="tour"}
+
+![](img/20260406_123640.webp){group="tour"}
+
+![](img/20260406_123836.webp){group="tour"}
+
+![](img/20260406_125218.webp){group="tour"}
+
+![](img/20260406_125235.webp){group="tour"}
+
+![](img/20260406_125421.webp){group="tour"}
+
+![](img/20260406_125515.webp){group="tour"}
+
+![](img/20260406_131051.webp){group="tour"}
+
+![](img/20260406_132517.webp){group="tour"}
+
+![](img/20260406_133225.webp){group="tour"}
+
+![](img/20260406_134821.webp){group="tour"}
+
+![](img/20260406_135437.webp){group="tour"}
+
+![](img/20260406_142241.webp){group="tour"}
+
+![](img/20260406_142745.webp){group="tour"}
+
+![](img/20260406_142943.webp){group="tour"}
+
+![](img/20260406_143553.webp){group="tour"}
+
+![](img/20260406_144001.webp){group="tour"}
+
+![](img/20260406_144301.webp){group="tour"}
+
+![](img/20260406_144311.webp){group="tour"}
+
+![](img/20260406_144327.webp){group="tour"}
+
+![](img/20260406_144407.webp){group="tour"}
+
+![](img/20260406_144511.webp){group="tour"}
+
+![](img/20260406_144926.webp){group="tour"}
+
+![](img/20260406_145107.webp){group="tour"}
+
+![](img/20260406_145110.webp){group="tour"}
+
+![](img/20260406_145813.webp){group="tour"}
+
+![](img/20260406_145823.webp){group="tour"}
+
+![](img/20260406_150620.webp){group="tour"}
+
+![](img/20260406_150644.webp){group="tour"}
+
+![](img/20260406_150927.webp){group="tour"}
+
+![](img/20260406_163251.webp){group="tour"}
+
+![](img/20260406_163316.webp){group="tour"}
+
+![](img/20260406_164609.webp){group="tour"}
+
+![](img/20260406_164811.webp){group="tour"}
+
+![](img/20260406_171803.webp){group="tour"}
+
+![](img/20260406_171920.webp){group="tour"}
+
+![](img/20260406_172041.webp){group="tour"}
+
+![](img/20260406_172050.webp){group="tour"}
+
+![](img/20260406_174006.webp){group="tour"}
+
+![](img/20260406_174219.webp){group="tour"}
+
+:::
+
+
+&nbsp;
+
+
+::: {.trip-dashboard}
+
+### Osterurlaub 2026: Stand aktuell
+
+<div class="trip-grid">
+
+<div class="trip-card">
+<div class="trip-value">834</div>
+<div class="trip-label">Kilometer</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">17807</div>
+<div class="trip-label">Höhenmeter</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">44h 54min</div>
+<div class="trip-label">Fahrzeit</div>
+</div>
+
+</div>
+
+:::
+
+
+
