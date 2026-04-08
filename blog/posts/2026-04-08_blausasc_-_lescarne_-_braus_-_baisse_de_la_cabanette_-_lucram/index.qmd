@@ -1,0 +1,373 @@
+---
+title: "Blausasc - L'Escarène - Braus - Baisse de la Cabanette - Lucéram"
+date: "2026-04-08"
+description: "83 km mit 1815 Hm"
+image: thumbnail.png
+
+draft: false
+trip: Osterurlaub 2026
+categories: [Osterurlaub 2026, Nizza]
+strava_id: 18028720251
+distance_km: 82.8
+elevation_m: 1815
+moving_time_min: 252
+
+format: 
+  html:
+    toc: false
+
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+lightbox:
+  match: auto
+---
+
+
+::: {.stats-grid-container}
+::: {.stats-grid}
+
+::: {.grid-item}
+{{< bi arrow-right-circle class="param-icon">}}
+<span class="stats-value">82.8</span>
+<span class="stats-label">Kilometer</span>
+:::
+
+::: {.grid-item}
+{{< bi arrow-up-right-circle class="param-icon">}}
+<span class="stats-value">1815</span>
+<span class="stats-label">Höhenmeter</span>
+:::
+
+::: {.grid-item}
+{{< bi clock-history class="param-icon">}}
+<span class="stats-value">4h 12min</span>
+<span class="stats-label">Fahrzeit</span>
+:::
+
+::: {.grid-item}
+{{< bi speedometer class="param-icon">}}
+<span class="stats-value">19.7</span>
+<span class="stats-label">km/h (50.4 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi lightning class="param-icon">}}
+<span class="stats-value">103.9</span>
+<span class="stats-label">Watt (278 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi heart-pulse class="param-icon">}}
+<span class="stats-value">126.8</span>
+<span class="stats-label">bpm (172.0 max.)</span>
+:::
+
+:::
+:::
+
+
+&nbsp;
+
+### Turini-Flitzer – Kurz, aber knackig… und schneller als geplant
+
+Der Tag begann – völlig unschuldig – mit einem „Nüchtern“-Spaziergang zum 
+Marché de la Libération. Obst und Gemüse in allen erdenklichen Farben, 
+fangfrischer Fisch und allerlei Meeresgetier, von dem wir bislang nicht 
+wussten, dass man es überhaupt essen kann. Mit prall gefüllten Taschen 
+und großen Plänen ging’s zurück: 
+Ausgedehntes Frühstück, strahlende Sonne, Vorfreude auf die Tour – 
+alles perfekt. 
+
+Bis Fabi erschrocken feststellte, dass seine Bremsbeläge nach den wilden 
+Abfahrten der letzten Tage eher ein philosophisches Konzept als ein 
+tatsächliches Bauteil waren. „Dauert 5 Minuten.“ Klar. 
+Nach 30 Minuten, einem halben Liter Schweißverlust 
+und leichten Zweifeln an der allgemeingültigen Definition von Zeit war es 
+dann so weit: Abfahrt. Fast 13 Uhr. Für über 80 km und fast 2000 Hm. 
+Ambitioniert? Vielleicht. Aber better safe than sorry – die Bremsen müssen 
+hier tadellos funktionieren!
+
+Unsere Tour führte uns zunächst über Blausasc zu unserer Lieblingsauffahrt 
+am Col de Braus. Von dort ging es weiter über den Col de l’Ablé zur Baisse de 
+la Cabanette. Mit 1372 m erreichten wir hier den höchsten Punkt des Tages. 
+Die Cabanette ist quasi der "geheime Star" des Turini: Sie bildet mit ihren 
+wunderhübschen, eng gestaffelten Kehren den eigentlich besten Streckenabschnitt 
+des Cols. Die eigentliche Passhöhe des Turini schenkten wir uns heute ganz bewusst. 
+Warum? Weil nach diesen traumhaften Kehren nur noch ein nahezu endloser, recht 
+flacher Pert bis zum offiziellen Schild folgt. Effizienz ist alles – und wir 
+haben schließlich schon mehrfache Turini-Einträge in unserem Palmarès.
+
+Was dann folgte, war… nun ja… offiziell eine „lockere Fahrt“. Inoffiziell: 
+1600 Höhenmeter Dauerpower mit Gequatsche, Gelächter und einem fliegenden 
+Baguette-Picknick auf dem Rad. Trotz der massiven Verspätung beim Start 
+geschah das Unvorstellbare: Nach etwa 1000 Hm warf ich einen Blick auf die Uhr 
+– *Moment mal… so spät ist es gar nicht?!* Die Beine waren heute offensichtlich 
+im Angriffsmodus. Lektion des Tages: Maximale Verspätung = maximale Performance.
+
+Anstatt Zeit zu verdatteln, sammelten wir heute Bestzeiten. 
+Zuerst am Col de Braus (unsere vierte Auffahrt dort – Boom!), 
+dicht gefolgt von einer neuen Bestmarke am Col de l'Ablé. Dann wurde es in 
+den legendären Kehren unterhalb der Cabanette richtig ernst. Die Straße 
+schraubt sich dort so steil und schön den Berg hinauf, dass das Gequatsche 
+zwar munter weiterging, das Lachen aber merklich keuchender wurde. Und das 
+Baguette? Längst Geschichte. Das war der Moment, in dem Fabi begann, 
+die Abendplanung zu hinterfragen: „Salat? Ernsthaft? Nach dem hier?!“ 
+Doch erstmal: weiter hoch. Und wie. Bestzeit Nummer 3.
+
+Die Abfahrt über Lucéram und l’Escarène zurück Richtung Nizza war schnell, 
+flüssig und berauschend. Doch wir hatten noch eine Rechnung offen: Den 
+„Chemin Abbaye Saint-Pons Climb“ von La Trinité rein nach Nizza. Also nochmal 
+alles reinwerfen, was noch irgendwo in den Waden versteckt war – Vollgas. 
+Ergebnis: Bestzeit Nummer 4. 
+
+Überglücklich und leicht verdattert ob der ungewohnt frühen Rückkehr-Uhrzeit 
+spulten wir die letzten Kilometer ab. Die Apothekenanzeige am Straßenrand 
+meldete 32°C, die Sicht war glasklar und im Hintergrund leuchteten die 
+schneebedeckten Gipfel der Seealpen. Ein Tag wie aus dem Radsport-Bilderbuch. 
+
+Und nun? Wir lassen ihn uns schmecken. Unseren wohlverdienten… Salat. 
+Und sogar Fabi ist angesichts der frischen Zutaten vom Markt restlos 
+glücklich.
+
+&nbsp;
+
+
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+
+
+
+
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+  <canvas id="elevationChart"></canvas>
+</div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+
+::: {.gallery}
+
+![](img/20260408_085124.webp){group="tour"}
+
+![](img/20260408_090924.webp){group="tour"}
+
+![](img/20260408_092457.webp){group="tour"}
+
+![](img/20260408_092508.webp){group="tour"}
+
+![](img/20260408_120419.webp){group="tour"}
+
+![](img/20260408_131336.webp){group="tour"}
+
+![](img/20260408_133225.webp){group="tour"}
+
+![](img/20260408_134924.webp){group="tour"}
+
+![](img/20260408_135710.webp){group="tour"}
+
+![](img/20260408_142712.webp){group="tour"}
+
+![](img/20260408_142747.webp){group="tour"}
+
+![](img/20260408_143008.webp){group="tour"}
+
+![](img/20260408_143022.webp){group="tour"}
+
+![](img/20260408_143640.webp){group="tour"}
+
+![](img/20260408_143819.webp){group="tour"}
+
+![](img/20260408_143842.webp){group="tour"}
+
+![](img/20260408_144103.webp){group="tour"}
+
+![](img/20260408_144603.webp){group="tour"}
+
+![](img/20260408_145749.webp){group="tour"}
+
+![](img/20260408_152333.webp){group="tour"}
+
+![](img/20260408_152339.webp){group="tour"}
+
+![](img/20260408_152545.webp){group="tour"}
+
+![](img/20260408_152802.webp){group="tour"}
+
+![](img/20260408_153100.webp){group="tour"}
+
+![](img/20260408_153204.webp){group="tour"}
+
+![](img/20260408_153427.webp){group="tour"}
+
+![](img/20260408_153428.webp){group="tour"}
+
+![](img/20260408_155714.webp){group="tour"}
+
+![](img/20260408_160904.webp){group="tour"}
+
+![](img/20260408_172848.webp){group="tour"}
+
+![](img/20260408_174118.webp){group="tour"}
+
+![](img/20260408_174122.webp){group="tour"}
+
+![](img/20260408_190932.webp){group="tour"}
+
+:::
+
+
+&nbsp;
+
+
+::: {.trip-dashboard}
+
+### Osterurlaub 2026: Stand aktuell
+
+<div class="trip-grid">
+
+<div class="trip-card">
+<div class="trip-value">1027</div>
+<div class="trip-label">Kilometer</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">21789</div>
+<div class="trip-label">Höhenmeter</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">54h 47min</div>
+<div class="trip-label">Fahrzeit</div>
+</div>
+
+</div>
+
+:::
+
+
+
