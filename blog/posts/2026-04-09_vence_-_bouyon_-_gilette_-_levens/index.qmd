@@ -1,0 +1,368 @@
+---
+title: "Vence - Bouyon - Gilette - Levens"
+date: "2026-04-09"
+description: "144 km mit 2358 Hm"
+image: thumbnail.png
+
+draft: false
+trip: Osterurlaub 2026
+categories: [Osterurlaub 2026, Nizza]
+strava_id: 18042488154
+distance_km: 144.2
+elevation_m: 2358
+moving_time_min: 402
+
+format: 
+  html:
+    toc: false
+
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+lightbox:
+  match: auto
+---
+
+
+::: {.stats-grid-container}
+::: {.stats-grid}
+
+::: {.grid-item}
+{{< bi arrow-right-circle class="param-icon">}}
+<span class="stats-value">144.2</span>
+<span class="stats-label">Kilometer</span>
+:::
+
+::: {.grid-item}
+{{< bi arrow-up-right-circle class="param-icon">}}
+<span class="stats-value">2358</span>
+<span class="stats-label">Höhenmeter</span>
+:::
+
+::: {.grid-item}
+{{< bi clock-history class="param-icon">}}
+<span class="stats-value">6h 42min</span>
+<span class="stats-label">Fahrzeit</span>
+:::
+
+::: {.grid-item}
+{{< bi speedometer class="param-icon">}}
+<span class="stats-value">21.5</span>
+<span class="stats-label">km/h (54.2 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi lightning class="param-icon">}}
+<span class="stats-value">99.7</span>
+<span class="stats-label">Watt (263 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi heart-pulse class="param-icon">}}
+<span class="stats-value">126.0</span>
+<span class="stats-label">bpm (168.0 max.)</span>
+:::
+
+:::
+:::
+
+
+&nbsp;
+
+### Hinterland-Kontraste
+
+Unsere heutige Runde durch das Hinterland der Côte d'Azur war eine echte 
+Achterbahnfahrt der Eindrücke – sowohl landschaftlich als auch klimatisch. 
+Hätte uns heute Morgen jemand prophezeit, dass wir uns wie im tiefsten 
+Hochsommer fühlen würden, hätten wir wohl nur ungläubig gelächelt. 
+Doch die Realität war unerbittlich:
+Es war krachend heiß, befand sogar die „Frostbeule“ Sophie. Vom milden
+Frühling fehlte jede Spur, während wir uns durch eine Szenerie arbeiteten, 
+die sich ständig neu erfand. 
+
+Der Tag begann spektakulär am Col de Vence. Es ist immer wieder
+faszinierend, wie schnell man vergisst, dass die Küste nur einen Katzensprung
+entfernt ist. Die karge, fast surreale Mondlandschaft dort oben hat eine ganz
+eigene, stille Faszination, die uns jedes Mal aufs Neue in ihren Bann zieht. 
+
+Doch das Bild wandelte sich radikal, als wir die Balkonstraße am Ferres-Pass
+erreichten. Sie ist ein absolutes Highlight der Region: Man blickt von oben
+in tiefe, schwindelerregende Schluchten, während sich schroffe Felswände und
+sattgrüne Berge vor einem ausbreiten. Dieser Blick aus der Vogelperspektive
+auf die wilde Natur ist kaum in Worte zu fassen. 
+
+In Roquestéron änderte sich das Bild erneut: Nach einer berauschenden Abfahrt 
+ragten die begrünten Berge und mächtigen Felsformationen, die wir eben noch
+überflogen hatten, nun steil und imposant über uns auf – ein
+Perspektivwechsel, der die gewaltigen Dimensionen dieser Landschaft erst so
+richtig verdeutlicht. Voller Endorphine radelten wir weiter zum
+wunderschönen Örtchen Gilette, das wie ein Adlerhorst über dem Tal thront. 
+
+Eigentlich sah unser Plan für den Rückweg eine entspannte, flache
+Küstenetappe vor. Aber ganz ehrlich? Der Wind hat uns so genervt, dass wir
+kurzfristig umdisponiert haben. Wer uns kennt, weiß: Wir scheuen selten
+zusätzliche Höhenmeter – erst recht nicht, wenn wir diese gegen eine belebte
+Hauptstraße mit Windlotterie eintauschen können. 
+Kurzerhand wurde der Plan also über den Haufen geworfen. Während andere wohl 
+froh über den flachen Ausklang gewesen wären, zog es uns zurück in die Hügel. 
+Tja, bei uns muss es am Ende eben doch immer bergauf gehen. 
+
+Ein intensiver Tag, der so abwechslungsreich wie wunderbar war.
+
+&nbsp;
+
+
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+
+
+
+
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+  <canvas id="elevationChart"></canvas>
+</div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+
+::: {.gallery}
+
+![](img/20260409_102008.webp){group="tour"}
+
+![](img/20260409_102013.webp){group="tour"}
+
+![](img/20260409_103735.webp){group="tour"}
+
+![](img/20260409_104643.webp){group="tour"}
+
+![](img/20260409_113619.webp){group="tour"}
+
+![](img/20260409_114036.webp){group="tour"}
+
+![](img/20260409_114504.webp){group="tour"}
+
+![](img/20260409_120537.webp){group="tour"}
+
+![](img/20260409_120544.webp){group="tour"}
+
+![](img/20260409_121126.webp){group="tour"}
+
+![](img/20260409_121133.webp){group="tour"}
+
+![](img/20260409_121329.webp){group="tour"}
+
+![](img/20260409_121711.webp){group="tour"}
+
+![](img/20260409_122102.webp){group="tour"}
+
+![](img/20260409_122112.webp){group="tour"}
+
+![](img/20260409_122322.webp){group="tour"}
+
+![](img/20260409_123349.webp){group="tour"}
+
+![](img/20260409_123950.webp){group="tour"}
+
+![](img/20260409_130339.webp){group="tour"}
+
+![](img/20260409_130422.webp){group="tour"}
+
+![](img/20260409_130509.webp){group="tour"}
+
+![](img/20260409_130754.webp){group="tour"}
+
+![](img/20260409_130803.webp){group="tour"}
+
+![](img/20260409_131228.webp){group="tour"}
+
+![](img/20260409_131821.webp){group="tour"}
+
+![](img/20260409_132201.webp){group="tour"}
+
+![](img/20260409_134514.webp){group="tour"}
+
+![](img/20260409_134851.webp){group="tour"}
+
+![](img/20260409_134904.webp){group="tour"}
+
+![](img/20260409_134920.webp){group="tour"}
+
+![](img/20260409_134938.webp){group="tour"}
+
+![](img/20260409_135127.webp){group="tour"}
+
+![](img/20260409_135225.webp){group="tour"}
+
+![](img/20260409_142751.webp){group="tour"}
+
+![](img/20260409_143224.webp){group="tour"}
+
+![](img/20260409_150927.webp){group="tour"}
+
+![](img/20260409_150951.webp){group="tour"}
+
+![](img/20260409_151004.webp){group="tour"}
+
+![](img/20260409_152146.webp){group="tour"}
+
+![](img/20260409_163527.webp){group="tour"}
+
+![](img/20260409_165245.webp){group="tour"}
+
+:::
+
+
+&nbsp;
+
+
+::: {.trip-dashboard}
+
+### Osterurlaub 2026: Stand aktuell
+
+<div class="trip-grid">
+
+<div class="trip-card">
+<div class="trip-value">1172</div>
+<div class="trip-label">Kilometer</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">24147</div>
+<div class="trip-label">Höhenmeter</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">61h 29min</div>
+<div class="trip-label">Fahrzeit</div>
+</div>
+
+</div>
+
+:::
+
+
+
