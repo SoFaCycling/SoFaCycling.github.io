@@ -1,0 +1,292 @@
+---
+title: "Mont Chauve d'Aspremont"
+date: "2026-04-11"
+description: "25 km mit 804 Hm"
+image: thumbnail.png
+
+draft: false
+trip: Osterurlaub 2026
+categories: [Osterurlaub 2026, Nizza]
+strava_id: 18061797137
+distance_km: 25.0
+elevation_m: 804
+moving_time_min: 90
+
+format: 
+  html:
+    toc: false
+
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+lightbox:
+  match: auto
+---
+
+
+::: {.stats-grid-container}
+::: {.stats-grid}
+
+::: {.grid-item}
+{{< bi arrow-right-circle class="param-icon">}}
+<span class="stats-value">25.0</span>
+<span class="stats-label">Kilometer</span>
+:::
+
+::: {.grid-item}
+{{< bi arrow-up-right-circle class="param-icon">}}
+<span class="stats-value">804</span>
+<span class="stats-label">Höhenmeter</span>
+:::
+
+::: {.grid-item}
+{{< bi clock-history class="param-icon">}}
+<span class="stats-value">1h 30min</span>
+<span class="stats-label">Fahrzeit</span>
+:::
+
+::: {.grid-item}
+{{< bi speedometer class="param-icon">}}
+<span class="stats-value">16.7</span>
+<span class="stats-label">km/h (52.4 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi lightning class="param-icon">}}
+<span class="stats-value">111.5</span>
+<span class="stats-label">Watt (228 max.)</span>
+:::
+
+::: {.grid-item}
+{{< bi heart-pulse class="param-icon">}}
+<span class="stats-value">140.1</span>
+<span class="stats-label">bpm (173.0 max.)</span>
+:::
+
+:::
+:::
+
+
+&nbsp;
+
+### ... und einer geht noch!
+
+Eigentlich hieß es bereits am Freitag: „Au revoir, Nice!“ Doch wer uns kennt, 
+der ahnt es wohl: Wenn der Check-out erst um 11:00 Uhr drückt, passt da noch 
+eine Schippe Asphalt dazwischen! In aller Herrgottsfrühe (okay, nach dem 
+Sonnenaufgang) sind wir losgeschossen. 
+
+Der Mont Chauve d’Aspremont rief, und wir lieferten. Es war kühl und frisch, 
+doch der aufkommende Abschiedsschmerz wirkte wie ein Katalysator. In den eng 
+gewundenen Kehren erhaschten wir letzte Blicke auf Nizza, das glitzernde Meer 
+und die atemberaubenden Hügel der Seealpen, bevor uns oben die Nebelwand 
+verschluckte. Am Gipfel, auf dem das alte Fort thront, gab es zwar statt 
+Panorama nur graue Suppe, aber das Gefühl war trotzdem unschlagbar: Bestzeit! 
+
+Nizza, du hast uns auch im vierten Osterurlaub wieder voll erwischt. Danach 
+hieß es: 14 Stunden Autobahn-Tristesse. Aber die Zeit verging fast wie im Flug, 
+weil wir in Erinnerungen an diesen grandiosen Trip schwelgten. Es gab 
+kein einzelnes Highlight, weil das Gesamtpaket aus Wetter, Strecken und Laune 
+einfach perfekt war. Ende gut, alles gut – wir sind glücklich (und ein bisschen 
+wehmütig) wieder zu Hause gelandet.
+
+
+&nbsp;
+
+
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+
+
+
+
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+  <canvas id="elevationChart"></canvas>
+</div>
+
+<script>
+fetch("track.json")
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
+
+::: {.gallery}
+
+![](img/20260411_081029.webp){group="tour"}
+
+![](img/20260411_081748.webp){group="tour"}
+
+![](img/20260411_082239.webp){group="tour"}
+
+![](img/20260411_082340.webp){group="tour"}
+
+![](img/20260411_082718.webp){group="tour"}
+
+![](img/20260411_082830.webp){group="tour"}
+
+![](img/20260411_082836.webp){group="tour"}
+
+![](img/20260411_083456.webp){group="tour"}
+
+![](img/20260411_083545.webp){group="tour"}
+
+![](img/20260411_084536.webp){group="tour"}
+
+![](img/20260411_085014.webp){group="tour"}
+
+![](img/20260411_085059.webp){group="tour"}
+
+:::
+
+
+&nbsp;
+
+
+::: {.trip-dashboard}
+
+### Osterurlaub 2026: Stand aktuell
+
+<div class="trip-grid">
+
+<div class="trip-card">
+<div class="trip-value">1301</div>
+<div class="trip-label">Kilometer</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">27264</div>
+<div class="trip-label">Höhenmeter</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">68h 28min</div>
+<div class="trip-label">Fahrzeit</div>
+</div>
+
+</div>
+
+:::
+
+
+

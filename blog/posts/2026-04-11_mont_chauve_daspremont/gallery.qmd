@@ -1,0 +1,27 @@
+::: {.gallery}
+
+![](img/20260411_081029.webp){group="tour"}
+
+![](img/20260411_081748.webp){group="tour"}
+
+![](img/20260411_082239.webp){group="tour"}
+
+![](img/20260411_082340.webp){group="tour"}
+
+![](img/20260411_082718.webp){group="tour"}
+
+![](img/20260411_082830.webp){group="tour"}
+
+![](img/20260411_082836.webp){group="tour"}
+
+![](img/20260411_083456.webp){group="tour"}
+
+![](img/20260411_083545.webp){group="tour"}
+
+![](img/20260411_084536.webp){group="tour"}
+
+![](img/20260411_085014.webp){group="tour"}
+
+![](img/20260411_085059.webp){group="tour"}
+
+:::
