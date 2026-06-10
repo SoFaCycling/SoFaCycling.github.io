@@ -24,7 +24,7 @@ POST_DIR = "blog/posts"
 TEMPLATE_FILE = "scripts/post_template.qmd"
 
 # Working mode for activity pull
-MODE = "static_id"
+MODE = "latest_ride"
 # options:
 # "offline_id"
 # "static_id"
@@ -42,7 +42,7 @@ TRIP_NAME = None
 # for activities outside a trip
 
 # Further categories
-CATEGORIES = ["Frankreich", "Granfondo"]
+CATEGORIES = ["Bestensee"]
 # options:
 # CATEGORIES = ["category 1", "category 2"]
 # CATEGORIES = None
