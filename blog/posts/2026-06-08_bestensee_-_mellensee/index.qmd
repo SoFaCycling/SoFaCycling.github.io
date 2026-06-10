@@ -71,6 +71,10 @@ lightbox:
 
 &nbsp;
 
+### Feierabend, wie das duftet... 
+
+Eine schöne Feierabendrunde um den Mellensee ist immer drin. 
+So lassen sich die letzten Sonnenstrahlen des Tages doch am besten genießen. 
 
 
 &nbsp;
@@ -211,6 +215,12 @@ fetch("track.json")
 
 
 ::: {.gallery}
+
+![](img/20260607_192620.webp){group="tour"}
+
+![](img/20260607_192711.webp){group="tour"}
+
+![](img/20260607_193340.webp){group="tour"}
 
 :::
 
