@@ -636,6 +636,13 @@ os.makedirs(post_path, exist_ok=True)
 images_dir = os.path.join(post_path, "img")
 os.makedirs(images_dir, exist_ok=True)
 
+# force git to version empty img folder using a placeholder
+gitkeep = os.path.join(images_dir, ".gitkeep")
+
+if not os.path.exists(gitkeep):
+    with open(gitkeep, "w"):
+        pass
+
 # photo preprocessing pipeline
 rename_images_by_date(images_dir)
 caption_cache = convert_images_to_webp(images_dir)
