@@ -18,9 +18,17 @@ jobs:
         with:
           use-public-rspm: true
 
+      - name: Set R library path
+        run: echo "R_LIBS_USER=~/R/library" >> $GITHUB_ENV
+
       - name: Install R dependencies
         run: |
-          Rscript -e "install.packages(c('knitr','rmarkdown','jsonlite','tidyverse'), repos='https://cloud.r-project.org')"
+          Rscript -e 'dir.create(Sys.getenv("R_LIBS_USER"), recursive=TRUE, showWarnings=FALSE)'
+          Rscript -e 'install.packages(c("knitr","rmarkdown","jsonlite"), repos="https://cloud.r-project.org", lib=Sys.getenv("R_LIBS_USER"))'
+
+      - name: Verify R packages
+        run: |
+          Rscript -e 'library(knitr); library(rmarkdown); library(jsonlite)'
 
       - name: Render site
         run: quarto render
