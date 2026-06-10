@@ -530,7 +530,7 @@ elif MODE == "latest_ride":
     r = requests.get(
         "https://www.strava.com/api/v3/athlete/activities",
         headers=headers,
-        params={"per_page": 5}
+        params={"per_page": 10}
     )
 
     r.raise_for_status()
@@ -544,7 +544,7 @@ elif MODE == "latest_ride":
             break
 
     if activity is None:
-        raise Exception("No outdoor ride found among last 5 activities")
+        raise Exception("No outdoor ride found among last 10 activities")
 
 
 # ------------------------------
