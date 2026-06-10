@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -19,13 +19,9 @@ jobs:
           r-version: "4.5.1"
           use-public-rspm: true
 
-      - name: Set R library path
-        run: echo "R_LIBS_USER=~/R/library" >> $GITHUB_ENV
-
       - name: Install R dependencies
         run: |
-          Rscript -e 'dir.create(Sys.getenv("R_LIBS_USER"), recursive=TRUE, showWarnings=FALSE)'
-          Rscript -e 'install.packages(c("knitr","rmarkdown","jsonlite"), repos="https://cloud.r-project.org", lib=Sys.getenv("R_LIBS_USER"))'
+          Rscript -e 'install.packages(c("knitr", "rmarkdown", "jsonlite"), repos = "https://cloud.r-project.org")'
 
       - name: Verify R packages
         run: |
