@@ -20,7 +20,7 @@ jobs:
 
       - name: Install R dependencies
         run: |
-          Rscript -e "install.packages('jsonlite', repos='https://cloud.r-project.org')"
+          Rscript -e "install.packages(c('knitr','rmarkdown','jsonlite','tidyverse'), repos='https://cloud.r-project.org')"
 
       - name: Render site
         run: quarto render
