@@ -75,6 +75,15 @@ lightbox:
 &nbsp;
 
 
+### Wir radeln durch den Spreewald
+
+Den ersten wirklich schönen Maitag nutzen wir, um unser Kilometerkonto
+zur Vorbereitung auf die diesjährige MSR 300 weiter aufzufüllen. 
+Dafür hätten wir uns kaum eine schönere Strecke aussuchen können, denn wo 
+geht das besser als im Spreewald!?
+Vom Wetter über die landschaftlich reizvolle Route bis hin zur 
+hervorragenden Stimmung stimmte einfach alles. Summa summarum: 5 von 5 Sternen.
+
 
 &nbsp;
 
@@ -215,11 +224,15 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260502_112133.webp){group="tour"}
+
+![Ehemalige Bahnlinie im Wald - bunt bemalt](img/20260502_132035.webp){group="tour"}
+
+![](img/20260502_163916.webp){group="tour"}
+
+![](img/20260502_164128.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
-
-
-
