@@ -4,21 +4,25 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "Which Strava activity should be used?"
+        description: "Action mode (required)"
         type: choice
         options:
           - latest_ride
           - static_id
+          - sync_post
         default: static_id
         required: true
       activity_id:
-        description: "Strava activity ID. Required for static_id."
+        description: "Strava activity ID (required for mode 'static_id')."
+        required: false
+      post_slug:
+        description: "Existing post folder below blog/posts (required for mode 'sync_post')."
         required: false
       trip_name:
-        description: "Optional trip name"
+        description: "Trip name (optional)."
         required: false
       categories:
-        description: "Comma-separated categories"
+        description: "Comma-separated categories (optional)."
         required: false
 
 permissions:
@@ -50,6 +54,16 @@ jobs:
           STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
         shell: bash
         run: |
+          if [[ "${{ inputs.mode }}" == "sync_post" ]]; then
+            if [[ -z "${{ inputs.post_slug }}" ]]; then
+              echo "post_slug is required when mode is sync_post"
+              exit 1
+            fi
+
+            python scripts/create_post.py --sync-post "${{ inputs.post_slug }}"
+            exit 0
+          fi
+
           if [[ "${{ inputs.mode }}" == "static_id" && -z "${{ inputs.activity_id }}" ]]; then
             echo "activity_id is required when mode is static_id"
             exit 1
@@ -76,5 +90,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add blog/posts/
-          git diff --cached --quiet || git commit -m "Generate blog post"
+          git diff --cached --quiet || git commit -m "Generate or sync blog post"
           git push
