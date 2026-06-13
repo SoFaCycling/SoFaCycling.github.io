@@ -74,6 +74,15 @@ lightbox:
 
 &nbsp;
 
+### Sonntagsausflug: Entspannt cruisen auf dem Havel-Radweg und Speed-Retour über die Beelitzer Spargelstraße
+
+Der Havel-Radweg gehört seit jeher zu unseren ungeschlagenen Brandenburger 
+Lieblingsrouten! Auch bei der - im Jahresvergleich recht späten - 
+Erstbefahrung in 2026 werden wir nicht enttäuscht: Bei Bomben-Wetter genießen 
+wir diese tolle Radlerinfrastruktur ab Werder (Havel) in herrlicher Natur. 
+Vorbei an Obstplantagen, entlang exponierter Deichwege und durch urige 
+Waldabschnitte - hier ist für jede und jeden etwas dabei. Den Rückweg wählten 
+wir geschwind über die Beelitzer Spargelstraße: Abendessen gesetzt!
 
 
 &nbsp;
@@ -214,6 +223,32 @@ fetch(new URL("track.json", document.baseURI))
 
 
 ::: {.gallery}
+
+![](img/20260517_115002.webp){group="tour"}
+
+![](img/20260517_125932.webp){group="tour"}
+
+![](img/20260517_130306.webp){group="tour"}
+
+![](img/20260517_130310.webp){group="tour"}
+
+![An der Apfelplantage Schmergow](img/20260517_132001.webp){group="tour"}
+
+![](img/20260517_132145.webp){group="tour"}
+
+![](img/20260517_133103.webp){group="tour"}
+
+![Wohlverdiente Pause](img/20260517_143256.webp){group="tour"}
+
+![](img/20260517_154715.webp){group="tour"}
+
+![](img/20260517_160544.webp){group="tour"}
+
+![](img/20260517_161605.webp){group="tour"}
+
+![](img/20260517_184043.webp){group="tour"}
+
+![](img/20260517_184054.webp){group="tour"}
 
 :::
 

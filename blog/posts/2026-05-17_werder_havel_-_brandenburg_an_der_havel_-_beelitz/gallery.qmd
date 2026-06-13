@@ -1,3 +1,29 @@
 ::: {.gallery}
 
+![](img/20260517_115002.webp){group="tour"}
+
+![](img/20260517_125932.webp){group="tour"}
+
+![](img/20260517_130306.webp){group="tour"}
+
+![](img/20260517_130310.webp){group="tour"}
+
+![An der Apfelplantage Schmergow](img/20260517_132001.webp){group="tour"}
+
+![](img/20260517_132145.webp){group="tour"}
+
+![](img/20260517_133103.webp){group="tour"}
+
+![Wohlverdiente Pause](img/20260517_143256.webp){group="tour"}
+
+![](img/20260517_154715.webp){group="tour"}
+
+![](img/20260517_160544.webp){group="tour"}
+
+![](img/20260517_161605.webp){group="tour"}
+
+![](img/20260517_184043.webp){group="tour"}
+
+![](img/20260517_184054.webp){group="tour"}
+
 :::
