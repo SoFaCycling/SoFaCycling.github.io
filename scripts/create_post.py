@@ -56,6 +56,10 @@ def parse_args():
         default=os.getenv("CATEGORIES"),
         help="Comma-separated list, e.g. 'Frankreich,Granfondo'",
     )
+    parser.add_argument(
+        "--sync-post",
+        help="Synchronize an existing post folder without contacting Strava.",
+    )
     return parser.parse_args()
 
 args = parse_args()
@@ -453,6 +457,218 @@ def sync_gallery(images_dir, gallery_file, caption_cache=None):
         f.writelines(lines)
 
     print("📷 gallery.qmd synced with img folder.")
+
+
+# ------------------------------
+# helper: synchronize existing post without Strava
+# ------------------------------
+
+def resolve_post_path(post_slug):
+    if os.path.isabs(post_slug):
+        raise ValueError("--sync-post expects a folder name below blog/posts, not an absolute path")
+
+    post_path = os.path.normpath(os.path.join(POST_DIR, post_slug))
+    posts_root = os.path.abspath(POST_DIR)
+    abs_post_path = os.path.abspath(post_path)
+
+    if os.path.commonpath([posts_root, abs_post_path]) != posts_root:
+        raise ValueError("--sync-post must stay inside blog/posts")
+
+    return post_path
+
+
+def read_front_matter(content):
+    if not content.startswith("---"):
+        return ""
+
+    match = re.match(r"---\s*\n(.*?)\n---", content, re.DOTALL)
+    if not match:
+        return ""
+
+    return match.group(1)
+
+
+def get_front_matter_value(front_matter, key):
+    match = re.search(rf"^{re.escape(key)}:\s*\"?([^\"\n]+)\"?\s*$", front_matter, re.MULTILINE)
+    if not match:
+        return None
+
+    return match.group(1).strip()
+
+
+def get_front_matter_float(front_matter, key):
+    value = get_front_matter_value(front_matter, key)
+    if value is None:
+        return None
+
+    try:
+        return float(value)
+    except ValueError:
+        return None
+
+
+def build_trip_dashboard(trip_name, date_str, strava_id, distance_km, elevation_m, moving_time_min):
+    if not trip_name:
+        return ""
+
+    trip_km, trip_elev, trip_time = get_trip_totals(
+        trip_name,
+        date_str,
+        strava_id
+    )
+
+    trip_km += distance_km
+    trip_elev += elevation_m
+    trip_time += moving_time_min
+
+    return f"""
+::: {{.trip-dashboard}}
+
+### {trip_name}: Stand aktuell
+
+<div class="trip-grid">
+
+<div class="trip-card">
+<div class="trip-value">{trip_km:.0f}</div>
+<div class="trip-label">Kilometer</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">{trip_elev:.0f}</div>
+<div class="trip-label">HÃ¶henmeter</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-value">{format_minutes(trip_time)}</div>
+<div class="trip-label">Fahrzeit</div>
+</div>
+
+</div>
+
+:::
+"""
+
+
+def replace_story_block(content, text_block):
+    pattern = r"(&nbsp;\s*\n\n)(.*?)(\n&nbsp;\s*\n\s*<div id=\"map\" style=\"height: 400px;\"></div>)"
+    replacement = lambda match: match.group(1) + text_block.rstrip() + "\n\n" + match.group(3)
+    content, count = re.subn(pattern, replacement, content, count=1, flags=re.DOTALL)
+
+    if count != 1:
+        raise RuntimeError("Could not find story block in index.qmd")
+
+    return content
+
+
+def replace_photo_block(content, photo_block):
+    pattern = r"(</script>\s*)(?:\n*::: \{\.gallery\}.*?\n:::\s*)?(\n&nbsp;\s*)"
+
+    def replacement(match):
+        if photo_block.strip():
+            return match.group(1).rstrip() + "\n\n\n\n" + photo_block.rstrip() + "\n\n" + match.group(2)
+
+        return match.group(1).rstrip() + "\n\n" + match.group(2)
+
+    content, count = re.subn(pattern, replacement, content, count=1, flags=re.DOTALL)
+
+    if count != 1:
+        raise RuntimeError("Could not find photo block position in index.qmd")
+
+    return content
+
+
+def replace_trip_dashboard(content, dashboard_html):
+    content = re.sub(
+        r"\n::: \{\.trip-dashboard\}.*?\n:::\s*$",
+        "",
+        content,
+        flags=re.DOTALL
+    ).rstrip()
+
+    if dashboard_html.strip():
+        content += "\n\n" + dashboard_html.strip() + "\n"
+    else:
+        content += "\n"
+
+    return content
+
+
+def sync_post(post_slug):
+    post_path = resolve_post_path(post_slug)
+
+    if not os.path.isdir(post_path):
+        raise FileNotFoundError(f"Post folder not found: {post_path}")
+
+    qmd_file = os.path.join(post_path, "index.qmd")
+    if not os.path.exists(qmd_file):
+        raise FileNotFoundError(f"index.qmd not found: {qmd_file}")
+
+    images_dir = os.path.join(post_path, "img")
+    os.makedirs(images_dir, exist_ok=True)
+
+    gitkeep = os.path.join(images_dir, ".gitkeep")
+    if not os.path.exists(gitkeep):
+        with open(gitkeep, "w"):
+            pass
+
+    rename_images_by_date(images_dir)
+    caption_cache = convert_images_to_webp(images_dir)
+
+    gallery_file = os.path.join(post_path, "gallery.qmd")
+    create_gallery(images_dir, gallery_file)
+    sync_gallery(images_dir, gallery_file, caption_cache)
+
+    story_file = os.path.join(post_path, "story.md")
+    if not os.path.exists(story_file):
+        with open(story_file, "w", encoding="utf-8") as f:
+            f.write("")
+
+    with open(story_file, "r", encoding="utf-8") as f:
+        text_block = f.read()
+
+    photo_block = ""
+    if os.path.exists(gallery_file):
+        with open(gallery_file, "r", encoding="utf-8") as f:
+            photo_block = f.read()
+
+    with open(qmd_file, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    front_matter = read_front_matter(content)
+    trip_name = get_front_matter_value(front_matter, "trip")
+    date_str = get_front_matter_value(front_matter, "date")
+    strava_id = get_front_matter_value(front_matter, "strava_id")
+    distance_km = get_front_matter_float(front_matter, "distance_km")
+    elevation_m = get_front_matter_float(front_matter, "elevation_m")
+    moving_time_min = get_front_matter_float(front_matter, "moving_time_min")
+
+    dashboard_html = ""
+    if trip_name:
+        if not all([date_str, strava_id, distance_km is not None, elevation_m is not None, moving_time_min is not None]):
+            raise RuntimeError("Cannot refresh trip dashboard because index.qmd is missing trip metadata")
+
+        dashboard_html = build_trip_dashboard(
+            trip_name,
+            date_str,
+            strava_id,
+            distance_km,
+            elevation_m,
+            moving_time_min
+        )
+
+    content = replace_story_block(content, text_block)
+    content = replace_photo_block(content, photo_block)
+    content = replace_trip_dashboard(content, dashboard_html)
+
+    with open(qmd_file, "w", encoding="utf-8") as f:
+        f.write(content)
+
+    print(f"Post synchronized without Strava: {qmd_file}")
+
+
+if args.sync_post:
+    sync_post(args.sync_post)
+    raise SystemExit(0)
 
 
 # ------------------------------
