@@ -2,33 +2,79 @@ name: Generate Post
 
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "Which Strava activity should be used?"
+        type: choice
+        options:
+          - latest_ride
+          - static_id
+        default: static_id
+        required: true
+      activity_id:
+        description: "Strava activity ID. Required for static_id."
+        required: false
+      trip_name:
+        description: "Optional trip name"
+        required: false
+      categories:
+        description: "Comma-separated categories"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sofacycling-generate-post
+  cancel-in-progress: false
 
 jobs:
   generate:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
-          python-version: 3.11
-          
+          python-version: "3.11"
+
       - name: Install dependencies
         run: pip install requests staticmap pillow
 
-      - name: Run Post Script
+      - name: Run post script
         env:
           STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
           STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
           STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
-        run: python scripts/create_post.py
+        shell: bash
+        run: |
+          if [[ "${{ inputs.mode }}" == "static_id" && -z "${{ inputs.activity_id }}" ]]; then
+            echo "activity_id is required when mode is static_id"
+            exit 1
+          fi
 
-      - name: Commit & Push new post
+          cmd=(python scripts/create_post.py --mode "${{ inputs.mode }}")
+
+          if [[ -n "${{ inputs.activity_id }}" ]]; then
+            cmd+=(--activity-id "${{ inputs.activity_id }}")
+          fi
+
+          if [[ -n "${{ inputs.trip_name }}" ]]; then
+            cmd+=(--trip-name "${{ inputs.trip_name }}")
+          fi
+
+          if [[ -n "${{ inputs.categories }}" ]]; then
+            cmd+=(--categories "${{ inputs.categories }}")
+          fi
+
+          "${cmd[@]}"
+
+      - name: Commit and push source post
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add blog/posts/*
-          git diff --cached --quiet || git commit -m "Generate new post"
+          git add blog/posts/
+          git diff --cached --quiet || git commit -m "Generate blog post"
           git push
