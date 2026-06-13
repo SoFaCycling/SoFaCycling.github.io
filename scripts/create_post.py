@@ -3,6 +3,7 @@ import requests
 import json
 import re
 import math
+import argparse
 from datetime import datetime
 from staticmap import StaticMap, Line
 from PIL import Image
@@ -23,29 +24,46 @@ REFRESH_TOKEN = os.getenv("STRAVA_REFRESH_TOKEN")
 POST_DIR = "blog/posts"
 TEMPLATE_FILE = "scripts/post_template.qmd"
 
-# Working mode for activity pull
-MODE = "latest_ride"
-# options:
-# "offline_id"
-# "static_id"
-# "latest_ride"
 
-# Activity ID
-# for MODE = "offline_id" or MODE = "static_id"
-STATIC_ACTIVITY_ID = 15470501328
+def parse_categories(value):
+    if not value:
+        return None
+    return [item.strip() for item in value.split(",") if item.strip()]
 
-# Trip group 
-TRIP_NAME = None
-# options: 
-# TRIP_NAME = "trip name"
-# TRIP_NAME = None
-# for activities outside a trip
+def parse_args():
+    parser = argparse.ArgumentParser(description="Create or update a SoFaCycling blog post.")
+    
+    # Mode
+    parser.add_argument(
+        "--mode",
+        choices=["offline_id", "static_id", "latest_ride"],
+        default=os.getenv("MODE", "latest_ride"),
+    )
+    # Strava activity ID
+    parser.add_argument(
+        "--activity-id",
+        type=int,
+        default=os.getenv("STATIC_ACTIVITY_ID"),
+    )
+    # Trip group name
+    parser.add_argument(
+        "--trip-name",
+        default=os.getenv("TRIP_NAME"),
+        help="Name of activity group, e.g. 'Sommerurlaub 2025'",
+    )
+    parser.add_argument(
+        "--categories",
+        default=os.getenv("CATEGORIES"),
+        help="Comma-separated list, e.g. 'Frankreich,Granfondo'",
+    )
+    return parser.parse_args()
 
-# Further categories
-CATEGORIES = ["Bestensee"]
-# options:
-# CATEGORIES = ["category 1", "category 2"]
-# CATEGORIES = None
+args = parse_args()
+
+MODE = args.mode
+STATIC_ACTIVITY_ID = int(args.activity_id) if args.activity_id else None
+TRIP_NAME = args.trip_name or None
+CATEGORIES = parse_categories(args.categories)
 
 
 # ------------------------------
@@ -360,7 +378,9 @@ def create_gallery(images_dir, gallery_file):
 # helper: synchronize gallery
 # ------------------------------
 
-def sync_gallery(images_dir, gallery_file):
+def sync_gallery(images_dir, gallery_file, caption_cache=None):
+    if caption_cache is None:
+        caption_cache = {}
 
     # aktuelle Bilder im Ordner
     current_images = {
@@ -653,7 +673,7 @@ gallery_file = os.path.join(post_path, "gallery.qmd")
 create_gallery(images_dir, gallery_file)
 
 # synchronize gallery if necessary
-sync_gallery(images_dir, gallery_file)
+sync_gallery(images_dir, gallery_file, caption_cache)
 
 
 # -- story file
