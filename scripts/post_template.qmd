@@ -3,6 +3,9 @@ title: "{{NAME}}"
 date: "{{DATE}}"
 description: "{{DESCRIPTION}}"
 image: thumbnail.png
+resources:
+  - track.json
+  - img/**
 
 draft: false
 
@@ -75,7 +78,7 @@ lightbox:
 <div id="map" style="height: 400px;"></div>
 
 <script>
-fetch("track.json")
+fetch(new URL("track.json", document.baseURI))
   .then(response => response.json())
   .then(data => {
 
@@ -101,7 +104,7 @@ fetch("track.json")
 </div>
 
 <script>
-fetch("track.json")
+fetch(new URL("track.json", document.baseURI))
   .then(response => response.json())
   .then(data => {
     
