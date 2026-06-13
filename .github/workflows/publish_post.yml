@@ -2,6 +2,22 @@ name: Publish Post
 
 on:
   workflow_dispatch:
+    inputs:
+      post_slug:
+        description: "Post folder below blog/posts. Leave empty only for full render."
+        required: false
+      full_render:
+        description: "Render the complete site"
+        type: boolean
+        default: false
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sofacycling-publish
+  cancel-in-progress: false
 
 jobs:
   publish:
@@ -36,8 +52,30 @@ jobs:
           missing <- pkgs[!vapply(pkgs, requireNamespace, logical(1), quietly = TRUE)]
           if (length(missing)) stop("Missing R packages: ", paste(missing, collapse = ", "))
 
-      - name: Render site
-        run: quarto render
+      - name: Render site or selected post
+        shell: bash
+        run: |
+          if [[ "${{ inputs.full_render }}" == "true" ]]; then
+            quarto render
+            exit 0
+          fi
+
+          post_slug="${{ inputs.post_slug }}"
+
+          if [[ -z "$post_slug" ]]; then
+            echo "post_slug is required unless full_render is true"
+            exit 1
+          fi
+
+          post_file="blog/posts/${post_slug}/index.qmd"
+
+          if [[ ! -f "$post_file" ]]; then
+            echo "Post file not found: $post_file"
+            exit 1
+          fi
+
+          quarto render "$post_file"
+          quarto render blog/index.qmd
 
       - name: Commit rendered site
         run: |
