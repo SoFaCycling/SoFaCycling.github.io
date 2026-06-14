@@ -57,6 +57,8 @@ project:
 
 resources:
   - blog/posts/**/track.json
+  - admin/admin.css
+  - admin/admin.js
 
 exclude:
   - scripts/

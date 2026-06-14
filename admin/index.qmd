@@ -1,0 +1,102 @@
+---
+title: "SoFaCycling Admin"
+page-layout: full
+toc: false
+search: false
+format:
+  html:
+    toc: false
+    include-in-header:
+      text: |
+        <meta name="robots" content="noindex,nofollow">
+        <link rel="stylesheet" href="admin.css">
+    include-after-body:
+      text: |
+        <script src="admin.js"></script>
+---
+
+<main class="admin-shell">
+  <header class="admin-header">
+    <div>
+      <p class="admin-kicker">SoFaCycling</p>
+      <h1>Blog Admin</h1>
+    </div>
+    <a class="admin-site-link" href="../blog/">Blog</a>
+  </header>
+
+  <section class="admin-panel admin-auth">
+    <label for="token">GitHub Token</label>
+    <div class="admin-token-row">
+      <input id="token" name="github-token" type="password" inputmode="text" autocomplete="current-password" placeholder="Fine-grained PAT">
+      <button id="connect" type="button">Verbinden</button>
+    </div>
+    <p class="admin-help">Der Token wird nur in dieser Browser-Sitzung im Speicher gehalten und nicht im Repo gespeichert.</p>
+  </section>
+
+  <section class="admin-status" aria-live="polite">
+    <div id="status">× Nicht verbunden</div>
+  </section>
+
+  <section class="admin-tabs" aria-label="Admin Bereiche">
+    <button class="admin-tab is-active" type="button" data-tab="new">Neuer Post</button>
+    <button class="admin-tab" type="button" data-tab="edit">Post bearbeiten</button>
+  </section>
+
+  <section id="tab-new" class="admin-view is-active">
+    <form id="new-post-form" class="admin-panel admin-form">
+      <label for="mode">Modus</label>
+      <select id="mode" name="mode">
+        <option value="static_id">Strava Activity-ID</option>
+        <option value="latest_ride">Letzte Outdoor-Radfahrt</option>
+      </select>
+
+      <label for="activity-id">Activity-ID</label>
+      <input id="activity-id" name="activity_id" type="number" inputmode="numeric" placeholder="z. B. 18840862197">
+
+      <label for="trip-name">Trip-Name</label>
+      <input id="trip-name" name="trip_name" type="text" autocomplete="off" placeholder="z. B. Sommerreise 2026">
+
+      <label for="categories">Kategorien</label>
+      <input id="categories" name="categories" type="text" autocomplete="off" placeholder="Kommagetrennt, z. B. Frankreich, Alpen">
+
+      <button id="create-post" type="submit">Post anlegen</button>
+    </form>
+  </section>
+
+  <section id="tab-edit" class="admin-view">
+    <div class="admin-panel admin-form">
+      <label for="post-select">Post</label>
+      <div class="admin-token-row">
+        <select id="post-select"></select>
+        <button id="refresh-posts" type="button">Post laden</button>
+      </div>
+    </div>
+
+    <section class="admin-panel admin-form">
+      <label for="story">Story</label>
+      <textarea id="story" rows="14" placeholder="Markdown-Text fuer den Blogpost"></textarea>
+      <button id="save-story" type="button">Story speichern (Commit)</button>
+    </section>
+
+    <section class="admin-panel admin-form">
+      <label for="photos">Fotos</label>
+      <input id="photos" type="file" accept="image/*,.heic,.HEIC" multiple>
+      <button id="upload-photos" type="button">Fotos hochladen (Commit)</button>
+      <p class="admin-help">Originaldateien hochladen. Danach synchronisieren, damit bestehende Logik Dateinamen, WebP, EXIF-Captions und Galerie erzeugt.</p>
+    </section>
+
+    <section class="admin-panel admin-form">
+      <div class="admin-section-head">
+        <label>Captions</label>
+      </div>
+      <div id="caption-list" class="caption-list"></div>
+      <button id="save-captions" type="button">Galerie speichern (Commit)</button>
+      <p class="admin-help">EXIF-Captions erscheinen nach dem Synchronisieren. Manuelle Captions bleiben beim naechsten Sync erhalten.</p>
+    </section>
+
+    <section class="admin-actions">
+      <button id="sync-post" type="button">Blogpost synchronisieren</button>
+      <button id="publish-post" type="button">Veroeffentlichen</button>
+    </section>
+  </section>
+</main>

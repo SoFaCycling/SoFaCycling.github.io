@@ -76,6 +76,7 @@ jobs:
 
           quarto render "$post_file"
           quarto render blog/index.qmd
+          quarto render admin/index.qmd
 
       - name: Commit rendered site
         run: |
