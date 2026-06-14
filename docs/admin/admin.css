@@ -1,0 +1,350 @@
+:root {
+  --admin-white: #ffffff;
+  --admin-gray1: #f8f9fa;
+  --admin-gray2: #e9ecef;
+  --admin-gray3: #dee2e6;
+  --admin-gray4: #ced4da;
+  --admin-gray5: #adb5bd;
+  --admin-gray6: #868e96;
+  --admin-gray7: #495057;
+  --admin-gray8: #373a3c;
+  --admin-gray9: #212529;
+  --admin-logo2: #1b96af;
+  --admin-logo5: #9b317f;
+  --admin-bg: var(--admin-gray1);
+  --admin-text: var(--admin-gray9);
+  --admin-muted: var(--admin-gray6);
+  --admin-border: var(--admin-gray3);
+  --admin-panel: var(--admin-white);
+  --admin-radius: 8px;
+  --admin-font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
+}
+
+body {
+  background: var(--admin-bg);
+  color: var(--admin-text);
+  font-family: var(--admin-font);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.admin-shell {
+  width: min(100%, 820px);
+  margin: 0 auto;
+  padding: 18px 14px 36px;
+  color: var(--admin-text);
+}
+
+.admin-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+.admin-kicker {
+  margin: 0 0 4px;
+  color: var(--admin-gray7);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.admin-site-link {
+  color: var(--admin-gray8);
+  text-decoration: none;
+  border-bottom: 1px solid var(--admin-border);
+  padding-bottom: 2px;
+}
+
+.admin-panel,
+.admin-status,
+.admin-tabs,
+.admin-actions {
+  background: var(--admin-panel);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.admin-status {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  color: var(--admin-muted);
+  font-weight: 700;
+}
+
+.admin-status.is-error {
+  border-color: var(--admin-gray4);
+  color: var(--admin-logo5);
+}
+
+.admin-status.is-ok {
+  border-color: rgba(27, 150, 175, 0.35);
+  color: var(--admin-logo2);
+}
+
+.admin-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.admin-tab,
+button {
+  appearance: none;
+  min-height: 44px;
+  border: 1px solid var(--admin-border);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--admin-text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-tab.is-active,
+button:not(.admin-tab) {
+  background: var(--admin-gray8);
+  border-color: var(--admin-gray8);
+  color: #ffffff;
+}
+
+.admin-tab.is-active {
+  box-shadow: inset 0 -3px 0 var(--admin-logo2);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+  background: var(--admin-gray2);
+  border-color: var(--admin-gray3);
+  color: var(--admin-gray5);
+}
+
+.admin-view {
+  display: none;
+}
+
+.admin-view.is-active {
+  display: block;
+}
+
+.admin-form {
+  display: grid;
+  gap: 10px;
+}
+
+.admin-form label,
+.admin-section-head label {
+  font-weight: 700;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--admin-border);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--admin-text);
+  font: inherit;
+  padding: 10px 12px;
+}
+
+select {
+  appearance: none;
+  background-color: var(--admin-gray1);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--admin-gray7) 50%),
+    linear-gradient(135deg, var(--admin-gray7) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%;
+  background-size:
+    6px 6px,
+    6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 34px;
+}
+
+textarea {
+  min-height: 260px;
+  resize: vertical;
+  font-family: var(--admin-font);
+  line-height: 1.45;
+}
+
+.admin-token-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.admin-help {
+  margin: 0;
+  color: var(--admin-muted);
+  font-size: 0.9rem;
+}
+
+.admin-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.caption-list {
+  display: grid;
+  gap: 10px;
+}
+
+.caption-empty {
+  color: var(--admin-muted);
+  margin: 0;
+}
+
+.caption-item {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding: 10px;
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  background: var(--admin-white);
+}
+
+.caption-item.is-moving {
+  border-color: var(--admin-logo5);
+  box-shadow: 0 0 0 3px rgba(155, 49, 127, 0.12);
+}
+
+button.caption-drop-target {
+  min-height: 38px;
+  border: 1px dashed var(--admin-gray4);
+  border-radius: 6px;
+  background: var(--admin-gray1);
+  color: var(--admin-gray7);
+  font-weight: 700;
+}
+
+button.caption-drop-target:hover,
+button.caption-drop-target:focus {
+  border-color: var(--admin-logo2);
+  color: var(--admin-logo2);
+}
+
+.caption-item img {
+  width: 112px;
+  height: 112px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--admin-border);
+  background: var(--admin-bg);
+}
+
+.caption-fields {
+  display: grid;
+  gap: 8px;
+}
+
+.caption-item textarea {
+  min-height: 86px;
+  resize: vertical;
+}
+
+.caption-name {
+  margin: 0;
+  color: var(--admin-muted);
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
+}
+
+.caption-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.caption-actions button {
+  min-height: 38px;
+  background: var(--admin-gray2);
+  border-color: var(--admin-gray3);
+  color: var(--admin-gray8);
+}
+
+.caption-actions .cancel-move {
+  color: var(--admin-logo5);
+}
+
+.caption-actions button:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid rgba(27, 150, 175, 0.25);
+  outline-offset: 2px;
+}
+
+.admin-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+@media (max-width: 560px) {
+  .admin-shell {
+    padding-inline: 10px;
+  }
+
+  .admin-header {
+    align-items: flex-start;
+  }
+
+  .admin-header h1 {
+    font-size: 1.65rem;
+  }
+
+  .admin-token-row,
+  .admin-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .caption-item {
+    grid-template-columns: 96px minmax(0, 1fr);
+  }
+
+  .caption-item img {
+    width: 96px;
+    height: 96px;
+    aspect-ratio: 1;
+  }
+}
+
+@media (max-width: 380px) {
+  .caption-item {
+    grid-template-columns: 1fr;
+  }
+
+  .caption-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+}
+}
