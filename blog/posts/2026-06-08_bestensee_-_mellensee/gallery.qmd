@@ -1,9 +1,9 @@
 ::: {.gallery}
 
-![](img/20260607_192620.webp){group="tour"}
+![Die Ruhe mit Blick auf den See genießen...](img/20260607_192620.webp){group="tour"}
+
+![... und den Entchen beim Schwimmen zusehen.](img/20260607_193340.webp){group="tour"}
 
 ![](img/20260607_192711.webp){group="tour"}
-
-![](img/20260607_193340.webp){group="tour"}
 
 :::
