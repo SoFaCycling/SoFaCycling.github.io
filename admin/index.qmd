@@ -15,7 +15,8 @@ format:
         <script src="admin.js"></script>
 ---
 
-<main class="admin-shell">
+```{=html}
+<div class="admin-shell">
   <header class="admin-header">
     <div>
       <p class="admin-kicker">SoFaCycling</p>
@@ -75,13 +76,16 @@ format:
     <section class="admin-panel admin-form">
       <label for="story">Story</label>
       <textarea id="story" rows="14" placeholder="Markdown-Text fuer den Blogpost"></textarea>
-      <button id="save-story" type="button">Story speichern (Commit)</button>
+      <div class="admin-button-row">
+        <button id="save-story-draft" type="button">Story speichern</button>
+        <button id="upload-story" type="button">Story hochladen</button>
+      </div>
     </section>
 
     <section class="admin-panel admin-form">
       <label for="photos">Fotos</label>
       <input id="photos" type="file" accept="image/*,.heic,.HEIC" multiple>
-      <button id="upload-photos" type="button">Fotos hochladen (Commit)</button>
+      <button id="upload-photos" type="button">Fotos hochladen</button>
       <p class="admin-help">Originaldateien hochladen. Danach synchronisieren, damit bestehende Logik Dateinamen, WebP, EXIF-Captions und Galerie erzeugt.</p>
     </section>
 
@@ -90,7 +94,10 @@ format:
         <label>Captions</label>
       </div>
       <div id="caption-list" class="caption-list"></div>
-      <button id="save-captions" type="button">Galerie speichern (Commit)</button>
+      <div class="admin-button-row">
+        <button id="save-captions-draft" type="button">Galerie speichern</button>
+        <button id="upload-captions" type="button">Galerie hochladen</button>
+      </div>
       <p class="admin-help">EXIF-Captions erscheinen nach dem Synchronisieren. Manuelle Captions bleiben beim naechsten Sync erhalten.</p>
     </section>
 
@@ -99,4 +106,5 @@ format:
       <button id="publish-post" type="button">Veroeffentlichen</button>
     </section>
   </section>
-</main>
+</div>
+```

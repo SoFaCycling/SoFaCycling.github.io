@@ -26,6 +26,10 @@ body {
   font-family: var(--admin-font);
 }
 
+#title-block-header {
+  display: none;
+}
+
 *,
 *::before,
 *::after {
@@ -281,6 +285,12 @@ button.caption-drop-target:focus {
   gap: 8px;
 }
 
+.admin-button-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
 .caption-actions button {
   min-height: 38px;
   background: var(--admin-gray2);
@@ -321,6 +331,7 @@ textarea:focus {
   }
 
   .admin-token-row,
+  .admin-button-row,
   .admin-actions {
     grid-template-columns: 1fr;
   }
