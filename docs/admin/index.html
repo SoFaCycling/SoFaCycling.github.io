@@ -158,90 +158,101 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<main class="admin-shell">
-<header class="admin-header">
-<div>
-<pre><code>  &lt;p class="admin-kicker"&gt;SoFaCycling&lt;/p&gt;
-  &lt;h1&gt;Blog Admin&lt;/h1&gt;
-&lt;/div&gt;
-&lt;a class="admin-site-link" href="../blog/"&gt;Blog&lt;/a&gt;</code></pre>
-</div></header>
-<section class="admin-panel admin-auth">
-<label for="token">GitHub Token</label>
-<div class="admin-token-row">
-<pre><code>  &lt;input id="token" name="github-token" type="password" inputmode="text" autocomplete="current-password" placeholder="Fine-grained PAT"&gt;
-  &lt;button id="connect" type="button"&gt;Verbinden&lt;/button&gt;
-&lt;/div&gt;
-&lt;p class="admin-help"&gt;Der Token wird nur in dieser Browser-Sitzung im Speicher gehalten und nicht im Repo gespeichert.&lt;/p&gt;</code></pre>
-</div></section>
-<section class="admin-status" aria-live="polite">
-<div id="status">
-× Nicht verbunden
+<div class="admin-shell">
+  <header class="admin-header">
+    <div>
+      <p class="admin-kicker">SoFaCycling</p>
+      <h1>Blog Admin</h1>
+    </div>
+    <a class="admin-site-link" href="../blog/">Blog</a>
+  </header>
+
+  <section class="admin-panel admin-auth">
+    <label for="token">GitHub Token</label>
+    <div class="admin-token-row">
+      <input id="token" name="github-token" type="password" inputmode="text" autocomplete="current-password" placeholder="Fine-grained PAT">
+      <button id="connect" type="button">Verbinden</button>
+    </div>
+    <p class="admin-help">Der Token wird nur in dieser Browser-Sitzung im Speicher gehalten und nicht im Repo gespeichert.</p>
+  </section>
+
+  <section class="admin-status" aria-live="polite">
+    <div id="status">× Nicht verbunden</div>
+  </section>
+
+  <section class="admin-tabs" aria-label="Admin Bereiche">
+    <button class="admin-tab is-active" type="button" data-tab="new">Neuer Post</button>
+    <button class="admin-tab" type="button" data-tab="edit">Post bearbeiten</button>
+  </section>
+
+  <section id="tab-new" class="admin-view is-active">
+    <form id="new-post-form" class="admin-panel admin-form">
+      <label for="mode">Modus</label>
+      <select id="mode" name="mode">
+        <option value="static_id">Strava Activity-ID</option>
+        <option value="latest_ride">Letzte Outdoor-Radfahrt</option>
+      </select>
+
+      <label for="activity-id">Activity-ID</label>
+      <input id="activity-id" name="activity_id" type="number" inputmode="numeric" placeholder="z. B. 18840862197">
+
+      <label for="trip-name">Trip-Name</label>
+      <input id="trip-name" name="trip_name" type="text" autocomplete="off" placeholder="z. B. Sommerreise 2026">
+
+      <label for="categories">Kategorien</label>
+      <input id="categories" name="categories" type="text" autocomplete="off" placeholder="Kommagetrennt, z. B. Frankreich, Alpen">
+
+      <button id="create-post" type="submit">Post anlegen</button>
+    </form>
+  </section>
+
+  <section id="tab-edit" class="admin-view">
+    <div class="admin-panel admin-form">
+      <label for="post-select">Post</label>
+      <div class="admin-token-row">
+        <select id="post-select"></select>
+        <button id="refresh-posts" type="button">Post laden</button>
+      </div>
+    </div>
+
+    <section class="admin-panel admin-form">
+      <label for="story">Story</label>
+      <textarea id="story" rows="14" placeholder="Markdown-Text fuer den Blogpost"></textarea>
+      <div class="admin-button-row">
+        <button id="save-story-draft" type="button">Story speichern</button>
+        <button id="upload-story" type="button">Story hochladen</button>
+      </div>
+    </section>
+
+    <section class="admin-panel admin-form">
+      <label for="photos">Fotos</label>
+      <input id="photos" type="file" accept="image/*,.heic,.HEIC" multiple="">
+      <button id="upload-photos" type="button">Fotos hochladen</button>
+      <p class="admin-help">Originaldateien hochladen. Danach synchronisieren, damit bestehende Logik Dateinamen, WebP, EXIF-Captions und Galerie erzeugt.</p>
+    </section>
+
+    <section class="admin-panel admin-form">
+      <div class="admin-section-head">
+        <label>Captions</label>
+      </div>
+      <div id="caption-list" class="caption-list"></div>
+      <div class="admin-button-row">
+        <button id="save-captions-draft" type="button">Galerie speichern</button>
+        <button id="upload-captions" type="button">Galerie hochladen</button>
+      </div>
+      <p class="admin-help">EXIF-Captions erscheinen nach dem Synchronisieren. Manuelle Captions bleiben beim naechsten Sync erhalten.</p>
+    </section>
+
+    <section class="admin-actions">
+      <button id="sync-post" type="button">Blogpost synchronisieren</button>
+      <button id="publish-post" type="button">Veroeffentlichen</button>
+    </section>
+  </section>
 </div>
-</section>
-<section class="admin-tabs" aria-label="Admin Bereiche">
-<button class="admin-tab is-active" type="button" data-tab="new">
-Neuer Post
-</button>
-<button class="admin-tab" type="button" data-tab="edit">
-Post bearbeiten
-</button>
-</section>
-<section id="tab-new" class="admin-view is-active">
-<form id="new-post-form" class="admin-panel admin-form">
-<p><label for="mode">Modus</label> <select id="mode" name="mode"> <option value="static_id">Strava Activity-ID</option> <option value="latest_ride">Letzte Outdoor-Radfahrt</option> </select></p>
-<p><label for="activity-id">Activity-ID</label> <input id="activity-id" name="activity_id" type="number" inputmode="numeric" placeholder="z. B. 18840862197"></p>
-<p><label for="trip-name">Trip-Name</label> <input id="trip-name" name="trip_name" type="text" autocomplete="off" placeholder="z. B. Sommerreise 2026"></p>
-<p><label for="categories">Kategorien</label> <input id="categories" name="categories" type="text" autocomplete="off" placeholder="Kommagetrennt, z. B. Frankreich, Alpen"></p>
-<button id="create-post" type="submit">
-Post anlegen
-</button>
-</form>
-</section>
-<section id="tab-edit" class="admin-view">
-<div class="admin-panel admin-form">
-<pre><code>  &lt;label for="post-select"&gt;Post&lt;/label&gt;
-  &lt;div class="admin-token-row"&gt;
-    &lt;select id="post-select"&gt;&lt;/select&gt;
-    &lt;button id="refresh-posts" type="button"&gt;Post laden&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;section class="admin-panel admin-form"&gt;
-  &lt;label for="story"&gt;Story&lt;/label&gt;
-  &lt;textarea id="story" rows="14" placeholder="Markdown-Text fuer den Blogpost"&gt;&lt;/textarea&gt;
-  &lt;button id="save-story" type="button"&gt;Story speichern (Commit)&lt;/button&gt;
-&lt;/section&gt;
-
-&lt;section class="admin-panel admin-form"&gt;
-  &lt;label for="photos"&gt;Fotos&lt;/label&gt;
-  &lt;input id="photos" type="file" accept="image/*,.heic,.HEIC" multiple&gt;
-  &lt;button id="upload-photos" type="button"&gt;Fotos hochladen (Commit)&lt;/button&gt;
-  &lt;p class="admin-help"&gt;Originaldateien hochladen. Danach synchronisieren, damit bestehende Logik Dateinamen, WebP, EXIF-Captions und Galerie erzeugt.&lt;/p&gt;
-&lt;/section&gt;
-
-&lt;section class="admin-panel admin-form"&gt;
-  &lt;div class="admin-section-head"&gt;
-    &lt;label&gt;Captions&lt;/label&gt;
-  &lt;/div&gt;
-  &lt;div id="caption-list" class="caption-list"&gt;&lt;/div&gt;
-  &lt;button id="save-captions" type="button"&gt;Galerie speichern (Commit)&lt;/button&gt;
-  &lt;p class="admin-help"&gt;EXIF-Captions erscheinen nach dem Synchronisieren. Manuelle Captions bleiben beim naechsten Sync erhalten.&lt;/p&gt;
-&lt;/section&gt;
-
-&lt;section class="admin-actions"&gt;
-  &lt;button id="sync-post" type="button"&gt;Blogpost synchronisieren&lt;/button&gt;
-  &lt;button id="publish-post" type="button"&gt;Veroeffentlichen&lt;/button&gt;
-&lt;/section&gt;</code></pre>
-</div></section>
-</main>
-
-
-</main></div>
 
 
 
- <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -642,7 +653,7 @@ Post anlegen
     }
   });
   </script>
- <!-- /content -->
+</div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">

@@ -32,11 +32,13 @@
     postSelect: document.querySelector("#post-select"),
     refreshPosts: document.querySelector("#refresh-posts"),
     story: document.querySelector("#story"),
-    saveStory: document.querySelector("#save-story"),
+    saveStoryDraft: document.querySelector("#save-story-draft"),
+    uploadStory: document.querySelector("#upload-story"),
     photos: document.querySelector("#photos"),
     uploadPhotos: document.querySelector("#upload-photos"),
     captionList: document.querySelector("#caption-list"),
-    saveCaptions: document.querySelector("#save-captions"),
+    saveCaptionsDraft: document.querySelector("#save-captions-draft"),
+    uploadCaptions: document.querySelector("#upload-captions"),
     syncPost: document.querySelector("#sync-post"),
     publishPost: document.querySelector("#publish-post")
   };
@@ -52,14 +54,17 @@
     const connected = Boolean(state.token);
     const hasPost = Boolean(state.selectedPost);
     const hasPhotos = Boolean(els.photos.files && els.photos.files.length > 0);
+    const hasUnuploadedEdits = state.dirtyStory || state.dirtyCaptions;
 
     els.createPost.disabled = !connected;
     els.refreshPosts.disabled = !connected;
-    els.saveStory.disabled = !connected || !hasPost || !state.dirtyStory;
+    els.saveStoryDraft.disabled = !hasPost || !state.dirtyStory;
+    els.uploadStory.disabled = !connected || !hasPost || !state.dirtyStory;
     els.uploadPhotos.disabled = !connected || !hasPost || !hasPhotos;
-    els.saveCaptions.disabled = !connected || !hasPost || !state.dirtyCaptions;
-    els.syncPost.disabled = !connected || !hasPost || !state.needsSync;
-    els.publishPost.disabled = !connected || !hasPost || (!state.needsSync && !state.needsPublish);
+    els.saveCaptionsDraft.disabled = !hasPost || !state.dirtyCaptions;
+    els.uploadCaptions.disabled = !connected || !hasPost || !state.dirtyCaptions;
+    els.syncPost.disabled = !connected || !hasPost || !state.needsSync || hasUnuploadedEdits;
+    els.publishPost.disabled = !connected || !hasPost || (!state.needsSync && !state.needsPublish) || hasUnuploadedEdits;
   }
 
   function requireToken() {
@@ -122,6 +127,50 @@
 
   function normalizePath(path) {
     return path.replace(/^\/+/, "").replace(/\/+/g, "/");
+  }
+
+  function storageKey(type) {
+    return `sofacycling-admin:${owner}/${repo}:${branch}:${state.selectedPost}:${type}`;
+  }
+
+  function readDraft(type) {
+    if (!state.selectedPost) {
+      return null;
+    }
+
+    try {
+      const value = window.localStorage.getItem(storageKey(type));
+      return value ? JSON.parse(value) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function writeDraft(type, data) {
+    if (!state.selectedPost) {
+      throw new Error("Bitte zuerst einen Post auswaehlen.");
+    }
+
+    try {
+      window.localStorage.setItem(storageKey(type), JSON.stringify({
+        ...data,
+        savedAt: new Date().toISOString()
+      }));
+    } catch {
+      throw new Error("Der Browser konnte den lokalen Entwurf nicht speichern.");
+    }
+  }
+
+  function clearDraft(type) {
+    if (!state.selectedPost) {
+      return;
+    }
+
+    try {
+      window.localStorage.removeItem(storageKey(type));
+    } catch {
+      // Ignore storage cleanup failures; the committed content remains authoritative.
+    }
   }
 
   async function getContent(path) {
@@ -222,7 +271,11 @@
       loadStory(),
       loadCaptions()
     ]);
-    setStatus(`Post geladen: ${state.selectedPost}`, "ok");
+    if (state.dirtyStory || state.dirtyCaptions) {
+      setStatus(`Post geladen: lokaler Entwurf aktiv`, "ok");
+    } else {
+      setStatus(`Post geladen: ${state.selectedPost}`, "ok");
+    }
   }
 
   async function loadStory() {
@@ -232,14 +285,28 @@
       state.currentStorySha = file.sha;
       els.story.value = fromBase64Utf8(file.content || "");
       state.dirtyStory = false;
+      applyStoryDraft();
     } catch (error) {
       if (error.message.includes("Not Found")) {
         state.currentStorySha = null;
         els.story.value = "";
         state.dirtyStory = false;
+        applyStoryDraft();
         return;
       }
       throw error;
+    }
+  }
+
+  function applyStoryDraft() {
+    const draft = readDraft("story");
+    if (!draft || typeof draft.value !== "string") {
+      return;
+    }
+
+    if (draft.value !== els.story.value) {
+      els.story.value = draft.value;
+      state.dirtyStory = true;
     }
   }
 
@@ -275,8 +342,43 @@
 
     state.dirtyCaptions = false;
     state.movingFile = "";
+    applyCaptionDraft();
     renderCaptions();
     updateButtonStates();
+  }
+
+  function applyCaptionDraft() {
+    const draft = readDraft("captions");
+    if (!draft || !Array.isArray(draft.captions) || state.captions.length === 0) {
+      return;
+    }
+
+    const currentByFile = new Map(state.captions.map(item => [item.file, item]));
+    const seen = new Set();
+    const merged = [];
+
+    for (const draftItem of draft.captions) {
+      if (!draftItem || !currentByFile.has(draftItem.file)) {
+        continue;
+      }
+
+      seen.add(draftItem.file);
+      merged.push({
+        file: draftItem.file,
+        caption: typeof draftItem.caption === "string" ? draftItem.caption : ""
+      });
+    }
+
+    for (const item of state.captions) {
+      if (!seen.has(item.file)) {
+        merged.push(item);
+      }
+    }
+
+    if (JSON.stringify(merged) !== JSON.stringify(state.captions)) {
+      state.captions = merged;
+      state.dirtyCaptions = true;
+    }
   }
 
   function renderCaptions() {
@@ -412,7 +514,18 @@
     return `${lines.join("\n")}`;
   }
 
-  async function saveStory() {
+  function saveStoryDraft() {
+    if (!state.selectedPost) {
+      throw new Error("Bitte zuerst einen Post auswaehlen.");
+    }
+
+    writeDraft("story", { value: els.story.value });
+    state.dirtyStory = true;
+    updateButtonStates();
+    setStatus("Story lokal gespeichert.", "ok");
+  }
+
+  async function uploadStory() {
     if (!state.selectedPost) {
       throw new Error("Bitte zuerst einen Post auswaehlen.");
     }
@@ -424,11 +537,24 @@
     state.dirtyStory = false;
     state.needsSync = true;
     state.needsPublish = true;
+    clearDraft("story");
     updateButtonStates();
-    setStatus("Story gespeichert.", "ok");
+    setStatus("Story hochgeladen.", "ok");
   }
 
-  async function saveCaptions() {
+  function saveCaptionsDraft() {
+    if (!state.selectedPost) {
+      throw new Error("Bitte zuerst einen Post auswaehlen.");
+    }
+
+    syncCaptionStateFromForm();
+    writeDraft("captions", { captions: state.captions });
+    state.dirtyCaptions = true;
+    updateButtonStates();
+    setStatus("Galerie lokal gespeichert.", "ok");
+  }
+
+  async function uploadCaptions() {
     if (!state.selectedPost) {
       throw new Error("Bitte zuerst einen Post auswaehlen.");
     }
@@ -441,8 +567,9 @@
     state.movingFile = "";
     state.needsSync = true;
     state.needsPublish = true;
+    clearDraft("captions");
     await loadCaptions();
-    setStatus("Captions gespeichert.", "ok");
+    setStatus("Galerie hochgeladen.", "ok");
   }
 
   async function uploadPhotos() {
@@ -540,6 +667,7 @@
     if (!state.selectedPost) {
       throw new Error("Bitte zuerst einen Post auswaehlen.");
     }
+    ensureNoUnuploadedEdits();
 
     setStatus("Starte Synchronisierung...");
     const startedAt = await dispatchWorkflow("generate_post.yml", {
@@ -558,6 +686,7 @@
     if (!state.selectedPost) {
       throw new Error("Bitte zuerst einen Post auswaehlen.");
     }
+    ensureNoUnuploadedEdits();
 
     await syncPost();
 
@@ -571,6 +700,12 @@
     state.needsPublish = false;
     updateButtonStates();
     setStatus("Post veroeffentlicht.", "ok");
+  }
+
+  function ensureNoUnuploadedEdits() {
+    if (state.dirtyStory || state.dirtyCaptions) {
+      throw new Error("Bitte Story oder Galerie erst hochladen. Lokal gespeicherte Entwuerfe werden nicht synchronisiert.");
+    }
   }
 
   function switchTab(tab) {
@@ -627,9 +762,11 @@
   els.newPostForm.addEventListener("submit", event => guarded(() => createPost(event)));
   els.postSelect.addEventListener("change", () => guarded(loadSelectedPost));
   bindBusy(els.refreshPosts, loadPosts);
-  bindBusy(els.saveStory, saveStory);
+  bindBusy(els.saveStoryDraft, saveStoryDraft);
+  bindBusy(els.uploadStory, uploadStory);
   bindBusy(els.uploadPhotos, uploadPhotos);
-  bindBusy(els.saveCaptions, saveCaptions);
+  bindBusy(els.saveCaptionsDraft, saveCaptionsDraft);
+  bindBusy(els.uploadCaptions, uploadCaptions);
   bindBusy(els.syncPost, syncPost);
   bindBusy(els.publishPost, publishPost);
 
