@@ -369,6 +369,11 @@ canvas {
   margin: 0;
 }
 
+.gallery .quarto-figure,
+.gallery figure {
+  margin: 0;
+}
+
 .gallery img {
   width: 100%;
   aspect-ratio: 1 / 1;
