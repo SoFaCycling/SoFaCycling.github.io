@@ -63,7 +63,7 @@ jobs:
           if (length(missing)) stop("Missing R packages: ", paste(missing, collapse = ", "))
 
       - name: Synchronize selected post
-        if: ${{ inputs.full_render != 'true' }}
+        if: ${{ !inputs.full_render }}
         shell: bash
         run: |
           post_slug="${{ inputs.post_slug }}"
@@ -75,14 +75,14 @@ jobs:
 
           python scripts/create_post.py --sync-post "$post_slug"
 
-      - name: Render site or selected post
+      - name: Render complete site
+        if: ${{ inputs.full_render }}
+        run: quarto render
+
+      - name: Render selected post
+        if: ${{ !inputs.full_render }}
         shell: bash
         run: |
-          if [[ "${{ inputs.full_render }}" == "true" ]]; then
-            quarto render
-            exit 0
-          fi
-
           post_slug="${{ inputs.post_slug }}"
 
           if [[ -z "$post_slug" ]]; then
