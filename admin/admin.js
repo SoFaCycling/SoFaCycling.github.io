@@ -15,7 +15,8 @@
     dirtyStory: false,
     dirtyCaptions: false,
     needsSync: false,
-    needsPublish: false
+    needsPublish: false,
+    busy: false
   };
 
   const els = {
@@ -51,10 +52,25 @@
   }
 
   function updateButtonStates() {
+    const busy = state.busy;
     const connected = Boolean(state.token);
     const hasPost = Boolean(state.selectedPost);
     const hasPhotos = Boolean(els.photos.files && els.photos.files.length > 0);
     const hasUnuploadedEdits = state.dirtyStory || state.dirtyCaptions;
+
+    els.connect.disabled = busy;
+    if (busy) {
+      els.createPost.disabled = true;
+      els.refreshPosts.disabled = true;
+      els.saveStoryDraft.disabled = true;
+      els.uploadStory.disabled = true;
+      els.uploadPhotos.disabled = true;
+      els.saveCaptionsDraft.disabled = true;
+      els.uploadCaptions.disabled = true;
+      els.syncPost.disabled = true;
+      els.publishPost.disabled = true;
+      return;
+    }
 
     els.createPost.disabled = !connected;
     els.refreshPosts.disabled = !connected;
@@ -199,6 +215,7 @@
   }
 
   async function dispatchWorkflow(workflow, inputs) {
+    await ensureNoActivePipelineRun();
     const startedAt = new Date(Date.now() - 5000).toISOString();
     await github(`/repos/${owner}/${repo}/actions/workflows/${workflow}/dispatches`, {
       method: "POST",
@@ -233,6 +250,64 @@
     }
 
     throw new Error(`${label}: Timeout beim Warten auf GitHub Actions.`);
+  }
+
+  function isPagesDeploymentRun(run) {
+    const name = (run.name || "").toLowerCase();
+    const path = (run.path || "").toLowerCase();
+    return name.includes("pages build") || path.includes("pages-build-deployment");
+  }
+
+  function isPipelineRun(run) {
+    return ["Generate Post", "Publish Post"].includes(run.name) || isPagesDeploymentRun(run);
+  }
+
+  function isActiveRun(run) {
+    return ["queued", "in_progress", "requested", "waiting", "pending"].includes(run.status);
+  }
+
+  async function getRecentPipelineRuns() {
+    const data = await github(`/repos/${owner}/${repo}/actions/runs?branch=${branch}&per_page=30`);
+    return (data.workflow_runs || []).filter(isPipelineRun);
+  }
+
+  async function ensureNoActivePipelineRun() {
+    const activeRun = (await getRecentPipelineRuns()).find(isActiveRun);
+    if (activeRun) {
+      throw new Error(`${activeRun.name} laeuft noch (${activeRun.status}). Bitte spaeter erneut versuchen: ${activeRun.html_url}`);
+    }
+  }
+
+  async function getLatestPagesDeploymentRun(startedAt) {
+    const startedAtTime = new Date(startedAt).getTime();
+    return (await getRecentPipelineRuns()).find(run => {
+      return isPagesDeploymentRun(run) && new Date(run.created_at).getTime() >= startedAtTime;
+    }) || null;
+  }
+
+  async function waitForPagesDeployment(startedAt) {
+    let run = null;
+
+    for (let attempt = 0; attempt < 90; attempt += 1) {
+      run = await getLatestPagesDeploymentRun(startedAt);
+      if (run) {
+        setStatus(`Pages Deployment: ${run.status}${run.conclusion ? ` (${run.conclusion})` : ""}`);
+        if (run.status === "completed") {
+          if (run.conclusion !== "success") {
+            throw new Error(`Pages Deployment ist fehlgeschlagen: ${run.html_url}`);
+          }
+          return run;
+        }
+      } else {
+        setStatus("Pages Deployment: warte auf Start...");
+        if (attempt >= 12) {
+          return null;
+        }
+      }
+      await new Promise(resolve => window.setTimeout(resolve, 5000));
+    }
+
+    throw new Error("Pages Deployment: Timeout beim Warten auf GitHub Actions.");
   }
 
   async function loadPosts() {
@@ -688,18 +763,20 @@
     }
     ensureNoUnuploadedEdits();
 
-    await syncPost();
-
     setStatus("Starte Veroeffentlichung...");
     const startedAt = await dispatchWorkflow("publish_post.yml", {
       post_slug: state.selectedPost,
       full_render: "false"
     });
     await waitForWorkflow("publish_post.yml", startedAt, "Publish Post");
+    const pagesRun = await waitForPagesDeployment(startedAt);
     state.needsSync = false;
     state.needsPublish = false;
     updateButtonStates();
-    setStatus("Post veroeffentlicht.", "ok");
+    setStatus(
+      pagesRun ? "Post veroeffentlicht und Pages-Deployment abgeschlossen." : "Post veroeffentlicht. Kein neues Pages-Deployment gefunden.",
+      "ok"
+    );
   }
 
   function ensureNoUnuploadedEdits() {
@@ -725,30 +802,33 @@
     }
   }
 
-  function setBusy(button, busy) {
-    button.disabled = busy;
+  async function runBusy(handler) {
+    if (state.busy) {
+      return;
+    }
+
+    state.busy = true;
+    updateButtonStates();
+    try {
+      await handler();
+    } finally {
+      state.busy = false;
+      updateButtonStates();
+    }
   }
 
   function bindBusy(button, handler) {
-    button.addEventListener("click", () => guarded(async () => {
-      setBusy(button, true);
-      try {
-        await handler();
-      } finally {
-        setBusy(button, false);
-      }
-    }));
+    button.addEventListener("click", () => guarded(() => runBusy(handler)));
   }
 
-  els.connect.addEventListener("click", () => guarded(async () => {
+  els.connect.addEventListener("click", () => guarded(() => runBusy(async () => {
     state.token = els.token.value.trim();
     requireToken();
     setStatus("Pruefe GitHub-Zugriff...");
     await github(`/repos/${owner}/${repo}`);
     await loadPosts();
     setStatus("Verbunden", "ok");
-    updateButtonStates();
-  }));
+  })));
 
   els.tabs.forEach(button => {
     button.addEventListener("click", () => switchTab(button.dataset.tab));
