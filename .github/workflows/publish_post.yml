@@ -16,7 +16,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: sofacycling-publish
+  group: sofacycling-content-pipeline
   cancel-in-progress: false
 
 jobs:
@@ -25,6 +25,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install requests staticmap pillow
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -51,6 +61,19 @@ jobs:
           pkgs <- c("knitr", "rmarkdown", "jsonlite", "fs")
           missing <- pkgs[!vapply(pkgs, requireNamespace, logical(1), quietly = TRUE)]
           if (length(missing)) stop("Missing R packages: ", paste(missing, collapse = ", "))
+
+      - name: Synchronize selected post
+        if: ${{ inputs.full_render != 'true' }}
+        shell: bash
+        run: |
+          post_slug="${{ inputs.post_slug }}"
+
+          if [[ -z "$post_slug" ]]; then
+            echo "post_slug is required unless full_render is true"
+            exit 1
+          fi
+
+          python scripts/create_post.py --sync-post "$post_slug"
 
       - name: Render site or selected post
         shell: bash
@@ -82,6 +105,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/
+          git add blog/posts/ docs/
           git diff --cached --quiet || git commit -m "Publish new post"
           git push
