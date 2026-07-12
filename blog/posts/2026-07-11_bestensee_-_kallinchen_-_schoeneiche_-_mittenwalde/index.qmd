@@ -75,6 +75,9 @@ lightbox:
 &nbsp;
 
 
+## Eine Feierabend-Runde geht immer...
+sogar im größten Packstress! Ja, wir mussten nochmal eine Brise von der hiesigen Luft schnuppern und die Beine während der anstrengenden Packerei ausschütteln, bevor es bald auf die große Reise geht. Und in dieser herrlichen Abendsonne lohnt sich das doppelt!
+
 
 &nbsp;
 
@@ -215,11 +218,9 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260711_205210.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
-
-
-
