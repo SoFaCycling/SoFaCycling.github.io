@@ -218,7 +218,7 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
-![](img/20260711_205210.webp){group="tour"}
+![Wir genießen die Abendsonne](img/20260711_205210.webp){group="tour"}
 
 :::
 
