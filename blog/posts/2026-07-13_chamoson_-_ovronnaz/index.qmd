@@ -8,8 +8,8 @@ resources:
   - img/**
 
 draft: false
-trip: Sommer-Urlaub 2026
-categories: [Sommer-Urlaub 2026, Schweiz]
+trip: Sommerurlaub 2026
+categories: [Sommerurlaub 2026, Schweiz]
 strava_id: 19298599543
 distance_km: 34.0
 elevation_m: 1154
