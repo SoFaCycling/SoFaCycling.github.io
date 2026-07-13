@@ -252,7 +252,7 @@ fetch(new URL("track.json", document.baseURI))
 
 <div class="trip-card">
 <div class="trip-value">1154</div>
-<div class="trip-label">HÃ¶henmeter</div>
+<div class="trip-label">Höhenmeter</div>
 </div>
 
 <div class="trip-card">

@@ -535,7 +535,7 @@ def build_trip_dashboard(trip_name, date_str, strava_id, distance_km, elevation_
 
 <div class="trip-card">
 <div class="trip-value">{trip_elev:.0f}</div>
-<div class="trip-label">HÃ¶henmeter</div>
+<div class="trip-label">Höhenmeter</div>
 </div>
 
 <div class="trip-card">
