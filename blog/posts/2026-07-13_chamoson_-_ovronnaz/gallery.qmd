@@ -1,15 +1,15 @@
 ::: {.gallery}
 
-![](img/20260713_173315.webp){group="tour"}
+![Wir starten auf die erste Urlaubstour](img/20260713_173315.webp){group="tour"}
 
 ![](img/20260713_175025.webp){group="tour"}
 
-![](img/20260713_175620.webp){group="tour"}
+![Kleine Feierabendrunde nach Ovronnaz](img/20260713_175620.webp){group="tour"}
 
-![](img/20260713_181430.webp){group="tour"}
+![Die allererste Kehre des Sommerurlaubs 2026: Das muss gefeiert werden!](img/20260713_181430.webp){group="tour"}
 
 ![](img/20260713_184838.webp){group="tour"}
 
-![](img/20260713_193500.webp){group="tour"}
+![Die Belohnung!](img/20260713_193500.webp){group="tour"}
 
 :::
