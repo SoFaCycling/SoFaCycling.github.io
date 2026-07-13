@@ -76,6 +76,12 @@ lightbox:
 &nbsp;
 
 
+## Und es geht schon wieder los... Die ersten 1000
+
+Lange mussten wir darauf warten. Eigentlich viel zu lange... Die Vorfreude war in den letzten Tagen förmlich physisch spürbar - die Beine und Arme zappelten schon ein wenig, die Waden schrien hörbar und der Kopf war sowieso längst verreist. Nun sind wir endlich, endlich, endlich angekommen im ersten Urlaubsdomizil unseres diesjährigen Sommerurlaubs! Nach kurzer Nacht und einer doch recht anstrengenden Fahrt heißt uns der französische Teil der Schweiz willkommen - und zwar mit (fast) allem, was er zu bieten hat: nämlich in gewohnt herrlicher Berglandschaft, an der wir uns nicht satt sehen können. Und: sogleich einmal mit gehörigen Steigungsprozenten jenseits der 20%, die uns gehörig forderten. Ja, richtig gelesen: Angekommen, Taschen hingeworfen, Rennradklamotten herausgekramt und los ging es - wir sind da wohl einfach unverbesserlich. Aber der Ausflug hoch nach Ovronnaz war sehr lohnenswert, mit weitem Blick übers Tal inklusive. Damit dürfen wir uns nun nach über 24h Wachzustand ein wenig Schlaf gönnen und fallen - stolz auf unsere ersten 1000 Höhenmeter im Reise-Logbuch - nun ins Bett.
+
+Wir sind jetzt schon überzeugt: Das wird grandios!
+
 
 &nbsp;
 
@@ -216,15 +222,26 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260713_173315.webp){group="tour"}
+
+![](img/20260713_175025.webp){group="tour"}
+
+![](img/20260713_175620.webp){group="tour"}
+
+![](img/20260713_181430.webp){group="tour"}
+
+![](img/20260713_184838.webp){group="tour"}
+
+![](img/20260713_193500.webp){group="tour"}
+
 :::
 
 
 &nbsp;
 
-
 ::: {.trip-dashboard}
 
-### Sommer-Urlaub 2026: Stand aktuell
+### Sommerurlaub 2026: Stand aktuell
 
 <div class="trip-grid">
 
@@ -235,7 +252,7 @@ fetch(new URL("track.json", document.baseURI))
 
 <div class="trip-card">
 <div class="trip-value">1154</div>
-<div class="trip-label">Höhenmeter</div>
+<div class="trip-label">HÃ¶henmeter</div>
 </div>
 
 <div class="trip-card">
@@ -246,6 +263,3 @@ fetch(new URL("track.json", document.baseURI))
 </div>
 
 :::
-
-
-
