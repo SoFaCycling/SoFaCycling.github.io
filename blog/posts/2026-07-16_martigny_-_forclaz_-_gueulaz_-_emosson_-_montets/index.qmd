@@ -76,6 +76,14 @@ lightbox:
 &nbsp;
 
 
+### Steiles Highlight
+
+Ein echtes Col-Fest war das heute! Unser "quäldich"-Palmares hat 4 neue Einträge: Col de la Forclaz (1526 m), Col de la Gueulaz (1965 m), Barrage du Vieux Emosson (2192 m), und Col des Montets (1461 m)... und weil es so schön war, am Ende gleich noch einmal den Col de la Forclaz - nur von der anderen Seite. 
+
+Obwohl hier ein landschaftliches Schmankerl das nächste jagte, kristallisierte sich doch ziemlich schnell das Highlight des Tages heraus: die Auffahrt zur Barrage du Vieux Emosson, die Staumauer des Lac du Vieux Emosson oberhalb des Lac d'Emosson am Col de la Gueulaz. Ja, ohne Witz: Wir küren hier (einstimmig, übrigens!) eine Auffahrt zu unserer Tagessiegerin, die auf ihren letzten 1,4 Kilometern sage und schreibe 230 Höhenmeter überwindet. Genau, richtig gelesen: das sind 16,4 % im Schnitt. Und zwar auf einem ca. 2 Meter breiten Wanderweg; zwar asphaltiert, aber teils ziemlich rau und inklusive zweier ebenso schmalen Tunneldurchfahrten... Uff. Diese 1,4 Kilometer verlangten uns einiges ab.  Das Motto: Wer absteigt, verliert. Denn wieder aufsteigen und weiterradeln? Keine Chance, wirklich absolut nicht! Zumindest nicht mehr nach oben. Dabei wäre man wohl umgefallen. Da sich vermutlich nicht allzu viele Radler dieser Herausforderung stellen, zogen wir die Blicke der Wanderer auf uns, die uns mit einer Mischung aus offensichtlicher Irritation und Kopfschütteln, aber natürlich auch Staunen und Begeisterung anfeuerten und applaudierten. 
+
+Oben angekommen, wussten wir wieder ganz genau, weshalb wir uns eigentlich so schinden: dieser spektakuläre Ausblick, der sicher nur halb so krass wäre, wenn man nicht so intensiv und mit vollem Einsatz darum hätte kämpfen müssen. Was sollen wir sagen? Es war einfach grandios und wird uns sehr, sehr lange Zeit in Erinnerung bleiben. Wir lieben das einfach!
+
 
 &nbsp;
 
@@ -216,11 +224,56 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260716_085436.webp){group="tour"}
+
+![](img/20260716_085947.webp){group="tour"}
+
+![](img/20260716_101102.webp){group="tour"}
+
+![](img/20260716_102642.webp){group="tour"}
+
+![](img/20260716_112120.webp){group="tour"}
+
+![](img/20260716_113525.webp){group="tour"}
+
+![](img/20260716_113846.webp){group="tour"}
+
+![](img/20260716_115723.webp){group="tour"}
+
+![](img/20260716_120651.webp){group="tour"}
+
+![](img/20260716_122050.webp){group="tour"}
+
+![](img/20260716_124000.webp){group="tour"}
+
+![](img/20260716_124004.webp){group="tour"}
+
+![](img/20260716_124259.webp){group="tour"}
+
+![](img/20260716_125624.webp){group="tour"}
+
+![](img/20260716_131239.webp){group="tour"}
+
+![](img/20260716_131247.webp){group="tour"}
+
+![](img/20260716_131634.webp){group="tour"}
+
+![](img/20260716_132402.webp){group="tour"}
+
+![](img/20260716_133341.webp){group="tour"}
+
+![](img/20260716_133704.webp){group="tour"}
+
+![](img/20260716_141641.webp){group="tour"}
+
+![](img/20260716_145703.webp){group="tour"}
+
+![](img/20260716_150923.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
 
 ::: {.trip-dashboard}
 
@@ -246,6 +299,3 @@ fetch(new URL("track.json", document.baseURI))
 </div>
 
 :::
-
-
-
