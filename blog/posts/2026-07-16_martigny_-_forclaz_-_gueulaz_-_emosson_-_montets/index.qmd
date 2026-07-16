@@ -224,9 +224,9 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
-![](img/20260716_085436.webp){group="tour"}
-
 ![](img/20260716_085947.webp){group="tour"}
+
+![](img/20260716_085436.webp){group="tour"}
 
 ![](img/20260716_101102.webp){group="tour"}
 
@@ -234,9 +234,9 @@ fetch(new URL("track.json", document.baseURI))
 
 ![](img/20260716_112120.webp){group="tour"}
 
-![](img/20260716_113525.webp){group="tour"}
-
 ![](img/20260716_113846.webp){group="tour"}
+
+![](img/20260716_113525.webp){group="tour"}
 
 ![](img/20260716_115723.webp){group="tour"}
 
@@ -262,9 +262,9 @@ fetch(new URL("track.json", document.baseURI))
 
 ![](img/20260716_133341.webp){group="tour"}
 
-![](img/20260716_133704.webp){group="tour"}
-
 ![](img/20260716_141641.webp){group="tour"}
+
+![](img/20260716_133704.webp){group="tour"}
 
 ![](img/20260716_145703.webp){group="tour"}
 
