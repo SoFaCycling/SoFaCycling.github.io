@@ -2,7 +2,7 @@
 
 Der Grand Saint Bernard gehört zum Pflichtprogramm der „quäldich“-Club-2K-Passjagd. Also mussten wir hin. Und ganz ehrlich: Wir hatten von Anfang an so ein bisschen das Gefühl, dass diese Beziehung schwierig werden könnte.
 
-Der Anstieg von Martigny ist mit über 45 Kilometern und rund 2000 Höhenmetern nämlich nicht gerade ein kleiner Flirt. Dazu führt die Straße als riesige Hauptverkehrsader Richtung Italien. Wir hatten extra einen Sonntag ausgesucht, in der Hoffnung, dem ganz großen Verkehrschaos zu entgehen.
+Der Anstieg von Martigny ist mit über 45 Kilometern und rund 2000 Höhenmetern nämlich nicht gerade ein kleiner Flirt. Dazu führt die Straße als riesige Hauptverkehrsader Richtung Italien und passiert obendrein eine ca. 6 Kilometer lange, enge und damit radlerunfreundliche Galerie, ohne Seitenstreifen. Wir hatten extra einen Sonntag ausgesucht, in der Hoffnung, dem ganz großen Verkehrschaos zu entgehen.
 
 Nun ja. Sagen wir es so: mäßig erfolgreich. Die Autos ließen beim Überholen ungefähr so viel Abstand, wie wir heute gute Laune hatten. Unsere Stimmung wanderte jedenfalls ziemlich schnell in den Keller; Lautstärke und Stresspegel waren enorm. Bald hatten wir uns sogar untereinander so sehr in den Haaren, dass wir ca. 30 der 45 Kilometer totschwiegen. Romantik auf dem Rennrad...
 
