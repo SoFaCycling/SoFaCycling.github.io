@@ -12,4 +12,4 @@ Natürlich war der Tag in Arolla noch lange nicht vorbei. Wir legten noch zwei k
 
 Besonders beeindruckt haben uns unterwegs die Erdpyramiden von Euseigne – diese massiven Fels- und Sandsteinformationen gehören zu den populärsten Naturdenkmälern im Wallis. Atemberaubend schön – und gleichzeitig angsteinflößend, da die tonnenschweren Brocken auf den Spitzen des Moränenmaterials nur auf winzigen Kontaktpunkten zu balancieren scheinen. Es ist schon ein mulmiges Gefühl, unten drunter durchzuradeln, denn früher oder später werden sie durch Umwelteinflüsse abstürzen – das ist leider unvermeidbar. 
 
-Fazit der Tour: Eine landschaftlich absolute Traumtour. Und auch wenn der Murmlerich-Zähler heute nur auf 🐿️🐿️🐿️🐿️ stehen blieb – es ist immerhin der diesjährige Rekord. Und Fabi ist guter Dinge, dass dieser in nicht allzu ferner Zukunft noch geknackt wird.
+Fazit der Tour: Eine landschaftlich absolute Traumtour. Und auch wenn der Murmlerich-Zähler heute bereits bei 🐿️🐿️🐿️🐿️ stehen blieb – es ist immerhin der diesjährige Rekord. Und Fabi ist guter Dinge, dass dieser in nicht allzu ferner Zukunft noch geknackt wird.
