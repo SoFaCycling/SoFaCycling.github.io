@@ -1,3 +1,37 @@
 ::: {.gallery}
 
+![](img/20260721_103420.webp){group="tour"}
+
+![](img/20260721_123020.webp){group="tour"}
+
+![](img/20260721_124121.webp){group="tour"}
+
+![](img/20260721_130617.webp){group="tour"}
+
+![](img/20260721_131404.webp){group="tour"}
+
+![](img/20260721_131530.webp){group="tour"}
+
+![](img/20260721_131701.webp){group="tour"}
+
+![](img/20260721_141524.webp){group="tour"}
+
+![](img/20260721_145650.webp){group="tour"}
+
+![](img/20260721_150132.webp){group="tour"}
+
+![](img/20260721_151757.webp){group="tour"}
+
+![](img/20260721_152227.webp){group="tour"}
+
+![](img/20260721_152247.webp){group="tour"}
+
+![](img/20260721_154357.webp){group="tour"}
+
+![](img/20260721_170255.webp){group="tour"}
+
+![](img/20260721_170552.webp){group="tour"}
+
+![](img/20260721_170701.webp){group="tour"}
+
 :::
