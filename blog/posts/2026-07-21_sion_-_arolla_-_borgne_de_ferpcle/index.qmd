@@ -262,9 +262,9 @@ fetch(new URL("track.json", document.baseURI))
 
 ![](img/20260721_170255.webp){group="tour"}
 
-![](img/20260721_170552.webp){group="tour"}
-
 ![](img/20260721_170701.webp){group="tour"}
+
+![](img/20260721_170552.webp){group="tour"}
 
 :::
 
