@@ -76,6 +76,18 @@ lightbox:
 &nbsp;
 
 
+### Ausflug in den Kanton Waadt mit Seilbahn-Überführung
+
+Unsere heutige Tour begann mit einer 45 Kilometer langen, relativ flachen Transitstrecke durch das schöne Vallée du Rhône über Fully und Saint-Maurice. Unser erstes Gipfelziel lag im Kanton Waadt: der Col de la Croix. Diesen nahmen wir von Bex aus in Angriff und lieferten uns über 1400 Höhenmeter auf 22 Kilometern einen erbitterten Kurbelkampf mit zwei – wir vermuten niederländischen – Mitstreitern, die sich von unserem quietschvergnügten, Schnittchen mampfenden Bummelzug offenbar etwas provoziert fühlten und sich nur ungern überholen ließen.
+
+Der Col de la Croix macht seinem Ruf als „Schweizer Ikone“ alle Ehre: landschaftlich einfach eine Wucht! Mit etwas Glück – und das hatten wir heute – reicht der Blick sogar bis zum Genfersee.
+
+Oben angekommen nahmen wir bei strahlendem Sonnenschein, aber heute durchaus etwas angenehmeren Temperaturen, direkt Kurs auf den Col du Pillon, von wo aus wir noch einen weiteren Abstecher hinauf zur Alm Isenau machten. Nicht nur die Tatsache, dass das letzte Stück dieses Anstiegs autofrei ist, hat uns vom Hocker gehauen, sondern auch die friedlich grasende Kuhherde vor der beeindruckenden Kulisse des weitläufigen Tals. Es war einfach alles so wunderbar ruhig, naturbelassen und wohltuend.
+
+Vorletzte Station – und zugleich eines der Highlights der heutigen Route – war die Sanetsch-Seilbahn in Gsteig. Mitsamt unseren Rennrädern durften wir in der Kabine einen Privatflug in trauter Zweisamkeit zum Col du Sanetsch genießen und schwebten dabei in schwindelerregender Höhe über schroffe Felswände und saftig grüne Wiesen hinweg. Ein Transit der besonderen Art!
+
+Am Col du Sanetsch angekommen ließen wir noch die letzten rund 300 Höhenmeter hinter uns und begaben uns anschließend auf die flotte, fast 30 Kilometer lange Abfahrt zurück Richtung Vétroz.
+
 
 &nbsp;
 
@@ -216,11 +228,46 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260723_094309.webp){group="tour"}
+
+![](img/20260723_102825.webp){group="tour"}
+
+![](img/20260723_124840.webp){group="tour"}
+
+![](img/20260723_125757.webp){group="tour"}
+
+![](img/20260723_131053.webp){group="tour"}
+
+![](img/20260723_133221.webp){group="tour"}
+
+![](img/20260723_134640.webp){group="tour"}
+
+![](img/20260723_142117.webp){group="tour"}
+
+![](img/20260723_145709.webp){group="tour"}
+
+![](img/20260723_150913.webp){group="tour"}
+
+![](img/20260723_150919.webp){group="tour"}
+
+![](img/20260723_150929.webp){group="tour"}
+
+![](img/20260723_151420.webp){group="tour"}
+
+![](img/20260723_151446.webp){group="tour"}
+
+![](img/20260723_155247.webp){group="tour"}
+
+![](img/20260723_155531.webp){group="tour"}
+
+![](img/20260723_162842.webp){group="tour"}
+
+![](img/20260723_165925.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
 
 ::: {.trip-dashboard}
 
@@ -246,6 +293,3 @@ fetch(new URL("track.json", document.baseURI))
 </div>
 
 :::
-
-
-
