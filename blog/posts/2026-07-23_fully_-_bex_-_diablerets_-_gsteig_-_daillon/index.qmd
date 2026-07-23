@@ -254,15 +254,15 @@ fetch(new URL("track.json", document.baseURI))
 
 ![](img/20260723_151420.webp){group="tour"}
 
-![](img/20260723_151446.webp){group="tour"}
+![](img/20260723_155531.webp){group="tour"}
 
 ![](img/20260723_155247.webp){group="tour"}
-
-![](img/20260723_155531.webp){group="tour"}
 
 ![](img/20260723_162842.webp){group="tour"}
 
 ![](img/20260723_165925.webp){group="tour"}
+
+![](img/20260723_151446.webp){group="tour"}
 
 :::
 
@@ -276,7 +276,7 @@ fetch(new URL("track.json", document.baseURI))
 <div class="trip-grid">
 
 <div class="trip-card">
-<div class="trip-value">849</div>
+<div class="trip-value">850</div>
 <div class="trip-label">Kilometer</div>
 </div>
 
