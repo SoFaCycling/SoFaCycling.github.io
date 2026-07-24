@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-07-24">
+<meta name="description" content="26 km mit 1124 Hm">
 
-<title>SoFaCycling Admin – SoFaCycling</title>
+<title>Vallée de la Lizerne – SoFaCycling</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,25 +31,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../img/bicycle.svg" rel="icon" type="image/svg+xml">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-92852db732637bd2bfcb6ce3961b2fdd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/bootstrap-icons-1.13.1/bootstrap-icons.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../img/bicycle.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-92852db732637bd2bfcb6ce3961b2fdd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/bootstrap-icons-1.13.1/bootstrap-icons.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -74,20 +79,28 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<meta name="robots" content="noindex,nofollow">
-<link rel="stylesheet" href="admin.css">
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background-image: url(../banner.png);
+background-size: cover;
+      }
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">SoFaCycling</span>
     </a>
   </div>
@@ -98,11 +111,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../blog/index.html"> 
+    <a class="nav-link" href="../../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about/index.html"> 
+    <a class="nav-link" href="../../../about/index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -135,123 +148,242 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Vallée de la Lizerne</h1>
+                  <div>
+        <div class="description">
+          26 km mit 1124 Hm
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Sommerurlaub 2026</div>
+                <div class="quarto-category">Schweiz</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 24, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">SoFaCycling Admin</h1>
+
+
+
+
+<div class="stats-grid-container">
+<div class="stats-grid">
+<div class="grid-item">
+<p><i class="bi-arrow-right-circle param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">26.3</span> <span class="stats-label">Kilometer</span></p>
 </div>
-
-
-
-<div class="quarto-title-meta column-page">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<div class="admin-shell">
-  <header class="admin-header">
-    <div>
-      <p class="admin-kicker">SoFaCycling</p>
-      <h1>Blog Admin</h1>
-    </div>
-    <a class="admin-site-link" href="../blog/">Blog</a>
-  </header>
-
-  <section class="admin-panel admin-auth">
-    <label for="token">GitHub Token</label>
-    <div class="admin-token-row">
-      <input id="token" name="github-token" type="password" inputmode="text" autocomplete="current-password" placeholder="Fine-grained PAT">
-      <button id="connect" type="button">Verbinden</button>
-    </div>
-    <p class="admin-help">Der Token wird nur in dieser Browser-Sitzung im Speicher gehalten und nicht im Repo gespeichert.</p>
-  </section>
-
-  <section class="admin-status" aria-live="polite">
-    <div id="status">× Nicht verbunden</div>
-  </section>
-
-  <section class="admin-tabs" aria-label="Admin Bereiche">
-    <button class="admin-tab is-active" type="button" data-tab="new">Neuer Post</button>
-    <button class="admin-tab" type="button" data-tab="edit">Post bearbeiten</button>
-  </section>
-
-  <section id="tab-new" class="admin-view is-active">
-    <form id="new-post-form" class="admin-panel admin-form">
-      <label for="mode">Modus</label>
-      <select id="mode" name="mode">
-        <option value="static_id">Strava Activity-ID</option>
-        <option value="latest_ride">Letzte Outdoor-Radfahrt</option>
-      </select>
-
-      <label for="activity-id">Activity-ID</label>
-      <input id="activity-id" name="activity_id" type="number" inputmode="numeric" placeholder="z. B. 18840862197">
-
-      <label for="trip-name">Trip-Name</label>
-      <input id="trip-name" name="trip_name" type="text" autocomplete="off" placeholder="z. B. Sommerreise 2026">
-
-      <label for="categories">Kategorien</label>
-      <input id="categories" name="categories" type="text" autocomplete="off" placeholder="Kommagetrennt, z. B. Frankreich, Alpen">
-
-      <button id="create-post" type="submit">Post anlegen</button>
-    </form>
-  </section>
-
-  <section id="tab-edit" class="admin-view">
-    <div class="admin-panel admin-form">
-      <label for="post-select">Post</label>
-      <div class="admin-token-row">
-        <select id="post-select"></select>
-        <button id="refresh-posts" type="button">Post laden</button>
-      </div>
-    </div>
-
-    <section class="admin-panel admin-form">
-      <label for="story">Story</label>
-      <textarea id="story" rows="14" placeholder="Markdown-Text fuer den Blogpost"></textarea>
-      <div class="admin-button-row">
-        <button id="save-story-draft" type="button">Story speichern</button>
-        <button id="upload-story" type="button">Story hochladen</button>
-      </div>
-    </section>
-
-    <section class="admin-panel admin-form">
-      <label for="photos">Fotos</label>
-      <input id="photos" type="file" accept="image/*,.heic,.HEIC" multiple="">
-      <button id="upload-photos" type="button">Fotos hochladen</button>
-      <p class="admin-help">Originaldateien hochladen. Danach synchronisieren, damit bestehende Logik Dateinamen, WebP, EXIF-Captions und Galerie erzeugt.</p>
-    </section>
-
-    <section class="admin-panel admin-form">
-      <div class="admin-section-head">
-        <label>Captions</label>
-      </div>
-      <div id="caption-list" class="caption-list"></div>
-      <div class="admin-button-row">
-        <button id="save-captions-draft" type="button">Galerie speichern</button>
-        <button id="upload-captions" type="button">Galerie hochladen</button>
-      </div>
-      <p class="admin-help">EXIF-Captions erscheinen nach dem Synchronisieren. Manuelle Captions bleiben beim naechsten Sync erhalten.</p>
-    </section>
-
-    <section class="admin-actions">
-      <button id="sync-post" type="button">Blogpost synchronisieren</button>
-      <button id="publish-post" type="button">Veroeffentlichen</button>
-    </section>
-  </section>
+<div class="grid-item">
+<p><i class="bi-arrow-up-right-circle param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">1124</span> <span class="stats-label">Höhenmeter</span></p>
 </div>
+<div class="grid-item">
+<p><i class="bi-clock-history param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">2h 13min</span> <span class="stats-label">Fahrzeit</span></p>
+</div>
+<div class="grid-item">
+<p><i class="bi-speedometer param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">11.8</span> <span class="stats-label">km/h (50.7 max.)</span></p>
+</div>
+<div class="grid-item">
+<p><i class="bi-lightning param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">98.3</span> <span class="stats-label">Watt (349 max.)</span></p>
+</div>
+<div class="grid-item">
+<p><i class="bi-heart-pulse param-icon" style="" role="img" aria-hidden="true"></i> <span class="stats-value">134.3</span> <span class="stats-label">bpm (170.0 max.)</span></p>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<section id="sternfahrt-rund-um-godet" class="level3">
+<h3 class="anchored" data-anchor-id="sternfahrt-rund-um-godet">Sternfahrt rund um Godet</h3>
+<p>Heute stand eine Erkundungstour im schönen, naturbelassenen Vallée de la Lizerne auf dem Programm. Dabei haben wir uns vorgenommen, alle von Godet abzweigenden Stichstraßen abzuradeln. Laut Insider-Berichten ein Pflichtprogramm, wenn man im Wallis unterwegs ist.</p>
+<p>Und tatsächlich: jeder einzelne der Aufstiege versprüht seinen ganz eigenen Charme. Die Ausblicke waren allerdings von überall aus malerisch! Eine wirklich kurze Tour zur Regeneration — wenngleich “Regeneration” bei Steigungsgraden jenseits der 13% sicher auch Auslegungssache ist. Dennoch: landschaftlich unheimlich lohnenswert und daher ab heute definitiv auch eine geprüfte SoFa-Empfehlung.</p>
+<p>&nbsp;</p>
+<div id="map" style="height: 400px;">
+
+</div>
+<script>
+fetch(new URL("track.json", document.baseURI))
+  .then(response => response.json())
+  .then(data => {
+
+    const latlngs = data.latlng.map(coord => [coord[0], coord[1]]);
+
+    const map = L.map('map');
+    const polyline = L.polyline(latlngs, { color: 'black', weight: 2 }).addTo(map); // <-- schwarz, dicke 3px
+
+    map.fitBounds(polyline.getBounds());
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+  });
+</script>
+<div style="height: 250px; width: 100%; position: relative; margin-top: 20px;">
+<canvas id="elevationChart">
+</canvas>
+</div>
+<script>
+fetch(new URL("track.json", document.baseURI))
+  .then(response => response.json())
+  .then(data => {
+    
+    // 1. Rolling Mean (Moving Average, k=100)
+    const k = 100;
+    const half_k = Math.floor(k / 2);
+    const smoothed_alt = data.altitude.map((val, i, arr) => {
+      let start = Math.max(0, i - half_k);
+      let end = Math.min(arr.length, i + half_k);
+      let subset = arr.slice(start, end);
+      let sum = subset.reduce((a, b) => a + b, 0);
+      return sum / subset.length;
+    });
+
+    // 2. Y-Minimum berechnen und als VOLLE Zahl abrunden (Behebt Problem 1)
+    const min_alt = Math.min(...data.altitude);
+    const lim_y = Math.floor(min_alt * 0.9);
+
+    // 3. Maximale Distanz ermitteln
+    const maxDist = data.distance[data.distance.length - 1];
+
+    // 4. Datenstruktur für lineare Achse umbauen (X/Y-Paare)
+    const chartData = data.distance.map((dist, i) => ({
+      x: dist,
+      y: smoothed_alt[i]
+    }));
+
+    const ctx = document.getElementById('elevationChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: chartData,
+          borderColor: 'black',
+          borderWidth: 1.5,
+          backgroundColor: 'rgba(204, 204, 204, 0.3)',
+          fill: 'start',
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              // Tooltip greift jetzt auf die numerischen Daten zu
+              title: (items) => items[0].parsed.x.toFixed(1) + ' km',
+              label: (item) => Math.round(item.parsed.y) + ' hm'
+            }
+          }
+        },
+        scales: {
+          x: {
+            type: 'linear',  // Behebt Problem 2b (gleichmäßige Abschnitte)
+            position: 'bottom',
+            min: 0,
+            max: maxDist,
+            title: { display: true, text: 'km', color: '#666' },
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              callback: function(value, index, values) {
+                // Wenn es der letzte Wert (Ende der Tour) ist, zeige 1 Nachkommastelle
+                if (value === maxDist) {
+                  return value.toFixed(0);
+                }
+                // Sonst zeige absolut saubere, volle Kilometer-Schritte
+                return Math.round(value);
+              }
+            },
+            afterBuildTicks: function(scale) {
+              // Behebt Problem 2a: Erzwingt das Ende der Tour als letzten Tick
+              if (scale.ticks.length > 0) {
+                let lastTick = scale.ticks[scale.ticks.length - 1].value;
+                // Verhindert, dass der letzte automatische Tick zu nah am Ende klebt und überlappt
+                if (maxDist - lastTick < (maxDist * 0.08)) {
+                  scale.ticks.pop(); 
+                }
+              }
+              scale.ticks.push({ value: maxDist });
+            }
+          },
+          y: {
+            min: lim_y,
+            title: { display: true, text: 'Höhenmeter', color: '#666' },
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            ticks: {
+              precision: 0 // Erzwingt zusätzlich nur volle Höhenmeter auf der Achse
+            }
+          }
+        }
+      }
+    });
+  });
+</script>
+<div class="gallery">
+<p><a href="img/20260724_103512.webp" class="lightbox" data-gallery="tour"><img src="img/20260724_103512.webp" class="img-fluid"></a></p>
+<p><a href="img/20260724_105705.webp" class="lightbox" data-gallery="tour"><img src="img/20260724_105705.webp" class="img-fluid"></a></p>
+<p><a href="img/20260724_111527.webp" class="lightbox" data-gallery="tour"><img src="img/20260724_111527.webp" class="img-fluid"></a></p>
+<p><a href="img/20260724_113827.webp" class="lightbox" data-gallery="tour"><img src="img/20260724_113827.webp" class="img-fluid"></a></p>
+<p><a href="img/20260724_122228.webp" class="lightbox" data-gallery="tour"><img src="img/20260724_122228.webp" class="img-fluid"></a></p>
+<p><a href="img/20260724_124026.webp" class="lightbox" data-gallery="tour"><img src="img/20260724_124026.webp" class="img-fluid"></a></p>
+</div>
+<p>&nbsp;</p>
+</section>
+<section id="sommerurlaub-2026-stand-aktuell" class="level3 trip-dashboard">
+<h3 class="anchored" data-anchor-id="sommerurlaub-2026-stand-aktuell">Sommerurlaub 2026: Stand aktuell</h3>
+<div class="trip-grid">
+<div class="trip-card">
+<div class="trip-value">
+876
+</div>
+<div class="trip-label">
+Kilometer
+</div>
+</div>
+<div class="trip-card">
+<div class="trip-value">
+24995
+</div>
+<div class="trip-label">
+Höhenmeter
+</div>
+</div>
+<div class="trip-card">
+<div class="trip-value">
+52h 39min
+</div>
+<div class="trip-label">
+Fahrzeit
+</div>
+</div>
+</div>
+</section>
 
 
 
@@ -672,7 +804,38 @@ ul.task-list li input[type="checkbox"] {
 </div>
   </div>
 </footer>
-<script src="admin.js"></script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
