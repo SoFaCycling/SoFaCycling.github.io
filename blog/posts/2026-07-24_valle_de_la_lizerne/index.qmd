@@ -76,6 +76,12 @@ lightbox:
 &nbsp;
 
 
+### Sternfahrt rund um Godet
+
+Heute stand eine Erkundungstour im schönen, naturbelassenen Vallée de la Lizerne auf dem Programm. Dabei haben wir uns vorgenommen, alle von Godet abzweigenden Stichstraßen abzuradeln. Laut Insider-Berichten ein Pflichtprogramm, wenn man im Wallis unterwegs ist. 
+
+Und tatsächlich: jeder einzelne der Aufstiege versprüht seinen ganz eigenen Charme. Die Ausblicke waren allerdings von überall aus malerisch! Eine wirklich kurze Tour zur Regeneration — wenngleich "Regeneration" bei Steigungsgraden jenseits der 13% sicher auch Auslegungssache ist. Dennoch: landschaftlich unheimlich lohnenswert und daher ab heute definitiv auch eine geprüfte SoFa-Empfehlung.
+
 
 &nbsp;
 
@@ -216,11 +222,22 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260724_103512.webp){group="tour"}
+
+![](img/20260724_105705.webp){group="tour"}
+
+![](img/20260724_111527.webp){group="tour"}
+
+![](img/20260724_113827.webp){group="tour"}
+
+![](img/20260724_122228.webp){group="tour"}
+
+![](img/20260724_124026.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
 
 ::: {.trip-dashboard}
 
@@ -246,6 +263,3 @@ fetch(new URL("track.json", document.baseURI))
 </div>
 
 :::
-
-
-

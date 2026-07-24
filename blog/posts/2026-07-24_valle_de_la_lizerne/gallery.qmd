@@ -1,3 +1,15 @@
 ::: {.gallery}
 
+![](img/20260724_103512.webp){group="tour"}
+
+![](img/20260724_105705.webp){group="tour"}
+
+![](img/20260724_111527.webp){group="tour"}
+
+![](img/20260724_113827.webp){group="tour"}
+
+![](img/20260724_122228.webp){group="tour"}
+
+![](img/20260724_124026.webp){group="tour"}
+
 :::
