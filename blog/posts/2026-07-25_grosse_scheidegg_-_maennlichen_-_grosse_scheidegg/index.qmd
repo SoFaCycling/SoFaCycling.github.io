@@ -76,6 +76,20 @@ lightbox:
 &nbsp;
 
 
+### Majestätische Riesen, spießige Viehschranken, gechillte Kühe... und ein überraschender Favorit
+
+Die Grosse Scheidegg stand schon lange weit oben auf unserer Bucket List. Kurz vor sechs Uhr morgens war alles im Auto verstaut und es ging los Richtung Aareschlucht, unserem heutigen Startpunkt. Nach gut zwei Stunden Anfahrt – inklusive der Fahrt über den Grimselpass, die schöne Erinnerungen an unseren Schweiz-Urlaub 2024 weckte – saßen wir im Sattel.
+
+Einrollen war allerdings nicht drin: Es ging direkt mit 12% Steigung los. Ab Rosenlaui wird die Auffahrt zur Grossen Scheidegg glücklicherweise autofrei. Das Panorama ist beeindruckend: Die Grosse Scheidegg liegt im Schatten des Berner Dreigestirns Eiger, Mönch und Jungfrau. Während des gesamten ersten Anstiegs dominiert das Wetterhorn die Ostauffahrt. Ganz autofrei war es oben dann aber doch nicht. Einerseits forderten die Postbusse mit Vorrang regelmäßig ihren Platz ein und zwangen uns zum Ausweichen und/oder Stoppen, andererseits herrschte auf der Passhöhe reger Betrieb wegen eines Festgeländes. Erst dachten wir an ein Rad- oder Triathlonrennen, mussten dann aber enttäuscht feststellen, wie sich Männer im Sägemehl kappelten – wir waren mitten in ein Schwingfest geraten. Das ist so gar nicht unser Ding... Von der Passhöhe hat man aber übrigens auch einen wunderbaren Blick auf die Kleine Scheidegg vor der Jungfrau im Westen. Ablenkung von diesem unschönen Spektakel war also gegeben. 
+
+Über 1200 Höhenmeter später rollten wir bergab Richtung Grindelwald. Die Abfahrt nahm allerdings ein abruptes Ende, als Sophie von einer beweglichen Kuhschranke buchstäblich aufgespießt wurde. Das Teil verfing sich — wie auch immer — frontal in den Speichen... und es kam, wie es kommen musste: der Asphalt hatte einen Knutschfleck. Das Rad blieb zum Glück heile, nur Ellenbogen und Knie sind nun farbenfroh. Aber da danach noch weitere 2300 Höhenmeter erfolgreich folgen sollten, war es offenbar halb so wild.
+
+Ab Grindelwald ging es an die nächste "Schweizer Ikone": den Männlichen. Dieser Anstieg entpuppte sich als unser absoluter Favorit des Tages. Nicht nur wegen der stetigen 12 bis später sogar 16%, auch nicht nur wegen der ruhigen, autofreien Straße, auf der die Kühe völlig tiefenentspannt spazieren gingen. Es war vor allem der 360°-Gipfelblick vom Eiger bis hin zum Thunersee, der einfach überwältigend ist.
+
+Zurück in Grindelwald nahmen wir die Grosse Scheidegg noch ein zweites Mal in Angriff, diesmal über die Westauffahrt. Mit bereits 2500 Höhenmetern in den Beinen war das bei durchschnittlich 10% und Stellen bis zu 14% nochmals ein echter Kraftakt. Fabis heißgeliebte Murmleriche bekamen wir trotz der typischen Erdlöcher am Wegesrand leider nicht zu sehen, dafür aber eine große Eule im Alpentierpark, den wir passierten.
+
+Ein weiteres Highlight wartete zum Abschluss in Obergoms beim Bachhüsfäscht. Wir machten einen kurzen Abstecher zur Mühle von Peter, der uns schon 2024 durch seine kleine Mühle geführt hatte, wo er das Mehl noch ganz traditionell mit echtem Naturstein (meist Granit oder Basalt) mahlt. Er hatte uns für heute eine große Ration Mehl verschiedenster Sorten zurückgelegt. Nun kann Fabi wieder sein weltbestes Brot backen! Ein rundum gelungener Abschluss für diesen wundervollen Tag.
+
 
 &nbsp;
 
@@ -216,11 +230,60 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260725_091532.webp){group="tour"}
+
+![](img/20260725_094154.webp){group="tour"}
+
+![](img/20260725_095444.webp){group="tour"}
+
+![](img/20260725_101706.webp){group="tour"}
+
+![](img/20260725_104822.webp){group="tour"}
+
+![](img/20260725_104836.webp){group="tour"}
+
+![](img/20260725_110055.webp){group="tour"}
+
+![](img/20260725_110117.webp){group="tour"}
+
+![](img/20260725_125948.webp){group="tour"}
+
+![](img/20260725_130232.webp){group="tour"}
+
+![](img/20260725_130345.webp){group="tour"}
+
+![](img/20260725_133624.webp){group="tour"}
+
+![](img/20260725_135308.webp){group="tour"}
+
+![](img/20260725_135319.webp){group="tour"}
+
+![](img/20260725_141529.webp){group="tour"}
+
+![](img/20260725_141540.webp){group="tour"}
+
+![](img/20260725_142534.webp){group="tour"}
+
+![](img/20260725_142702.webp){group="tour"}
+
+![](img/20260725_143018.webp){group="tour"}
+
+![](img/20260725_154351.webp){group="tour"}
+
+![](img/20260725_163421.webp){group="tour"}
+
+![](img/20260725_180842.webp){group="tour"}
+
+![](img/20260725_181813.webp){group="tour"}
+
+![](img/20260725_184148.webp){group="tour"}
+
+![](img/20260725_184224.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
 
 ::: {.trip-dashboard}
 
@@ -246,6 +309,3 @@ fetch(new URL("track.json", document.baseURI))
 </div>
 
 :::
-
-
-
