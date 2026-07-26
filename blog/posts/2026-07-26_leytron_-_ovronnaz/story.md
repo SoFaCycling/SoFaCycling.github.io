@@ -1,0 +1,5 @@
+### Ovronnaz-Revanche
+
+Da wir leider beim ersten Versuch den Ovronnaz-Col nicht ordnungsgemäß für unser quäldich-Palmares eingesammelt haben — wir sind schlicht und ergreifend vor dem höchsten Punkt umgekehrt —, brauchten wir noch eine Revanche. Der heutige Regentag drängte sich dafür geradezu auf. Der Aufstieg ist in relativ kurzer Zeit machbar und so beschlossen wir, die Tour in eines der wenigen Regenfenster zu quetschen.
+
+Um zumindest für ein klein wenig Abwechslung zu sorgen, wählten wir die zweite Auffahrtsvariante über Leytron und zogen dieses Mal auch bis zum bitteren Ende durch. Die Steigungsgrade waren — wie so oft im Wallis — nicht ganz ohne. Gleichwohl sogen wir aber auch wieder diese herrliche Bergkulisse um uns herum auf. Diese zeigte sich heute fast schon von einer mystischen Seite: die Wolken hingen tief und die vereinzelten Sonnenstrahlen taten ihr Übriges für die perfekte Stimmung. 
