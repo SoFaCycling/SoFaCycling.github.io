@@ -232,9 +232,9 @@ fetch(new URL("track.json", document.baseURI))
 
 ![](img/20260727_120841.webp){group="tour"}
 
-![](img/20260727_123016.webp){group="tour"}
-
 ![](img/20260727_123127.webp){group="tour"}
+
+![](img/20260727_123016.webp){group="tour"}
 
 ![](img/20260727_123219.webp){group="tour"}
 
@@ -252,9 +252,9 @@ fetch(new URL("track.json", document.baseURI))
 
 ![](img/20260727_141553.webp){group="tour"}
 
-![](img/20260727_141653.webp){group="tour"}
-
 ![](img/20260727_143058.webp){group="tour"}
+
+![](img/20260727_141653.webp){group="tour"}
 
 ![](img/20260727_205623.webp){group="tour"}
 
