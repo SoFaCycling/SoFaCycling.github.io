@@ -76,6 +76,10 @@ lightbox:
 &nbsp;
 
 
+### Team Gelato in Aufregung und großer Vorfreude
+
+... und daher lassen wir heute nur die Bilder sprechen.
+
 
 &nbsp;
 
@@ -216,11 +220,30 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260729_090440.webp){group="tour"}
+
+![](img/20260729_093649.webp){group="tour"}
+
+![](img/20260729_093839.webp){group="tour"}
+
+![](img/20260729_100112.webp){group="tour"}
+
+![](img/20260729_100841.webp){group="tour"}
+
+![](img/20260729_110749.webp){group="tour"}
+
+![](img/20260729_112927.webp){group="tour"}
+
+![](img/20260729_120138.webp){group="tour"}
+
+![](img/20260729_124010.webp){group="tour"}
+
+![](img/20260729_130623.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
 
 ::: {.trip-dashboard}
 
@@ -246,6 +269,3 @@ fetch(new URL("track.json", document.baseURI))
 </div>
 
 :::
-
-
-
