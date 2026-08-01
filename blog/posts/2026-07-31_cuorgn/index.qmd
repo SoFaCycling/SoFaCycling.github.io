@@ -76,6 +76,10 @@ lightbox:
 &nbsp;
 
 
+### Eine Runde um Cuorgnè
+
+Eine kleine Tour nach Alpette und zum Sacre Monti di Belmonte, perfekt zum Verarbeiten der vielen wunderschönen Eindrücke vom Vortag.
+
 
 &nbsp;
 
@@ -216,11 +220,18 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260731_201543.webp){group="tour"}
+
+![](img/20260731_202540.webp){group="tour"}
+
+![](img/20260731_205517.webp){group="tour"}
+
+![](img/20260731_210042.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
 
 ::: {.trip-dashboard}
 
@@ -246,6 +257,3 @@ fetch(new URL("track.json", document.baseURI))
 </div>
 
 :::
-
-
-
