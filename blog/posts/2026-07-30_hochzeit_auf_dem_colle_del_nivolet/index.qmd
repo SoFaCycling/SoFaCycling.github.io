@@ -76,6 +76,9 @@ lightbox:
 &nbsp;
 
 
+Ein besonderer Tag benötigt besondere Aufmerksamkeit. Wir nehmen uns dieses Mal etwas mehr Zeit, um unsere Eindrücke niederzuschreiben...
+Nur so viel sei gesagt: Es war ein unvergesslicher Aufstieg — der schönste für uns beide.
+
 
 &nbsp;
 
@@ -216,11 +219,12 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260730_115914.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
 
 ::: {.trip-dashboard}
 
@@ -246,6 +250,3 @@ fetch(new URL("track.json", document.baseURI))
 </div>
 
 :::
-
-
-

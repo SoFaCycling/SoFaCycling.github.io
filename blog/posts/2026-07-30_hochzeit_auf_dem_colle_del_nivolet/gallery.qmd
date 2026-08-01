@@ -1,3 +1,5 @@
 ::: {.gallery}
 
+![](img/20260730_115914.webp){group="tour"}
+
 :::
