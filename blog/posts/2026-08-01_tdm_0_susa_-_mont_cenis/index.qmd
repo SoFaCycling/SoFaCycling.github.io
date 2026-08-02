@@ -76,6 +76,15 @@ lightbox:
 &nbsp;
 
 
+### Warm-up
+
+Unser Honeymoon Bikepacking-Abenteuer kann endlich beginnen! Doch bevor es so richtig losgehen kann und wir den Weg Richtung Süden einschlagen, müssen wir im Norden zunächst noch fix den Col du Mont Cenis einsammeln. 
+
+Von Susa aus wählen wir allerdings nicht den direkten Weg über die Hauptverkehrsader, sondern die Auffahrt über Novalesa — deutlich länger und steiler, dafür um einiges ruhiger und eindeutig hübscher.
+Im oberen Teil des Passes genießen wir die schöne Kulisse des azurblauen Lac du Mont Cenis. 
+
+Damit ist bereits der erste 2000er im Sack. Zurück in Susa werden nun die großen Radtaschen für die kommenden 7 Tage vollgestopft... Nizza, schon ganz bald sehen wir uns endlich wieder!
+
 
 &nbsp;
 
@@ -216,11 +225,38 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260801_134759.webp){group="tour"}
+
+![](img/20260801_140255.webp){group="tour"}
+
+![](img/20260801_141941.webp){group="tour"}
+
+![](img/20260801_143654.webp){group="tour"}
+
+![](img/20260801_154138.webp){group="tour"}
+
+![](img/20260801_154625.webp){group="tour"}
+
+![](img/20260801_163208.webp){group="tour"}
+
+![](img/20260801_163705.webp){group="tour"}
+
+![](img/20260801_165051.webp){group="tour"}
+
+![](img/20260801_165149.webp){group="tour"}
+
+![](img/20260801_170345.webp){group="tour"}
+
+![](img/20260801_175329.webp){group="tour"}
+
+![](img/20260801_175415.webp){group="tour"}
+
+![](img/20260801_190136.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
 
 ::: {.trip-dashboard}
 
@@ -246,6 +282,3 @@ fetch(new URL("track.json", document.baseURI))
 </div>
 
 :::
-
-
-
