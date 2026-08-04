@@ -76,6 +76,12 @@ lightbox:
 &nbsp;
 
 
+### Ein harter Tag
+
+Die zweite Etappe der Tour de Mariage hatte es in sich. Gleich drei 2K-Cols und zwei Länder galt es zu passieren, um von Briançon nach Stroppo zu gelangen: der Col d'Izoard (2360 m), der Col Agnel (2744 m) und schließlich der Colle di Sampeyre (2284 m). Die ersten beiden kannten wir bereits aus den vorherigen Jahren, der Sampeyre war eine absolut gelungene Überraschung. Ein eher unbekannter, dafür herrlicher Pass. Diesen können wir uneingeschränkt empfehlen! 
+
+Wir hatten heute insbesondere mit ungemütlichem Gegenwind am Col Agnel sowie viel, viel, viel Regen zu kämpfen. Insgesamt summierte sich die nervige Wartezeit auf Regenfenster am Wegesrand oder in diversen Schutzhütten oder sogar fremden Garagen daher auf fast 5 Stunden auf. Den Gewittern konnten wir aber glücklicherweise entkommen — klatschnass und durchgefroren waren wir am Ende dennoch.
+
 
 &nbsp;
 
@@ -216,11 +222,44 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260803_082217.webp){group="tour"}
+
+![](img/20260803_083550.webp){group="tour"}
+
+![](img/20260803_092044.webp){group="tour"}
+
+![](img/20260803_095238.webp){group="tour"}
+
+![](img/20260803_100012.webp){group="tour"}
+
+![](img/20260803_101355.webp){group="tour"}
+
+![](img/20260803_143331.webp){group="tour"}
+
+![](img/20260803_144313.webp){group="tour"}
+
+![](img/20260803_150740.webp){group="tour"}
+
+![](img/20260803_152137.webp){group="tour"}
+
+![](img/20260803_152247.webp){group="tour"}
+
+![](img/20260803_153528.webp){group="tour"}
+
+![](img/20260803_153633.webp){group="tour"}
+
+![](img/20260803_153805.webp){group="tour"}
+
+![](img/20260803_211343.webp){group="tour"}
+
+![](img/20260803_211348.webp){group="tour"}
+
+![](img/20260803_211816.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
 
 ::: {.trip-dashboard}
 
@@ -246,6 +285,3 @@ fetch(new URL("track.json", document.baseURI))
 </div>
 
 :::
-
-
-
