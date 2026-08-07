@@ -1,4 +1,4 @@
-### Tag der Extreme: Hitze, Regenschauer und Bergankunft mit Gruselhotel
+### Tag der Extreme: Hitze, Regenschauer und Bergankunft am Gruselhotel
 
 Wir haben es geschafft, wir sind in uns sehr bekannten Gefilden angekommen — auf dem Gipfel des Col de Turini auf 1607 m. Damit gab es heute die erste und einzige Bergankunft der Tour de Mariage. 
 
