@@ -1,0 +1,3 @@
+### Griaß di, Österreich!
+
+Unser heutiger Radel-Auftakt in den Gailtaler Alpen/Hohen Tauern — der letzten Station unserer Sommerreise — fiel buchstäblich ins Wasser... Voller Elan starteten wir Richtung Goldeck-Panoramastraße, um uns das Gebiet von oben genauer anzusehen und in Vorfreude auf unsere letzten Urlaubstage zu schwelgen. Die ersten 900 Höhenmeter waren landschaftlich schon einmal vielversprechend. Leider mussten wir den Aufstieg aber auf halber Strecke aufgrund eines heftigen Regenschauers abbrechen. Viel Ausblick hätte es bei den dichten Wolken ohnehin nicht gegeben. Kein Drama, so sind die Alpen eben: unberechenbar. Wir freuen uns dennoch riesig auf die nächsten Tage! 
