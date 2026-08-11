@@ -76,6 +76,16 @@ lightbox:
 &nbsp;
 
 
+### Hüttenzauber
+
+Heute waren wieder Regen und Gewitter angesagt. Daher entschieden wir uns für eine Hüttentour — kurz, aber knackig, mit ordentlich Höhenmetern und Steigungsprozenten von teils deutlich über 20 %.
+
+Insbesondere der Anstieg zur Lammersdorfer Hütte war ziemlich gepfeffert. Kilometerlang standen wir im Wiegetritt auf den Rädern. Wir waren die einzigen Rennradler auf dieser Straße — warum nur!? Freundlicherweise wurden wir von allen E-Bikern respektvoll angefeuert und/oder bemitleidet. Mit offenbar sehr schlechtem Gewissen fuhr eine Frau an uns vorbei und rief: "Es tut mir sooooo leid!" Wir lachten nur und erwiderten: "Alles gut, das ist immerhin selbstgewähltes Leid." Und es handelte sich tatsächlich um den klassischen Typ-II-Spaß: Oben angekommen waren wir stolz und konnten obendrein wir einen mega Ausblick genießen.
+
+Anschließend ging es über die Tschiernock-Panoramastraße hoch zur Sommeregger Hütte, wo wir mit großer Freude die süßen Schäfchen bespaßten. Auch dieser Anstieg war landschaftlich grandios.
+
+Und das Beste: Wir waren vor dem Regen wieder daheim — tippi toppi!
+
 
 &nbsp;
 
@@ -216,11 +226,46 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260811_100211.webp){group="tour"}
+
+![](img/20260811_100911.webp){group="tour"}
+
+![](img/20260811_102333.webp){group="tour"}
+
+![](img/20260811_112547.webp){group="tour"}
+
+![](img/20260811_115120.webp){group="tour"}
+
+![](img/20260811_120337.webp){group="tour"}
+
+![](img/20260811_120428.webp){group="tour"}
+
+![](img/20260811_120958.webp){group="tour"}
+
+![](img/20260811_121007.webp){group="tour"}
+
+![](img/20260811_133949.webp){group="tour"}
+
+![](img/20260811_133954.webp){group="tour"}
+
+![](img/20260811_135954.webp){group="tour"}
+
+![](img/20260811_140242.webp){group="tour"}
+
+![](img/20260811_140627.webp){group="tour"}
+
+![](img/20260811_141650.webp){group="tour"}
+
+![](img/20260811_143124.webp){group="tour"}
+
+![](img/20260811_143752.webp){group="tour"}
+
+![](img/20260811_145624.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
 
 ::: {.trip-dashboard}
 
@@ -246,6 +291,3 @@ fetch(new URL("track.json", document.baseURI))
 </div>
 
 :::
-
-
-
