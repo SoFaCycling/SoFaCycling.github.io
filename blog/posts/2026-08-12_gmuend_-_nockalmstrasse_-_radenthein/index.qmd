@@ -76,6 +76,18 @@ lightbox:
 &nbsp;
 
 
+### Unser erster Österreicher 2K
+
+Der erste 2000er in Österreich (von insgesamt nur drei) — und zudem der östlichste der Alpen überhaupt — ist eingetütet: Die Nockalmstraße mit ihren höchsten Punkten Eisentalhöhe auf 2042 m und Schiestlscharte auf 2024 m. 
+
+Wir wählten eine wirklich herrliche Runde über Gmünd und fuhren die Mautstraße aus Nordwest von Innerkrems Richtung Südost nach Ebene Reichenau. Der Rückweg nach Spittal an der Drau führte dann entsprechend über Patergassen, Bad Kleinkirchheim und Radenthein.
+
+Die Nockalmstraße liegt im UNESCO Biosphärenpark Kärntner Nockberge. Namensgeber sind die sogenannten Nocken — grasbewachsene Berge mit runden Kuppen. Ein Unikat im gesamten Alpenraum!
+
+Die Nockalmstraße ist zudem ein reines Serpentinen-Paradies. Insgesamt wartet sie mit 52 Kehren — oder wie es hier genannt wird: Reidn — auf. Da war der Spaß vorprogrammiert.
+
+Eine rundum gelungene Ausfahrt: kurzweilig, höhenmeterreich und landschaftlich eine Wucht.
+
 
 &nbsp;
 
@@ -216,11 +228,46 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260812_092613.webp){group="tour"}
+
+![](img/20260812_111343.webp){group="tour"}
+
+![](img/20260812_112629.webp){group="tour"}
+
+![](img/20260812_114042.webp){group="tour"}
+
+![](img/20260812_120125.webp){group="tour"}
+
+![](img/20260812_120556.webp){group="tour"}
+
+![](img/20260812_121327.webp){group="tour"}
+
+![](img/20260812_121427.webp){group="tour"}
+
+![](img/20260812_121809.webp){group="tour"}
+
+![](img/20260812_122059.webp){group="tour"}
+
+![](img/20260812_123204.webp){group="tour"}
+
+![](img/20260812_123802.webp){group="tour"}
+
+![](img/20260812_131927.webp){group="tour"}
+
+![](img/20260812_132952.webp){group="tour"}
+
+![](img/20260812_133242.webp){group="tour"}
+
+![](img/20260812_142053.webp){group="tour"}
+
+![](img/20260812_151427.webp){group="tour"}
+
+![](img/20260812_152246.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
 
 ::: {.trip-dashboard}
 
@@ -246,6 +293,3 @@ fetch(new URL("track.json", document.baseURI))
 </div>
 
 :::
-
-
-
