@@ -234,13 +234,13 @@ fetch(new URL("track.json", document.baseURI))
 
 ![](img/20260813_130136.webp){group="tour"}
 
-![](img/20260813_131227.webp){group="tour"}
+![](img/20260813_141945.webp){group="tour"}
 
 ![](img/20260813_140712.webp){group="tour"}
 
 ![](img/20260813_141138.webp){group="tour"}
 
-![](img/20260813_141945.webp){group="tour"}
+![](img/20260813_131227.webp){group="tour"}
 
 :::
 
