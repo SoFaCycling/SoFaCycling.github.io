@@ -1,0 +1,9 @@
+### Die Stallis auf dem Sattel
+
+Juhu! Der zweite Österreicher 2K bekommt seinen Eintrag in unserem Palmares. Einer mit einem ganz wunderbar passenden Namen: der Stallersattel (2052 m). Darüber freuen sich die alte sowie der neue Stalli sehr, insbesondere wenn die beiden den Grenzpass zu Italien im Sattel erklimmen dürfen.
+
+In Huben gestartet hielt sich die Lust allerdings in Grenzen. Uns stand eine 35 km lange, größtenteils eher flache bis hügelige Auffahrt auf einer größeren Straße bevor. Zudem kränkeln wir leider etwas. Wir vermuten, dass die Klimaanlage im Flixbus von Nizza nach Turin der Übeltäter war. So zogen sich die ersten Kilometer gefühlt bis ins Endlose; ohne vernünftigen Druck auf die Pedale bringen zu können, torkelten wir quasi eher die ersten paar hundert Höhenmeter hinauf als sie leichtfüßig und elegant hochzufliegen. 
+
+Zumindest hielt sich der motorisierte Verkehr (E-Bikes ausgenommen) in Grenzen. Erst zum Ende hin sollten die eigentlichen Höhenmeter folgen. Und dann aber auch gleich — ganz plötzlich — ziemlich ordentlich... Gleichwohl ist dies auch der landschaftlich beeindruckendste Teil der Strecke. Die Aussicht auf die unmittelbar entlang der Route über uns thronenden Villgratner Berge ist spektakulär. Und man erhascht zusätzlich den ein oder anderen Blick auf die Lienzer sowie Sextner Dolomiten. Nahe des Gipfels gibt es sowohl auf der österreichischen als auch italienischen Seite azurblaue Seen — echte Schmankerl!
+
+Da die Erkältung uns leider zunehmend zu schaffen machte, entschieden wir uns dagegen, die Runde in diesem schönen Gebiet noch weiter zu verlängern und radelten stattdessen die 35 km zurück zum Startpunkt. Wir hoffen, dass wir morgen wieder durchstarten können — es gibt hier noch einiges zu entdecken und die Urlaubszeit beginnt leider zu ticken... 
