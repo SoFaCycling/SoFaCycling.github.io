@@ -77,6 +77,8 @@ lightbox:
 
 
 
+
+
 &nbsp;
 
 
@@ -216,11 +218,50 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260814_084852.webp){group="tour"}
+
+![](img/20260814_093238.webp){group="tour"}
+
+![](img/20260814_093852.webp){group="tour"}
+
+![](img/20260814_094842.webp){group="tour"}
+
+![](img/20260814_095427.webp){group="tour"}
+
+![](img/20260814_102305.webp){group="tour"}
+
+![](img/20260814_102328.webp){group="tour"}
+
+![](img/20260814_102700.webp){group="tour"}
+
+![](img/20260814_103137.webp){group="tour"}
+
+![](img/20260814_104111.webp){group="tour"}
+
+![](img/20260814_120223.webp){group="tour"}
+
+![](img/20260814_120305.webp){group="tour"}
+
+![](img/20260814_120500.webp){group="tour"}
+
+![](img/20260814_120530.webp){group="tour"}
+
+![](img/20260814_121642.webp){group="tour"}
+
+![](img/20260814_125604.webp){group="tour"}
+
+![](img/20260814_125853.webp){group="tour"}
+
+![](img/20260814_142812.webp){group="tour"}
+
+![](img/20260814_152450.webp){group="tour"}
+
+![](img/20260814_163423.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
 
 ::: {.trip-dashboard}
 
@@ -246,6 +287,3 @@ fetch(new URL("track.json", document.baseURI))
 </div>
 
 :::
-
-
-
