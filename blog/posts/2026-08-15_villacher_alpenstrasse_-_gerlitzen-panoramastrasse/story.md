@@ -1,4 +1,4 @@
-### Feiertagsradeln in Österreich
+### Kärntner Feiertagsradeln
 
 Anlässlich des heutigen Feiertages — Mariä Himmelfahrt — standen zwei als "Österreichs Ikonen" klassifizierte Anstiege auf unserem Programm.
 
