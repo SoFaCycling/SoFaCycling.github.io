@@ -77,6 +77,8 @@ lightbox:
 
 
 
+
+
 &nbsp;
 
 
@@ -216,11 +218,34 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260816_091549.webp){group="tour"}
+
+![](img/20260816_091640.webp){group="tour"}
+
+![](img/20260816_094127.webp){group="tour"}
+
+![](img/20260816_094445.webp){group="tour"}
+
+![](img/20260816_094810.webp){group="tour"}
+
+![](img/20260816_094947.webp){group="tour"}
+
+![](img/20260816_103200.webp){group="tour"}
+
+![](img/20260816_103247.webp){group="tour"}
+
+![](img/20260816_105355.webp){group="tour"}
+
+![](img/20260816_110532.webp){group="tour"}
+
+![](img/20260816_112006.webp){group="tour"}
+
+![](img/20260816_115043.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
 
 ::: {.trip-dashboard}
 
@@ -246,6 +271,3 @@ fetch(new URL("track.json", document.baseURI))
 </div>
 
 :::
-
-
-
