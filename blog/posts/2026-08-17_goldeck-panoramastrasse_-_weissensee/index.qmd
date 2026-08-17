@@ -76,6 +76,22 @@ lightbox:
 &nbsp;
 
 
+### Gipfelglück, glasklarer Bergsee & Vollkorn-Plinsen: Eine Kombi zum Verlieben
+
+Wo unsere letzte Reise-Etappe vor genau einer Woche in Österreich begann, nimmt sie nun auch ihr Ende: auf der Goldeck-Panoramastraße. Nur dieses Mal schafften wir es ganz ohne Regenguss bis hinauf zum Gipfel auf 1890 m. Yippie yeah! Wir sind unglaublich froh, dass wir diesen Anstieg noch einmal ins Programm aufgenommen haben. Er ist einfach genial – besonders früh morgens in fast völliger Einsamkeit.
+
+Beim entspannten Hochkurbeln im leisen Vogelgezwitscher unter der aufgehenden Sonne kreisten unsere Gedanken zwar kurz um die bald wieder auf uns wartende Arbeit, den bevorstehenden Alltagsstress und sonstige Verpflichtungen – aber die spektakuläre Aussicht und die Stille waren schlichtweg zu vereinnahmend. Das ist genau das, was wir am Bergradeln so lieben: Ganz egal, wie schwer die Gedanken manchmal sein mögen, man kommt immer ganz bei sich an und fokussiert sich auf das Wesentliche und das große Ganze. Man fühlt sich winzig zwischen den hohen, schroffen Gipfeln, und alle Sorgen werden aus reiner Ehrfurcht vor der Natur plötzlich ganz klein. 
+
+Manchmal – so auch heute – schlägt die für uns zum Urlaubsende typische Melancholie ins Positive um: Kurz vor dem Gipfel war nicht nur glasklar, dass wir heute noch Plinsen aus dem leckeren Vollkornmehl vom Grantscher Hoflädeli backen würden, sondern auch deren Belag-Varianten mit frischen Zutaten aus der Genuss-Meierei. 
+
+Oben angekommen stellten wir erstaunt fest, dass wir sogar bis zum Gipfel des Mangart blicken konnten – angesichts der vielen Wolken ein echtes Glück!
+
+Nach einer rasanten Abfahrt, bei der uns fast die Extremitäten einfroren (verwöhnt von den Temperaturen jenseits der 30 °C in den letzten Wochen hatten wir leichtsinnig auf Handschuhe verzichtet), hängten wir noch einen Abstecher zum Weißensee an. 
+
+Während dieser Anfahrt gab es zwar keine nennenswerten Steigungen mehr, dafür aber ordentlich Gegenwind, was das Radeln bekanntlich ähnlich herausfordernd macht. Die Route führte durch den Naturpark Weißensee, vorbei an Wasserfällen, idyllischen Dörfern wie Stockenboi und durch urige Wälder. Alles in allem ein absoluter Genuss, zumal auch hier kaum motorisierter Verkehr unterwegs war. Der Weißensee ist übrigens mit 930 m der „höchste Badesee der Alpen“, wie es stolz auf dem Willkommensschild prangt – und ziemlich sicher auch einer der saubersten, denn man konnte metertief bis auf den Grund blicken. Wie schade, dass wir keine Badesachen dabei hatten und sich nun langsam ein Unwetter ankündigte.
+
+Nun müssen wir schmerzlich feststellen: Dieser lange Urlaub neigt sich endgültig dem Ende zu. Zu schade, denn wir hätten noch so einige Ideen im Gepäck gehabt. Aber die heben wir uns auf. Denn eines steht fest: Wir kommen wieder, du wunderbares Kärnten mit deinen beeindruckenden Gailtaler Alpen und Hohen Tauern!
+
 
 &nbsp;
 
@@ -216,11 +232,32 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
+![](img/20260817_074729.webp){group="tour"}
+
+![](img/20260817_074731.webp){group="tour"}
+
+![](img/20260817_081602.webp){group="tour"}
+
+![](img/20260817_085050.webp){group="tour"}
+
+![](img/20260817_085053.webp){group="tour"}
+
+![](img/20260817_091357.webp){group="tour"}
+
+![](img/20260817_092950.webp){group="tour"}
+
+![](img/20260817_094245.webp){group="tour"}
+
+![](img/20260817_111610.webp){group="tour"}
+
+![](img/20260817_114854.webp){group="tour"}
+
+![](img/20260817_120932.webp){group="tour"}
+
 :::
 
 
 &nbsp;
-
 
 ::: {.trip-dashboard}
 
@@ -246,6 +283,3 @@ fetch(new URL("track.json", document.baseURI))
 </div>
 
 :::
-
-
-
