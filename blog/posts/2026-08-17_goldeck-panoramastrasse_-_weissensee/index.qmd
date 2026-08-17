@@ -232,27 +232,27 @@ fetch(new URL("track.json", document.baseURI))
 
 ::: {.gallery}
 
-![](img/20260817_074729.webp){group="tour"}
-
 ![](img/20260817_074731.webp){group="tour"}
+
+![](img/20260817_074729.webp){group="tour"}
 
 ![](img/20260817_081602.webp){group="tour"}
 
-![](img/20260817_085050.webp){group="tour"}
-
 ![](img/20260817_085053.webp){group="tour"}
+
+![](img/20260817_085050.webp){group="tour"}
 
 ![](img/20260817_091357.webp){group="tour"}
 
-![](img/20260817_092950.webp){group="tour"}
-
 ![](img/20260817_094245.webp){group="tour"}
 
-![](img/20260817_111610.webp){group="tour"}
+![](img/20260817_092950.webp){group="tour"}
+
+![](img/20260817_120932.webp){group="tour"}
 
 ![](img/20260817_114854.webp){group="tour"}
 
-![](img/20260817_120932.webp){group="tour"}
+![](img/20260817_111610.webp){group="tour"}
 
 :::
 
