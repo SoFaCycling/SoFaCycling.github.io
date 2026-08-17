@@ -1,4 +1,4 @@
-### Gipfelglück, glasklarer Bergsee & Vollkorn-Plinsen: Eine Kombi zum Verlieben
+### Von Gipfelglück, Bergsee-Idyll und... Vollkorn-Plinsen! 
 
 Wo unsere letzte Reise-Etappe vor genau einer Woche in Österreich begann, nimmt sie nun auch ihr Ende: auf der Goldeck-Panoramastraße. Nur dieses Mal schafften wir es ganz ohne Regenguss bis hinauf zum Gipfel auf 1890 m. Yippie yeah! Wir sind unglaublich froh, dass wir diesen Anstieg noch einmal ins Programm aufgenommen haben. Er ist einfach genial – besonders früh morgens in fast völliger Einsamkeit.
 
