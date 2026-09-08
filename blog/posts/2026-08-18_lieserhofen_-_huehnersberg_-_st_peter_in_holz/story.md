@@ -6,4 +6,4 @@ Die Wolken hingen tief, es war noch recht frisch und die einsamen Straßen noch 
 
 Kleines Trostpflaster: Auf dem Rückweg stolperten wir sogar noch über ein kleines Hoflädeli, in dem wir nach einem Plausch mit der Bäuerin ein unheimlich leckeres Steinofenbrot ergatterten. So waren wir auch kulinarisch für die lange Rückfahrt bestens gewappnet.
 
-Was bleibt uns nun noch zu sagen? Wir hatten — erneut — eine fantastische Sommerreise, die uns für immer in Erinnerung bleiben wird und von der wir hoffentlich noch lange zehren können. Wir sind sehr dankbar, dass wir gemeinsam derartig wundervolle Eindrücke sammeln, herzlichen Menschen begegnen und spannende Geschichten erleben dürfen. Uns ist bewusst: Das ist keine Selbstverständlichkeit!
+Was bleibt uns nun noch zu sagen? Wir hatten — erneut — eine fantastische Sommerreise, die uns für immer in Erinnerung bleiben wird und von der wir hoffentlich noch lange zehren können. Wir sind sehr dankbar, dass wir gemeinsam derartig wundervolle Eindrücke sammeln, herzlichen Menschen begegnen und spannende Geschichten erleben dürfen. Uns ist bewusst: Das ist keine Selbstverständlichkeit! Und daher genießen wir jeden Moment.
