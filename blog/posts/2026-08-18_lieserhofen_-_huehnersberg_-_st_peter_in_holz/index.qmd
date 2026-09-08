@@ -228,39 +228,21 @@ fetch(new URL("track.json", document.baseURI))
 
 ![](img/20260818_083256.webp){group="tour"}
 
-![](img/20260818_083256_01.webp){group="tour"}
-
 ![](img/20260818_083436.webp){group="tour"}
-
-![](img/20260818_083436_01.webp){group="tour"}
 
 ![](img/20260818_083801.webp){group="tour"}
 
-![](img/20260818_083801_01.webp){group="tour"}
-
 ![](img/20260818_084211.webp){group="tour"}
-
-![](img/20260818_084211_01.webp){group="tour"}
 
 ![](img/20260818_084253.webp){group="tour"}
 
-![](img/20260818_084253_01.webp){group="tour"}
-
 ![](img/20260818_085439.webp){group="tour"}
-
-![](img/20260818_085439_01.webp){group="tour"}
 
 ![](img/20260818_085932.webp){group="tour"}
 
-![](img/20260818_085932_01.webp){group="tour"}
-
 ![](img/20260818_090412.webp){group="tour"}
 
-![](img/20260818_090412_01.webp){group="tour"}
-
 ![](img/20260818_091344.webp){group="tour"}
-
-![](img/20260818_091344_01.webp){group="tour"}
 
 ![](img/20260818_093533.webp){group="tour"}
 
